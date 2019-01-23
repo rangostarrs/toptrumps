@@ -7,15 +7,17 @@ public class Card {
 	private int speed;
 	private int range;
 	private int firepower;
+	private int cargo;
 
 	// constructor
-	public Card(String d, int si, int sp, int r, int f) {
+	public Card(String d, int si, int sp, int r, int f, int c) {
 
 		this.setDescription(d);
 		this.setSize(si);
 		this.setSpeed(sp);
 		this.setRange(r);
 		this.setFirepower(f);
+		this.setCargo(c);
 
 	}
 
@@ -39,6 +41,10 @@ public class Card {
 	public void setFirepower(int f) {
 		firepower = f;
 	}
+	
+	public void setCargo(int c) {
+		cargo = c;
+	}
 
 	// getters
 	public String getDescription() {
@@ -60,13 +66,18 @@ public class Card {
 	public int getFirepower() {
 		return firepower;
 	}
+	
+	public int getCargo() {
+		return cargo;
+	}
 
 	@Override
 	public String toString() {
 		return ("\n" + "Description: " + description + "\n" + 
-				"Size: " + size + "\n" + 
-				"Speed: " + speed + "\n" + 
-				"Range: " + range + "\n" + 
-				"Firepower: " + firepower + "\n");
+				" > " + "Size: " + size + "\n" + 
+				" > " + "Speed: " + speed + "\n" + 
+				" > " + "Range: " + range + "\n" + 
+				" > " + "Firepower: " + firepower + "\n" + 
+				" > " + "Cargo" + cargo + "\n");
 	}
 }
