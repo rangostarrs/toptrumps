@@ -1,3 +1,4 @@
+package commandline;
 
 public class Card {
   private String description;
@@ -59,10 +60,10 @@ public class Card {
 
 	 @Override
 	    public String toString() {
-	         return ("Description: " + this.getDescription() +
-	                     "Size: " + this.getSize() +
-	                     "Speed: " + this.getSpeed() +
-                       "Range: " + this.getRange() +
-                       "Firepower: " + this.getFirepower());
+	         return ("Description: " + description +
+	                     "Size: " + size +
+	                     "Speed: " + speed +
+                       "Range: " + range +
+                       "Firepower: " + firepower);
 	    }
 }

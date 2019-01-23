@@ -1,3 +1,5 @@
+package commandline;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -5,40 +7,38 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import javax.swing.JFileChooser;
-import javax.swing.filechooser.FileNameExtensionFilter;
-import javax.swing.filechooser.FileSystemView;
 
-package commandline;
+
 
 public class TopTrumpsModel {
 	
-	private ArrayList<Card> cardList = new ArrayList<Card>();
-	private String headerArray[] = new String[3];
+	private static ArrayList<Card> cardList = new ArrayList<Card>();
+	static private String headerArray[] = new String[6];
 
 	TopTrumpsModel() {
 		
 	}
 
 	
-public void addToArrayList (String selectedFilePath) throws FileNotFoundException
+public static void addToArrayList () throws FileNotFoundException
 	{
 
-	FileReader reader = new FileReader("C:\\Users\\Monique\\Documents\\GitHub\\toptrumps\\StarCitizenDeck.txt");
-	Scanner scanner = new Scanner(reader);
+	FileReader reader = null;
 	
 		try {
 
-
+			reader = new FileReader("StarCitizenDeck.txt");
+			Scanner scanner = new Scanner(reader);
+			
 			String line = scanner.nextLine();
-			String[] tokens = line.split(",");
+			String[] tokens = line.split(" ");
 			for(int i=0;i<5;i++) {
-				headerArray[i]=tokens[i];
+				headerArray[i]=tokens[i+1];
 			}
 			
 				while(scanner.hasNextLine()) {
 					line = scanner.nextLine();
-					tokens = line.split(",");
+					tokens = line.split(" ");
 
 					String description = tokens[0];
 					int size = Integer.parseInt(tokens[1]);
@@ -50,6 +50,7 @@ public void addToArrayList (String selectedFilePath) throws FileNotFoundExceptio
 					cardList.add(cardObject);
 				}
 				scanner.close();
+				System.out.println(cardList.toString());
 		}
 		catch(FileNotFoundException exception) {
 			exception.printStackTrace();
@@ -64,5 +65,8 @@ public void addToArrayList (String selectedFilePath) throws FileNotFoundExceptio
 				}
 			}
 		}
+		
+			
+		
 	}
 }
