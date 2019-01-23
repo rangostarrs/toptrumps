@@ -64,9 +64,9 @@ public class Card {
 	@Override
 	public String toString() {
 		return ("\n" + "Description: " + description + "\n" + 
-				"Size: " + size + "\n" + 
-				"Speed: " + speed + "\n" + 
-				"Range: " + range + "\n" + 
-				"Firepower: " + firepower + "\n");
+				" > " + "Size: " + size + "\n" + 
+				" > " + "Speed: " + speed + "\n" + 
+				" > " + "Range: " + range + "\n" + 
+				" > " + "Firepower: " + firepower + "\n");
 	}
 }
