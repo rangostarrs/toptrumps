@@ -63,7 +63,7 @@ public class Card {
 
 	@Override
 	public String toString() {
-		return ("Description: " + description + "\n" + 
+		return ("\n" + "Description: " + description + "\n" + 
 				"Size: " + size + "\n" + 
 				"Speed: " + speed + "\n" + 
 				"Range: " + range + "\n" + 
