@@ -65,8 +65,8 @@ public class Card {
 	public String toString() {
 		return ("Description: " + description + "\n" + 
 				"Size: " + size + "\n" + 
-				"Speed: " + speed + "\n" 
-				+ "Range: " + range + "\n" + 
-				"Firepower: " + firepower);
+				"Speed: " + speed + "\n" + 
+				"Range: " + range + "\n" + 
+				"Firepower: " + firepower + "\n");
 	}
 }
