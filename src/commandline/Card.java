@@ -60,10 +60,10 @@ public class Card {
 
 	 @Override
 	    public String toString() {
-	         return ("Description: " + description +
-	                     "Size: " + size +
-	                     "Speed: " + speed +
-                       "Range: " + range +
+	         return ("Description: " + description + "\n" + 
+	                     "Size: " + size + "\n" + 
+	                     "Speed: " + speed + "\n" + 
+                       "Range: " + range + "\n" + 
                        "Firepower: " + firepower);
 	    }
 }
