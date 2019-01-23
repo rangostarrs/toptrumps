@@ -12,6 +12,8 @@ import java.util.Scanner;
 
 public class TopTrumpsModel {
 	
+	
+	
 	private static ArrayList<Card> cardList = new ArrayList<Card>();
 	static private String headerArray[] = new String[6];
 
@@ -66,7 +68,7 @@ public static void addToArrayList () throws FileNotFoundException
 			}
 		}
 		
-			
+		System.out.print("Test");	
 		
 	}
 }
