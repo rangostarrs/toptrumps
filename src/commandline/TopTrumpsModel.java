@@ -26,9 +26,30 @@ public class TopTrumpsModel {
 
 			String line = scanner.nextLine();
 			String[] tokens = line.split(" ");
+
+			for(int i=0;i<6;i++) {
+				headerArray[i]=tokens[i+1];
+
 			for (int i = 0; i < 5; i++) {
 				headerArray[i] = tokens[i + 1];
+
 			}
+
+
+					String description = tokens[0];
+					int size = Integer.parseInt(tokens[1]);
+					int speed = Integer.parseInt(tokens[2]);
+					int range = Integer.parseInt(tokens[3]);
+					int firepower = Integer.parseInt(tokens[4]);
+					int cargo = Integer.parseInt(tokens[4]);
+
+					Card cardObject = new Card(description, size, speed, range, firepower, cargo);
+					cardList.add(cardObject);
+				}
+				scanner.close();
+				System.out.println(cardList.toString());
+		}
+		catch(FileNotFoundException exception) {
 
 			while (scanner.hasNextLine()) {
 				line = scanner.nextLine();
@@ -48,6 +69,7 @@ public class TopTrumpsModel {
 			System.out.println(cardList.toString());
 			System.out.println(cardList.toString());
 		} catch (FileNotFoundException exception) {
+
 			exception.printStackTrace();
 		} finally {
 			if (reader != null) {
