@@ -46,6 +46,7 @@ public class TopTrumpsModel {
 			}
 			scanner.close();
 			System.out.println(cardList.toString());
+			System.out.println(cardList.toString());
 		} catch (FileNotFoundException exception) {
 			exception.printStackTrace();
 		} finally {

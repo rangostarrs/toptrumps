@@ -79,6 +79,5 @@ public class Card {
 				" > " + "Range: " + range + "\n" + 
 				" > " + "Firepower: " + firepower + "\n" + 
 				" > " + "Cargo: " + cargo + "\n");
-
 	}
 }
