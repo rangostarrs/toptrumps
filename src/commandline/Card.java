@@ -16,8 +16,9 @@ public class Card {
 		this.setSpeed(sp);
 		this.setRange(r);
 		this.setFirepower(f);
-
+		System.out.print("Rararijeaiji");
 	}
+//shasasasa
 
 	// setters
 	public void setDescription(String d) {
