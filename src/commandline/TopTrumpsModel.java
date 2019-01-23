@@ -39,8 +39,9 @@ public class TopTrumpsModel {
 				int speed = Integer.parseInt(tokens[2]);
 				int range = Integer.parseInt(tokens[3]);
 				int firepower = Integer.parseInt(tokens[4]);
+				int cargo = Integer.parseInt(tokens[5]);
 
-				Card cardObject = new Card(description, size, speed, range, firepower);
+				Card cardObject = new Card(description, size, speed, range, firepower, cargo);
 				cardList.add(cardObject);
 			}
 			scanner.close();
