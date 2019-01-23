@@ -34,7 +34,7 @@ public static void addToArrayList () throws FileNotFoundException
 			
 			String line = scanner.nextLine();
 			String[] tokens = line.split(" ");
-			for(int i=0;i<5;i++) {
+			for(int i=0;i<6;i++) {
 				headerArray[i]=tokens[i+1];
 			}
 			
@@ -47,8 +47,9 @@ public static void addToArrayList () throws FileNotFoundException
 					int speed = Integer.parseInt(tokens[2]);
 					int range = Integer.parseInt(tokens[3]);
 					int firepower = Integer.parseInt(tokens[4]);
+					int cargo = Integer.parseInt(tokens[4]);
 
-					Card cardObject = new Card(description, size, speed, range, firepower);
+					Card cardObject = new Card(description, size, speed, range, firepower, cargo);
 					cardList.add(cardObject);
 				}
 				scanner.close();
