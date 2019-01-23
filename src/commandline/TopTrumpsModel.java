@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class TopTrumpsModel {
 
 	private static ArrayList<Card> cardList = new ArrayList<Card>();
-	static private String headerArray[] = new String[6];
+	static private String headerArray[] = new String[5];
 
 	TopTrumpsModel() {
 
@@ -27,7 +27,7 @@ public class TopTrumpsModel {
 			String line = scanner.nextLine();
 			String[] tokens = line.split(" ");
 
-			for(int i=0;i<6;i++) {
+			for(int i=0;i<5;i++) {
 				headerArray[i]=tokens[i+1];
 			}
 
@@ -45,7 +45,7 @@ public class TopTrumpsModel {
 				Card cardObject = new Card(description, size, speed, range, firepower, cargo);
 				cardList.add(cardObject);
 			}
-				}
+				
 				scanner.close();
 				System.out.println(cardList.toString());
 		}
