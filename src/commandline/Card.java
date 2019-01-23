@@ -83,6 +83,6 @@ public class Card {
 				" > " + "Speed: " + speed + "\n" + 
 				" > " + "Range: " + range + "\n" + 
 				" > " + "Firepower: " + firepower + "\n" + 
-				" > " + "Cargo: " + cargo + "\n");
+				" > " + "Cargo:h " + cargo + "\n");
 	}
 }
