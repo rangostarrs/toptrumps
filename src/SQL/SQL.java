@@ -17,7 +17,7 @@ public class SQL{
 		return;
 	}
 	System.out.println("PostgreSQL JDBC Driver Found!");
-	System.out.println("Test");
+	System.out.println("Testq");
 	Connection c = null;
 	
 	try {
