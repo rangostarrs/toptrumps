@@ -30,7 +30,6 @@ public class TopTrumpsController {
 
 			System.out.println("Loading game statistics");
 			// call the game statistics method
-
 		}
 
 		if (choice == 2) {
