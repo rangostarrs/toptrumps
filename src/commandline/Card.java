@@ -2,12 +2,12 @@ package commandline;
 
 public class Card {
 
-	private String description;
-	private int size;
-	private int speed;
-	private int range;
-	private int firepower;
-	private int cargo;
+  private String description;
+  private int size;
+  private int speed;
+  private int range;
+  private int firepower;
+  private int cargo;
 
 	// constructor
 	public Card(String d, int si, int sp, int r, int f, int c) {
@@ -43,13 +43,15 @@ public class Card {
 		range = r;
 	}
 
-	public void setFirepower(int f) {
-		firepower = f;
-	}
-	
-	public void setCargo(int c) {
-		cargo = c;
-	}
+
+  public void setFirepower(int f) {
+    firepower = f;
+  }
+  
+  public void setCargo(int c) {
+	    cargo = c;
+	  }
+
 
 	// getters
 	public String getDescription() {
@@ -85,4 +87,5 @@ public class Card {
 				" > " + "Firepower: " + firepower + "\n" + 
 				" > " + "Cargo: " + cargo + "\n");
 	}
+
 }

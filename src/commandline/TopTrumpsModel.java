@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class TopTrumpsModel {
 
 	private static ArrayList<Card> cardList = new ArrayList<Card>();
-	static private String headerArray[] = new String[6];
+	static private String headerArray[] = new String[5];
 
 	TopTrumpsModel() {
 
@@ -26,8 +26,9 @@ public class TopTrumpsModel {
 
 			String line = scanner.nextLine();
 			String[] tokens = line.split(" ");
-			for (int i = 0; i < 5; i++) {
-				headerArray[i] = tokens[i + 1];
+
+			for(int i=0;i<5;i++) {
+				headerArray[i]=tokens[i+1];
 			}
 
 			while (scanner.hasNextLine()) {
@@ -44,9 +45,11 @@ public class TopTrumpsModel {
 				Card cardObject = new Card(description, size, speed, range, firepower, cargo);
 				cardList.add(cardObject);
 			}
-			scanner.close();
-			System.out.println(cardList.toString());
-		} catch (FileNotFoundException exception) {
+				
+				scanner.close();
+				System.out.println(cardList.toString());
+		}
+		catch(FileNotFoundException exception) {
 			exception.printStackTrace();
 		} finally {
 			if (reader != null) {

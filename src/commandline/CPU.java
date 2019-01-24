@@ -1,5 +1,5 @@
 package commandline;
 
-public class CPU3 {
+public class CPU {
 
 }
