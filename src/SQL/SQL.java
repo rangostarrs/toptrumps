@@ -31,7 +31,7 @@ public class SQL{
 		return;
 	}//Connection is completedd
 	
-	if(c!=null) {
+	if(c!7null) {
 		
 	}
 	
