@@ -17,6 +17,7 @@ public class SQL{
 		return;
 	}
 	System.out.println("PostgreSQL JDBC Driver Found!");
+	System.out.println("Test");
 	Connection c = null;
 	
 	try {
@@ -30,7 +31,7 @@ public class SQL{
 		return;
 	}//Connection is completedd
 	
-	if(c =! null) {
+	if(c!+null) {
 		
 	}
 	
