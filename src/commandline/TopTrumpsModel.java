@@ -24,6 +24,7 @@ public class TopTrumpsModel {
 	protected static Deque<Card> cpu1Deck = new ArrayDeque<Card>();
 	protected static Deque<Card> cpu2Deck = new ArrayDeque<Card>();
 	protected static Deque<Card> cpu3Deck = new ArrayDeque<Card>();
+	protected static Deque<Card> cpu4Deck = new ArrayDeque<Card>();
 
 	TopTrumpsModel() {
 
@@ -101,6 +102,9 @@ public class TopTrumpsModel {
 				cpu2Deck.addFirst(mainDeck.pollFirst());
 				if (cpuNumber > 2) {
 					cpu3Deck.addFirst(mainDeck.pollFirst());
+					if (cpuNumber >3) {
+						cpu4Deck.addFirst(mainDeck.pollFirst());
+					}
 				}
 			}
 		}
