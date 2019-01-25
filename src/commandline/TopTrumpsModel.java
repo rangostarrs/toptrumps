@@ -147,10 +147,12 @@ public class TopTrumpsModel {
 				Card cardObject = new Card(description, size, speed, range, firepower, cargo);
 				cardList.add(cardObject);
 			}
-
-			scanner.close();
-			// System.out.println(cardList.toString());
-		} catch (FileNotFoundException exception) {
+				
+				scanner.close();
+				String listOfCards = cardList.toString();
+				System.out.println(listOfCards.replace("[", "").replace("]", "").replaceAll(",", ""));
+		}
+		catch(FileNotFoundException exception) {
 			exception.printStackTrace();
 		} finally {
 			if (reader != null) {
