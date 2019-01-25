@@ -35,7 +35,7 @@ public class TopTrumpsController {
 		if (choice == 2) {
 
 			System.out.println("Loading deck");
-			TopTrumpsModel.addToArrayList();
+			TopTrumpsModel.addCardsToList();
 			// call the file reader method
 
 		}
