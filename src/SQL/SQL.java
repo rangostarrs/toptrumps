@@ -2,6 +2,7 @@ package SQL;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.Connection;
+import java.sql.Driver;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -12,20 +13,21 @@ public class SQL {
 	
 		public static void main(String[] args) {
 		/// load the JDBC Driver 
-		try {
-			Class.forName("org.postgresql.Driver");
-		}catch(ClassNotFoundException e) {
-			System.out.println("Could not find JBDC Driver");
-			e.printStackTrace();
-			return;
-		}
+			try {
+				   Class.forName("org.postgresql.Driver");
+				}
+				catch(ClassNotFoundException ex) {
+				   System.out.println("Error: unable to load driver class!");
+				   System.exit(1);
+				}
 		System.out.println("PostgreSQL JDBC Driver Found!");
 		
 		Connection c = null;
 		
 		try {
-			//Toby's database information
-			c = DriverManager.getConnection("jdbc:postgresql://yacata.dcs.gla.ac.uk:5432/", "m_18_2420282r", "2420282r");
+			
+			c = DriverManager.getConnection("jdbc:postgresql://localhost:5434/postgres", "postgres", "password");
+			System.out.println("Connection succeeded");
 			
 			
 		}catch(SQLException e) {
