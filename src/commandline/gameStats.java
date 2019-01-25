@@ -12,11 +12,15 @@ public class gameStats {
 	// int for the total number of rounds played in the game
 	int totalRounds;
 	// int for the number of rounds that each player won *
-	int roundWin;
+	int playerRoundWin;
+	int cpu1RoundWin;
+	int cpu2RoundWin;
+	int cpu3RoundWin;
 	// * should we have a playerRoundWin and 3 cpuRoundWin's?
 
-	// As long as a game isn't currently in progress, the user should be able to 
-	// connect to the database and get information about previous games. This should include
+	// As long as a game isn't currently in progress, the user should be able to
+	// connect to the database and get information about previous games. This should
+	// include
 
 	// int for the total number of games played
 	int totalGames;
@@ -32,6 +36,10 @@ public class gameStats {
 	// ** again, should we have a cpu1Win, cpu2 etc
 
 	private static void gameplayData(int draws, String winner, int totalRounds, int roundWin) {
+
+	}
+
+	private static void previousGameData(int totalGames, int cpuWin, int playerWin, int avgDraws, int mostRounds) {
 
 	}
 
@@ -59,12 +67,36 @@ public class gameStats {
 		this.totalRounds = totalRounds;
 	}
 
-	public int getRoundWin() {
-		return roundWin;
+	public int getPlayerRoundWin() {
+		return playerRoundWin;
 	}
 
-	public void setRoundWin(int roundWin) {
-		this.roundWin = roundWin;
+	public void setPlayerRoundWin(int playerRoundWin) {
+		this.playerRoundWin = playerRoundWin;
+	}
+
+	public int getCpu1RoundWin() {
+		return cpu1RoundWin;
+	}
+
+	public void setCpu1RoundWin(int cpu1RoundWin) {
+		this.cpu1RoundWin = cpu1RoundWin;
+	}
+
+	public int getCpu2RoundWin() {
+		return cpu2RoundWin;
+	}
+
+	public void setCpu2RoundWin(int cpu2RoundWin) {
+		this.cpu2RoundWin = cpu2RoundWin;
+	}
+
+	public int getCpu3RoundWin() {
+		return cpu3RoundWin;
+	}
+
+	public void setCpu3RoundWin(int cpu3RoundWin) {
+		this.cpu3RoundWin = cpu3RoundWin;
 	}
 
 	public int getTotalGames() {
