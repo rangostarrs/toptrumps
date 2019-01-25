@@ -74,7 +74,31 @@ public class Card {
 	public void returnHighestCriterion(Card c) {
 		
 		// CREATE METHOD FOR RETURNING HIGHEST STAT
+			//something like this maybe?
+//		
+		int firsttwo = Math.max( this.size,  this.speed);
+		int nexttwo = Math.max(this.range, this.firepower);
+		int bestoffour = Math.max(firsttwo, nexttwo);
+		int AndTheWinnerIs = Math.max(bestoffour, cargo); 
+		return AndTheWinnerIs;
 		
+		
+//		//OR this?
+//		
+		int best=0;
+		int [] choice = new int[5];
+		choice[0]= c.size;
+		choice[1]= c.speed;
+		choice[2]= c.range;
+		choice[3]= c.firepower;
+		choice[4]= c.cargo;
+		for (int i = 0;i<choice.length;i++) {
+			if (choice[i]>best) {
+				best = choice[i];
+
+			}
+		}
+		return best;
 		//int Math.max(int this.size, int this.speed);
 		//AS HERE? https://stackoverflow.com/questions/12792692/need-to-find-a-max-of-three-numbers-in-java
 	}
