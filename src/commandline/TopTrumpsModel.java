@@ -85,20 +85,34 @@ public class TopTrumpsModel {
 			// COMPARE STAT BETWEEN THE PLAYERS
 			// GIVE CARDS TO THE WINNING PLAYER OR
 			// IF DRAW: PUT THE CARDS ON A SEPERATE STACK
-			// HOW TO ELIMINATE PLAYERS?:
 
 			// HOW TO MOVE ON TO THE NEXT PLAYER?
 
+			checkPlayerEliminated(playerArrayPos);
 			roundNumber++;
 		}
 
 	}
 
-	public void cpuPlayCard(ArrayDeque<Card> cpuDeck) {
+	public void checkPlayerEliminated(int playerPos) {
+		for (int i = 0; i < playersList.size(); i++) {
+			if(playersList.get(i).getDeck().isEmpty()) {
+				if(i==playerPos) {
+					System.out.println("Game over - you lost");
+				}
+				else {
+					System.out.println("Player number " + i + "was eliminated");
+					//remove CPU that lost from the players list
+					playersList.remove(i);
+				}
+			}
+		}
+	}
+	
+	public Card cpuPlayCard(ArrayDeque<Card> cpuDeck) {
 		Card currentCpuCard = cpuDeck.pollFirst();
-
-		// CREATE THE FOLLOWING METHOD IN THE CARD CLASS
-		// Card.returnHighestCriterion(currentCpuCard);
+		currentCpuCard.returnHighestCriterion(currentCpuCard);
+		return currentCpuCard;
 	}
 
 	public int findPlayerPosition(ArrayList<Player> playersList) {
@@ -138,11 +152,11 @@ public class TopTrumpsModel {
 
 	public void dealCards(int cpuNumber, ArrayList<Card> cardList) {
 
-		Deque<Card> playerDeck = new ArrayDeque<Card>();
-		Deque<Card> cpu1Deck = new ArrayDeque<Card>();
-		Deque<Card> cpu2Deck = new ArrayDeque<Card>();
-		Deque<Card> cpu3Deck = new ArrayDeque<Card>();
-		Deque<Card> cpu4Deck = new ArrayDeque<Card>();
+//		Deque<Card> playerDeck = new ArrayDeque<Card>();
+//		Deque<Card> cpu1Deck = new ArrayDeque<Card>();
+//		Deque<Card> cpu2Deck = new ArrayDeque<Card>();
+//		Deque<Card> cpu3Deck = new ArrayDeque<Card>();
+//		Deque<Card> cpu4Deck = new ArrayDeque<Card>();
 
 		// FIX DEALING CARDS - SETTERS?
 		mainDeck = shuffleCards(cardList);
