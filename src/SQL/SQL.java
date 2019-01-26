@@ -14,7 +14,7 @@ public class SQL {
 		public static void main(String[] args) {
 		/// load the JDBC Driver 
 			try {
-				   Class.forName("com.mysql.jdbc.Driver");
+				   Class.forName("org.postgresql.Driver");
 				}
 				catch(ClassNotFoundException ex) {
 				   System.out.println("Error: unable to load driver class!");
@@ -28,7 +28,17 @@ public class SQL {
 			
 			c = DriverManager.getConnection("jdbc:postgresql://localhost:5434/postgres", "postgres", "Postimees55");
 			System.out.println("Connection succeeded");
+			Statement stmt = c.createStatement();         
+	        ResultSet rs = stmt.executeQuery("Select Max (gameid) \r \n" +
+			 "From game;");
 			
+	         while ( rs.next() ) {             
+	        	 int gameid = rs.getInt(1);
+	        	 System.out.println("There has been " + gameid + " games in total.");}
+	         rs.close();
+	         stmt.close();
+	         c.close();
+	         c = null;
 			
 		}catch(SQLException e) {
 			System.out.println("Connection Failed!");
