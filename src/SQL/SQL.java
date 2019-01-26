@@ -41,7 +41,7 @@ public class SQL {
 	         c = null;
 			
 		}catch(SQLException e) {
-			System.out.println("Connection Failed!");
+			System.out.println("Connection Failed22!");
 			e.printStackTrace();
 			return;
 		}//Connection is completed
