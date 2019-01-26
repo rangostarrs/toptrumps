@@ -76,6 +76,7 @@ public class TopTrumpsModel {
 			System.out.println("Round " + roundNumber);
 			System.out.println("\n Round " + roundNumber + ": Players have drawn their cards");
 
+
 			Card currentCard = playersList.get(playerArrayPos).getDeck().peekFirst();
 
 			System.out.println("You drew " + currentCard.toString());
