@@ -21,7 +21,11 @@ public class gameStats {
 	// As long as a game isn't currently in progress, the user should be able to
 	// connect to the database and get information about previous games. This should
 	// include
-
+	
+    //A generated gameId number for the database
+	int GameID;
+	//A generated ResultID number for the database. Contains 
+	int ResultID;
 	// int for the total number of games played
 	int totalGames;
 	// int for the number of times the cpu has won **

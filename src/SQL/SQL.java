@@ -14,7 +14,7 @@ public class SQL {
 		public static void main(String[] args) {
 		/// load the JDBC Driver 
 			try {
-				   Class.forName("org.postgresql.Driver");
+				   Class.forName("com.mysql.jdbc.Driver");
 				}
 				catch(ClassNotFoundException ex) {
 				   System.out.println("Error: unable to load driver class!");
@@ -26,7 +26,7 @@ public class SQL {
 		
 		try {
 			
-			c = DriverManager.getConnection("jdbc:postgresql://localhost:5434/postgres", "postgres", "password");
+			c = DriverManager.getConnection("jdbc:postgresql://localhost:5434/postgres", "postgres", "Postimees55");
 			System.out.println("Connection succeeded");
 			
 			
