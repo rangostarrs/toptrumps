@@ -152,22 +152,32 @@ public class TopTrumpsModel {
 
 	public void dealCards(int cpuNumber, ArrayList<Card> cardList) {
 
-		// FIX DEALING CARDS
 		mainDeck = shuffleCards(cardList);
-		// System.out.println(mainDeck.toString());
+		 System.out.println("Main deck" + mainDeck.toString());
 		while (!mainDeck.isEmpty()) {
-			playerDeck.addFirst(mainDeck.pollFirst());
-			cpu1Deck.addFirst(mainDeck.pollFirst());
+			if(mainDeck.isEmpty()) {break;}
+			playerDeck.addFirst(mainDeck.pollFirst() );
+			if(mainDeck.isEmpty()) {break;}
+			cpu1Deck.addFirst(mainDeck.pollFirst() );
+			if(mainDeck.isEmpty()) {break;}
 			if (cpuNumber > 1) {
 				cpu2Deck.addFirst(mainDeck.pollFirst());
+				if(mainDeck.isEmpty()) {break;}
 				if (cpuNumber > 2) {
 					cpu3Deck.addFirst(mainDeck.pollFirst());
+					if(mainDeck.isEmpty()) {break;}
 					if (cpuNumber > 3) {
 						cpu4Deck.addFirst(mainDeck.pollFirst());
+						if(mainDeck.isEmpty()) {break;}
 					}
 				}
 			}
 		}
+		System.out.println("Player deck" + playerDeck.toString());
+		System.out.println("deck 1:" + cpu1Deck.toString());
+		System.out.println("deck 2:" + cpu2Deck.toString());
+		System.out.println("deck 3:" + cpu3Deck.toString());
+		System.out.println("deck 4:" + cpu4Deck.toString());
 
 		createPlayersArray(cpuNumber);
 
@@ -176,7 +186,7 @@ public class TopTrumpsModel {
 	public Deque<Card> shuffleCards(ArrayList<Card> cardList) {
 
 		Collections.shuffle(cardList);
-		Deque<Card> mainDeck = new ArrayDeque<Card>(cardList);
+		mainDeck = new ArrayDeque<Card>(cardList);
 
 		return mainDeck;
 	}
