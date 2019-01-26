@@ -72,22 +72,28 @@ public class TopTrumpsModel {
 			System.out.println("\n Round " + roundNumber + ": Players have drawn their cards");
 
 			Card currentCard = playersList.get(playerArrayPos).getDeck().pollFirst();
-			// ERROR HERE:
-			// System.out.println("You drew " + currentCard.toString());
+
+			System.out.println("You drew " + currentCard.toString());
 			System.out.println("There are " + playerDeck.size() + " cards in your deck");
-			System.out.println("It is your turn to select a category, the categories are:" + "\n 1: " + headerArray[0]
-					+ "\n 2: " + headerArray[1] + "\n 3: " + headerArray[2] + "\n 4: " + headerArray[3] + "\n 5: "
-					+ headerArray[4]);
-			int statSelection = getInt("Enter the number for your attribute:", userInput);
+
 
 			// ADD MORE STUFF HERE
 
+			//LOOP THROUGH playersList
+			//CHECK WHO'S THE CURRENT PLAYER - USER OR CPU
+			//IF USER - SKIP TO [USER MOVE]
+			//IF CPU - CALL cpuPlayCard() (CHANGE ARGUMENT, SHOULD BE USING playersList)
 			// COMPARE STAT BETWEEN THE PLAYERS
 			// GIVE CARDS TO THE WINNING PLAYER OR
 			// IF DRAW: PUT THE CARDS ON A SEPERATE STACK
 
-			// HOW TO MOVE ON TO THE NEXT PLAYER?
 
+			//[USER MOVE]
+			System.out.println("It is your turn to select a category, the categories are:" + "\n 1: " + headerArray[0]
+					+ "\n 2: " + headerArray[1] + "\n 3: " + headerArray[2] + "\n 4: " + headerArray[3] + "\n 5: "
+					+ headerArray[4]);
+			int statSelection = getInt("Enter the number for your attribute:", userInput);
+			
 			checkPlayerEliminated(playerArrayPos);
 			roundNumber++;
 		}
