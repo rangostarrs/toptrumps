@@ -71,16 +71,16 @@ public class Card {
 		return cargo;
 	}
 
-	public void returnHighestCriterion(Card c) {
+	public int returnHighestCriterion(Card c) {
 		
 		// CREATE METHOD FOR RETURNING HIGHEST STAT
 			//something like this maybe?
 //		
-		int firsttwo = Math.max( this.size,  this.speed);
-		int nexttwo = Math.max(this.range, this.firepower);
-		int bestoffour = Math.max(firsttwo, nexttwo);
-		int AndTheWinnerIs = Math.max(bestoffour, cargo); 
-		return AndTheWinnerIs;
+//		int firsttwo = Math.max( this.size,  this.speed);
+//		int nexttwo = Math.max(this.range, this.firepower);
+//		int bestoffour = Math.max(firsttwo, nexttwo);
+//		int AndTheWinnerIs = Math.max(bestoffour, cargo); 
+//		return AndTheWinnerIs;
 		
 		
 //		//OR this?
