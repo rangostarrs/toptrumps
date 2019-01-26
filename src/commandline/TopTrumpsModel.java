@@ -152,13 +152,7 @@ public class TopTrumpsModel {
 
 	public void dealCards(int cpuNumber, ArrayList<Card> cardList) {
 
-//		Deque<Card> playerDeck = new ArrayDeque<Card>();
-//		Deque<Card> cpu1Deck = new ArrayDeque<Card>();
-//		Deque<Card> cpu2Deck = new ArrayDeque<Card>();
-//		Deque<Card> cpu3Deck = new ArrayDeque<Card>();
-//		Deque<Card> cpu4Deck = new ArrayDeque<Card>();
-
-		// FIX DEALING CARDS - SETTERS?
+		// FIX DEALING CARDS
 		mainDeck = shuffleCards(cardList);
 		// System.out.println(mainDeck.toString());
 		while (!mainDeck.isEmpty()) {
