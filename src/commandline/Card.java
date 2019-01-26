@@ -70,8 +70,28 @@ public class Card {
 	public int getCargo() {
 		return cargo;
 	}
+	
+	public int returnStat(int statChoice) {
+		
+		int stat = 0;
+		
+		switch (statChoice) {
+        case 1:  stat = getSize();
+        break;
+        case 2:  stat = getSpeed();
+        break;
+        case 3:  stat = getRange();
+        break;
+        case 4:  stat = getFirepower();
+        break;
+        case 5:  stat = getCargo();
+        break;
 
-	public int returnHighestCriterion(Card c) {
+		}
+		return stat;
+	}
+
+	public int returnHighestStat(Card c) {
 		
 		// CREATE METHOD FOR RETURNING HIGHEST STAT
 			//something like this maybe?
