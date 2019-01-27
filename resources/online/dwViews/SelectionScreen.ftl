@@ -25,23 +25,24 @@
     	<div class="container">
 
 			<!-- Add your HTML Here -->
+			<h>Hello!</h>		
 		
 		</div>
 		
 		<script type="text/javascript">
 		
 			// Method that is called on page load
-			function initalize() {
+/* 			function initalize() { */
 			
 				// --------------------------------------------------------------------------
 				// You can call other methods you want to run when the page first loads here
 				// --------------------------------------------------------------------------
 				
 				// For example, lets call our sample methods
-				helloJSONList();
-				helloWord("Student");
+/* 				helloJSONList();
+				helloWord("Student"); */
 				
-			}
+/* 			} */
 			
 			// -----------------------------------------
 			// Add your other Javascript methods Here
@@ -78,8 +79,8 @@
 		<script type="text/javascript">
 		
 			// This calls the helloJSONList REST method from TopTrumpsRESTAPI
-			function helloJSONList() {
-			
+/* 			function helloJSONList() {
+ */			
 				// First create a CORS request, this is the message we are going to send (a get request in this case)
 				var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/helloJSONList"); // Request type and URL
 				
@@ -100,9 +101,9 @@
 			}
 			
 			// This calls the helloJSONList REST method from TopTrumpsRESTAPI
-			function helloWord(word) {
-			
-				// First create a CORS request, this is the message we are going to send (a get request in this case)
+/* 			function helloWord(word) {
+ */			
+/* 				// First create a CORS request, this is the message we are going to send (a get request in this case)
 				var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/helloWord?Word="+word); // Request type and URL+parameters
 				
 				// Message is not sent yet, but we can check that the browser supports CORS
@@ -119,7 +120,7 @@
 				
 				// We have done everything we need to prepare the CORS request, so send it
 				xhr.send();		
-			}
+			} */
 
 		</script>
 		
