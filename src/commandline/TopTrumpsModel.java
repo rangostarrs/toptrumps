@@ -10,6 +10,8 @@ import java.util.Deque;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import SQL.SQL;
+
 //--------------------------------
 //When we deal cards, we add cards at the TOP of the deque (addFirst() method)
 //When we take a card from the top of our stack, we we use pollFirst()
@@ -35,7 +37,7 @@ public class TopTrumpsModel {
 
 	}
 
-	public void gameIntro() {
+	public int gameIntro() {
 
 		Scanner userInput = new Scanner(System.in);
 
@@ -47,13 +49,14 @@ public class TopTrumpsModel {
 		int selection = getInt("Enter the number for your selection:", userInput);
 
 		if (selection == 1) {
-			// PRINT GAME STATISTICS
+			
+			
 		} else if (selection == 2) {
 			int cpuNumber = getInt("Choose number of oppononents", userInput);
 			addCardsToList();
 			gameLoop(cpuNumber, cardList);
 		}
-
+		return selection;
 	}
 
 	public void gameLoop(int cpuNumber, ArrayList<Card> cardList) {
