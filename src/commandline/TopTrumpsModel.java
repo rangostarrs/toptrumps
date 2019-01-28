@@ -83,7 +83,7 @@ public class TopTrumpsModel {
 			Card currentCard = playersList.get(playerArrayPos).getDeck().peekFirst();
 
 			System.out.println("You drew " + currentCard.toString());
-			System.out.println("There are " + playerDeck.size() + " cards in your deck");
+			System.out.println("There are " + playersList.get(playerArrayPos).getDeck().size() + " cards in your deck");
 
 			// check who's the current player - user or cpu
 			statSelection = currentPlayerMove(playerArrayPos, statSelection, userInput);
@@ -99,11 +99,13 @@ public class TopTrumpsModel {
 				for (int i = 0; i < currentHands.size(); i++) {
 					commonPile.add(currentHands.get(i));
 				}
+				
+				System.out.println("DRAW \n");
 
 			}
 			// </end of draw>
 			else {
-				System.out.println("Round " + roundNumber + "won by: " + playersList.get(highestStatPlayer).toString());
+				System.out.println("Round " + roundNumber + " won by: " + playersList.get(highestStatPlayer).getClass().getName());
 				// ADD AN ARROW INDICATING WINNING STAT:
 				System.out.println("The winning card was: \n" + currentHands.get(highestStatPlayer).toString());
 
@@ -115,8 +117,12 @@ public class TopTrumpsModel {
 
 				// adjust playersList (add winner on position 0)
 				reorderPlayersList(playersList, highestStatPlayer);
+				
+				//clear hands
+				currentHands.clear();
 			}
 
+			
 			// move on to the next round
 			roundNumber++;
 			
@@ -130,12 +136,11 @@ public class TopTrumpsModel {
 	}
 
 	public void giveHandsToWinner(int highestStatPlayer) {
-		for (int i = 1; i < currentHands.size(); i++) {
+		for (int i = 0; i < currentHands.size(); i++) {
 			playersList.get(highestStatPlayer).getDeck().addLast(currentHands.get(i));
-
 		}
 		if (!commonPile.isEmpty()) {
-			for (int i = 1; i < currentHands.size(); i++) {
+			for (int i = 0; i < commonPile.size(); i++) {
 				playersList.get(highestStatPlayer).getDeck().addLast(commonPile.get(i));
 			}
 		}
@@ -144,6 +149,7 @@ public class TopTrumpsModel {
 	public int compareStat(int statSelection) {
 		int highestStatPlayer = 0;
 		for (int i = 1; i < currentHands.size(); i++) {
+			System.out.println("This should print values of the chosen stat for each hand: " + currentHands.get(i).returnStat(statSelection));
 			if (currentHands.get(i).returnStat(statSelection) > currentHands.get(highestStatPlayer)
 					.returnStat(statSelection)) {
 				highestStatPlayer = i;
