@@ -66,7 +66,7 @@ public class TopTrumpsCLIApplication {
 			        ResultSet rs = stmt.executeQuery("Select Max (gameid) \r \n" +
 					 "From game;");
 					
-			        System.out.println("The history of game statistics is the following:");
+			        System.out.println("The history1 of game statistics is the following:");
 			        
 			         while ( rs.next() ) {             
 			        	 int gameid = rs.getInt(1);

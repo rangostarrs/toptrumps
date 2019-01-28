@@ -11,7 +11,8 @@ public class SQL {
 
 	//Written by Reiko
 	
-		public static void main(String[] args) {
+		public static void main(String[] args)
+		{
 		/// load the JDBC Driver 
 			try {
 				   Class.forName("org.postgresql.Driver");
@@ -25,7 +26,7 @@ public class SQL {
 		Connection c = null;
 		
 		try {
-			
+
 			c = DriverManager.getConnection("jdbc:postgresql://localhost:5434/postgres", "postgres", "Postimees55");
 			System.out.println("Connection succeeded");
 			Statement stmt = c.createStatement();         
