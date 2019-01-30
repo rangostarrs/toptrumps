@@ -27,7 +27,7 @@ public class TopTrumpsModel {
 	private Deque<Card> cpu2Deck = new ArrayDeque<Card>();
 	private Deque<Card> cpu3Deck = new ArrayDeque<Card>();
 	private Deque<Card> cpu4Deck = new ArrayDeque<Card>();
-	private Player player = new Player(playerDeck);
+	private Player player = new Player("Player", playerDeck);
 	private ArrayList<Player> playersList = new ArrayList<Player>();
 	private ArrayList<Card> currentHands = new ArrayList<Card>();
 	// common pile used in case of a draw
@@ -76,12 +76,13 @@ public class TopTrumpsModel {
 
 		// find where in the ArrayList the player is after shuffling so he can be
 		// accessed
-		int playerArrayPos = findPlayerPosition(playersList);
+		//int playerArrayPos = findPlayerPosition(playersList);
 		System.out.println("Game Start");
 
 		while (true) {
 
-			playerArrayPos = findPlayerPosition(playersList);
+			int playerArrayPos = playersList.indexOf(player);
+			//playerArrayPos = findPlayerPosition(playersList);
 			System.out.println("Round " + roundNumber);
 			System.out.println("\n Round " + roundNumber + ": Players have drawn their cards");
 
@@ -115,7 +116,7 @@ public class TopTrumpsModel {
 			}
 			// </end of draw>
 			else {
-				System.out.println("Round " + roundNumber + " won by: " + playersList.get(highestStatPlayer).getClass().getName());
+				System.out.println("Round " + roundNumber + " won by: " + playersList.get(highestStatPlayer).toString());
 				// ADD AN ARROW INDICATING WINNING STAT:
 				System.out.println("The winning card was: \n" + currentHands.get(highestStatPlayer).toString());
 
@@ -134,6 +135,7 @@ public class TopTrumpsModel {
 
 			//in case of win:
 			if(playersList.size()==1) {
+				System.out.println("Game's finished");
 				break;
 			}
 			
@@ -148,17 +150,18 @@ public class TopTrumpsModel {
 			
 		}
 		
-		//in case of win:
+		//game end:
 		GameStats gameStats = new GameStats(0, "winner", roundNumber, playerRoundWin, cpu1RoundWin,
 				 cpu2RoundWin, cpu3RoundWin, cpu4RoundWin, drawNumber);
 		return  gameStats;
 		
-		//print out how any games the player won
+		//print out how many games the player won
 
 	}
 
 	public void increaseRoundWinStat(int winner) {
 		//PLAYER IS NOT ALWAYS ON POSITION 1
+		
 		switch (winner) {
         case 0: playerRoundWin++;
         break;
@@ -272,16 +275,16 @@ public class TopTrumpsModel {
 		// ArrayList<Player> playersList = new ArrayList<Player>();
 
 		playersList.add(player);
-		Player cpu1 = new Player(cpu1Deck);
+		Player cpu1 = new Player("Opponent 1", cpu1Deck);
 		playersList.add(cpu1);
 		if (cpuNumber > 1) {
-			Player cpu2 = new Player(cpu2Deck);
+			Player cpu2 = new Player("Opponent 2", cpu2Deck);
 			playersList.add(cpu2);
 			if (cpuNumber > 2) {
-				Player cpu3 = new Player(cpu3Deck);
+				Player cpu3 = new Player("Opponent 3", cpu3Deck);
 				playersList.add(cpu3);
 				if (cpuNumber > 3) {
-					Player cpu4 = new Player(cpu4Deck);
+					Player cpu4 = new Player("Opponent 4", cpu4Deck);
 					playersList.add(cpu4);
 				}
 			}
