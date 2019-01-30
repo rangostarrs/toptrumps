@@ -56,8 +56,7 @@ public class TopTrumpsModel {
 		int selection = getInt("Enter the number for your selection:", userInput);
 
 		if (selection == 1) {
-			
-			
+
 		} else if (selection == 2) {
 			int cpuNumber = getInt("Choose number of oppononents", userInput);
 			addCardsToList();
@@ -77,16 +76,15 @@ public class TopTrumpsModel {
 
 		// find where in the ArrayList the player is after shuffling so he can be
 		// accessed
-		//int playerArrayPos = findPlayerPosition(playersList);
+		// int playerArrayPos = findPlayerPosition(playersList);
 		System.out.println("Game Start");
 
 		while (true) {
 
 			int playerArrayPos = playersList.indexOf(player);
-			//playerArrayPos = findPlayerPosition(playersList);
+			// playerArrayPos = findPlayerPosition(playersList);
 			System.out.println("Round " + roundNumber);
 			System.out.println("\n Round " + roundNumber + ": Players have drawn their cards");
-
 
 			Card currentCard = playersList.get(playerArrayPos).getDeck().peekFirst();
 
@@ -95,40 +93,41 @@ public class TopTrumpsModel {
 
 			// check who's the current player - user or cpu
 			try {
-			statSelection = currentPlayerMove(playerArrayPos, statSelection, userInput);
-			}catch(NoSuchElementException e) {
-				
+				statSelection = currentPlayerMove(playerArrayPos, statSelection, userInput);
+			} catch (NoSuchElementException e) {
+
 				System.out.println("Doesn't Exist");
-				
+
 			}
-			
-			int highestStatPlayer=0;
+
+			int highestStatPlayer = 0;
 			// collect hands
-			collectCurrentHands(statSelection);
-try {
-			// compare stat between the players
-			
-			highestStatPlayer = compareStat(statSelection);
-}catch(IndexOutOfBoundsException e) {
-	
-	System.out.println("Too Big");
-}
+			collectCurrentHands();
+			try {
+				// compare stat between the players
+
+				highestStatPlayer = compareStat(statSelection);
+			} catch (IndexOutOfBoundsException e) {
+
+				System.out.println("Too Big");
+			}
 			// <draw>
 			if (highestStatPlayer == 6) {
 				for (int i = 0; i < currentHands.size(); i++) {
 					commonPile.add(currentHands.get(i));
 				}
-				
-				//clear hands
+
+				// clear hands
 				currentHands.clear();
-				
+
 				System.out.println("DRAW \n");
 				drawNumber++;
 
 			}
 			// </end of draw>
 			else {
-				System.out.println("Round " + roundNumber + " won by: " + playersList.get(highestStatPlayer).toString());
+				System.out
+						.println("Round " + roundNumber + " won by: " + playersList.get(highestStatPlayer).toString());
 				// ADD AN ARROW INDICATING WINNING STAT:
 				System.out.println("The winning card was: \n" + currentHands.get(highestStatPlayer).toString());
 
@@ -140,54 +139,56 @@ try {
 
 				// adjust playersList (add winner on position 0)
 				reorderPlayersList(playersList, highestStatPlayer);
-				
-				//clear hands
+
+				// clear hands
 				currentHands.clear();
 			}
 
-			//in case of win:
-			if(playersList.size()==1) {
+			// in case of win:
+			if (playersList.size() == 1) {
 				System.out.println("Game's finished");
 				break;
 			}
-			
-			//stop the game at the end of the round
+
+			// stop the game at the end of the round
 			pressAnyKeyToContinue();
-			
-			
+
 			// move on to the next round
 			roundNumber++;
-			
-			
-			
+
 		}
-		
-		//game end:
-		GameStats gameStats = new GameStats(0, "winner", roundNumber, playerRoundWin, cpu1RoundWin,
-				 cpu2RoundWin, cpu3RoundWin, cpu4RoundWin, drawNumber);
-		return  gameStats;
-		
-		//print out how many games the player won
+
+		// game end:
+		GameStats gameStats = new GameStats(0, "winner", roundNumber, playerRoundWin, cpu1RoundWin, cpu2RoundWin,
+				cpu3RoundWin, cpu4RoundWin, drawNumber);
+		return gameStats;
+
+		// print out how many games the player won
 
 	}
 
 	public void increaseRoundWinStat(int winner) {
-		//PLAYER IS NOT ALWAYS ON POSITION 1
-		
+		// PLAYER IS NOT ALWAYS ON POSITION 1
+
 		switch (winner) {
-        case 0: playerRoundWin++;
-        break;
-        case 1: cpu1RoundWin++;
-		 break;
-        case 2: cpu2RoundWin++;
-		 break;
-        case 3: cpu3RoundWin++;
-		 break;
-        case 4: cpu4RoundWin++;
-		 break;
+		case 0:
+			playerRoundWin++;
+			break;
+		case 1:
+			cpu1RoundWin++;
+			break;
+		case 2:
+			cpu2RoundWin++;
+			break;
+		case 3:
+			cpu3RoundWin++;
+			break;
+		case 4:
+			cpu4RoundWin++;
+			break;
 		}
 	}
-	
+
 	public void reorderPlayersList(ArrayList<Player> playersList, int highestStatPlayer) {
 		playersList.add(0, playersList.remove(highestStatPlayer));
 	}
@@ -201,12 +202,15 @@ try {
 				playersList.get(highestStatPlayer).getDeck().addLast(commonPile.get(i));
 			}
 		}
+		currentHands.clear();
+		commonPile.clear();
 	}
 
 	public int compareStat(int statSelection) {
 		int highestStatPlayer = 0;
 		for (int i = 1; i < currentHands.size(); i++) {
-			System.out.println("This should print values of the chosen stat for each hand: " + currentHands.get(i).returnStat(statSelection));
+			System.out.println("This should print values of the chosen stat for each hand: "
+					+ currentHands.get(i).returnStat(statSelection));
 			if (currentHands.get(i).returnStat(statSelection) > currentHands.get(highestStatPlayer)
 					.returnStat(statSelection)) {
 				highestStatPlayer = i;
@@ -221,8 +225,8 @@ try {
 		return highestStatPlayer;
 	}
 
-	public int[] collectCurrentHands(int statSelection) {
-		int statComparisonArray[] = new int[playersList.size()];
+	public void collectCurrentHands() {
+		//int statComparisonArray[] = new int[playersList.size()];
 		for (int i = 0; i < playersList.size(); i++) {
 
 			// retrieve hand of each player
@@ -232,7 +236,7 @@ try {
 			currentHands.add(currentHandCard);
 		}
 
-		return statComparisonArray;
+		//return statComparisonArray;
 	}
 
 	public int currentPlayerMove(int playerArrayPos, int statSelection, Scanner userInput) {
@@ -420,16 +424,13 @@ try {
 			}
 		}
 	}
-	
-	private void pressAnyKeyToContinue()
-	 { 
-	        System.out.println("Press Enter key to continue");
-	        try
-	        {
-	            System.in.read();
-	        }  
-	        catch(Exception e)
-	        {}  
-	 }
+
+	private void pressAnyKeyToContinue() {
+		System.out.println("Press Enter key to continue");
+		try {
+			System.in.read();
+		} catch (Exception e) {
+		}
+	}
 
 }
