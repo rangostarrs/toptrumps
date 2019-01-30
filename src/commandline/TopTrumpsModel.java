@@ -32,6 +32,12 @@ public class TopTrumpsModel {
 	private ArrayList<Card> currentHands = new ArrayList<Card>();
 	// common pile used in case of a draw
 	private ArrayList<Card> commonPile = new ArrayList<Card>();
+	private int drawNumber = 0;
+	private int playerRoundWin = 0;
+	private int cpu1RoundWin = 0;
+	private int cpu2RoundWin = 0;
+	private int cpu3RoundWin = 0;
+	private int cpu4RoundWin = 0;
 
 	TopTrumpsModel() {
 
@@ -59,7 +65,7 @@ public class TopTrumpsModel {
 		return selection;
 	}
 
-	public void gameLoop(int cpuNumber, ArrayList<Card> cardList) {
+	public GameStats gameLoop(int cpuNumber, ArrayList<Card> cardList) {
 
 		Scanner userInput = new Scanner(System.in);
 		int roundNumber = 1;
@@ -100,7 +106,11 @@ public class TopTrumpsModel {
 					commonPile.add(currentHands.get(i));
 				}
 				
+				//clear hands
+				currentHands.clear();
+				
 				System.out.println("DRAW \n");
+				drawNumber++;
 
 			}
 			// </end of draw>
@@ -122,15 +132,47 @@ public class TopTrumpsModel {
 				currentHands.clear();
 			}
 
+			//in case of win:
+			if(playersList.size()==1) {
+				break;
+			}
+			
+			//stop the game at the end of the round
+			pressAnyKeyToContinue();
+			
 			
 			// move on to the next round
 			roundNumber++;
 			
-			//ADD WINNING CONDITION
+			
+			
 		}
+		
+		//in case of win:
+		GameStats gameStats = new GameStats(0, "winner", roundNumber, playerRoundWin, cpu1RoundWin,
+				 cpu2RoundWin, cpu3RoundWin, cpu4RoundWin, drawNumber);
+		return  gameStats;
+		
+		//print out how any games the player won
 
 	}
 
+	public void increaseRoundWinStat(int winner) {
+		//PLAYER IS NOT ALWAYS ON POSITION 1
+		switch (winner) {
+        case 0: playerRoundWin++;
+        break;
+        case 1: cpu1RoundWin++;
+		 break;
+        case 2: cpu2RoundWin++;
+		 break;
+        case 3: cpu3RoundWin++;
+		 break;
+        case 4: cpu4RoundWin++;
+		 break;
+		}
+	}
+	
 	public void reorderPlayersList(ArrayList<Player> playersList, int highestStatPlayer) {
 		playersList.add(0, playersList.remove(highestStatPlayer));
 	}
@@ -363,5 +405,16 @@ public class TopTrumpsModel {
 			}
 		}
 	}
+	
+	private void pressAnyKeyToContinue()
+	 { 
+	        System.out.println("Press Enter key to continue");
+	        try
+	        {
+	            System.in.read();
+	        }  
+	        catch(Exception e)
+	        {}  
+	 }
 
 }
