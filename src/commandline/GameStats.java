@@ -1,14 +1,16 @@
 package commandline;
 
-public class gameStats {
+public class GameStats {
 
 	// Upon completion of the game, the user should automatically write the
 	// following information about the game play to a database:
 
-	// int for the number of draws in the game
-	int draws;
+    //A generated gameId number for the database
+	int gameID;
 	// string for the name of the game winner
 	String winner;
+
+
 	// int for the total number of rounds played in the game
 	int totalRounds;
 	// int for the number of rounds that each player won *
@@ -16,28 +18,47 @@ public class gameStats {
 	int cpu1RoundWin;
 	int cpu2RoundWin;
 	int cpu3RoundWin;
+	int cpu4RoundWin;
+	
+	// int for the number of draws in the game
+	int draws;
 	// * should we have a playerRoundWin and 3 cpuRoundWin's?
 
 	// As long as a game isn't currently in progress, the user should be able to
 	// connect to the database and get information about previous games. This should
 	// include
 	
-    //A generated gameId number for the database
-	int GameID;
+
 	//A generated ResultID number for the database. Contains 
-	int ResultID;
+	//int ResultID;
 	// int for the total number of games played
-	int totalGames;
+	//int totalGames;
 	// int for the number of times the cpu has won **
-	int cpuWin;
+	//int cpuWin;
 	// int for the number of times the player has won
-	int playerWin;
+	//int playerWin;
 	// int for the average number of draws per game
-	int avgDraws;
+	//int avgDraws;
 	// int for the most rounds played in a game
-	int mostRounds;
+	//int mostRounds;
 
 	// ** again, should we have a cpu1Win, cpu2 etc
+
+	//constructor
+	public GameStats(int gid, String w, int tr, int prw, int cpu1, int cpu2, int cpu3, int cpu4, int d) {
+
+
+		this.setGameID(gid);
+		this.setWinner(w);
+		this.setTotalRounds(tr);
+		this.setPlayerRoundWin(prw);
+		this.setCpu1RoundWin(cpu1);
+		this.setCpu2RoundWin(cpu2);
+		this.setCpu3RoundWin(cpu3);
+		this.setCpu4RoundWin(cpu4);
+		this.setDraws(d);
+		
+	}
 
 	private static void gameplayData(int draws, String winner, int totalRounds, int roundWin) {
 
@@ -47,6 +68,19 @@ public class gameStats {
 
 	}
 
+	public int getGameID() {
+		return gameID;
+	}
+	public void setGameID(int gameID) {
+		this.gameID = gameID;
+	}
+	public int getCpu4RoundWin() {
+		return cpu4RoundWin;
+	}
+	public void setCpu4RoundWin(int cpu4RoundWin) {
+		this.cpu4RoundWin = cpu4RoundWin;
+	}
+	
 	public int getDraws() {
 		return draws;
 	}
@@ -103,44 +137,44 @@ public class gameStats {
 		this.cpu3RoundWin = cpu3RoundWin;
 	}
 
-	public int getTotalGames() {
-		return totalGames;
-	}
-
-	public void setTotalGames(int totalGames) {
-		this.totalGames = totalGames;
-	}
-
-	public int getCpuWin() {
-		return cpuWin;
-	}
-
-	public void setCpuWin(int cpuWin) {
-		this.cpuWin = cpuWin;
-	}
-
-	public int getPlayerWin() {
-		return playerWin;
-	}
-
-	public void setPlayerWin(int playerWin) {
-		this.playerWin = playerWin;
-	}
-
-	public int getAvgDraws() {
-		return avgDraws;
-	}
-
-	public void setAvgDraws(int avgDraws) {
-		this.avgDraws = avgDraws;
-	}
-
-	public int getMostRounds() {
-		return mostRounds;
-	}
-
-	public void setMostRounds(int mostRounds) {
-		this.mostRounds = mostRounds;
-	}
+//	public int getTotalGames() {
+//		return totalGames;
+//	}
+//
+//	public void setTotalGames(int totalGames) {
+//		this.totalGames = totalGames;
+//	}
+//
+//	public int getCpuWin() {
+//		return cpuWin;
+//	}
+//
+//	public void setCpuWin(int cpuWin) {
+//		this.cpuWin = cpuWin;
+//	}
+//
+//	public int getPlayerWin() {
+//		return playerWin;
+//	}
+//
+//	public void setPlayerWin(int playerWin) {
+//		this.playerWin = playerWin;
+//	}
+//
+//	public int getAvgDraws() {
+//		return avgDraws;
+//	}
+//
+//	public void setAvgDraws(int avgDraws) {
+//		this.avgDraws = avgDraws;
+//	}
+//
+//	public int getMostRounds() {
+//		return mostRounds;
+//	}
+//
+//	public void setMostRounds(int mostRounds) {
+//		this.mostRounds = mostRounds;
+//	}
 
 }
