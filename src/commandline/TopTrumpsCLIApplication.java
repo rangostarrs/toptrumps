@@ -60,7 +60,7 @@ public class TopTrumpsCLIApplication {
 				Connection c = null;
 					try {
 
-					c = DriverManager.getConnection("jdbc:postgresql://localhost:5434/postgres", "postgres", "Postimees55");
+					c = DriverManager.getConnection("jdbc:postgresql://yacata.dcs.gla.ac.uk:5432/", "m_18_2417046l", "2417046l");
 					System.out.println("Connection succeeded");
 					Statement stmt = c.createStatement();         
 			        ResultSet rs = stmt.executeQuery("Select Max (gameid) \r \n" +
