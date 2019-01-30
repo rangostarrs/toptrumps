@@ -196,12 +196,14 @@ public class TopTrumpsModel {
 	public void giveHandsToWinner(int highestStatPlayer) {
 		for (int i = 0; i < currentHands.size(); i++) {
 			playersList.get(highestStatPlayer).getDeck().addLast(currentHands.get(i));
+			
 		}
 		if (!commonPile.isEmpty()) {
 			for (int i = 0; i < commonPile.size(); i++) {
 				playersList.get(highestStatPlayer).getDeck().addLast(commonPile.get(i));
 			}
 		}
+		System.out.println("the winner now has "+playersList.get(highestStatPlayer).getDeck().size()+" cards");
 		currentHands.clear();
 		commonPile.clear();
 	}
@@ -221,12 +223,13 @@ public class TopTrumpsModel {
 				highestStatPlayer = 6;
 			}
 		}
-
+		System.out.println("The highest stat player is" +highestStatPlayer );
 		return highestStatPlayer;
 	}
 
 	public void collectCurrentHands() {
 		//int statComparisonArray[] = new int[playersList.size()];
+		
 		for (int i = 0; i < playersList.size(); i++) {
 
 			// retrieve hand of each player
@@ -234,8 +237,9 @@ public class TopTrumpsModel {
 			// playersList.get(i).getDeck().peekFirst().returnStat(statSelection);
 			Card currentHandCard = playersList.get(i).getDeck().pollFirst();
 			currentHands.add(currentHandCard);
+			 
 		}
-
+		System.out.println("Current hand size =" +currentHands.size());
 		//return statComparisonArray;
 	}
 
@@ -247,10 +251,12 @@ public class TopTrumpsModel {
 					+ "\n 2: " + headerArray[1] + "\n 3: " + headerArray[2] + "\n 4: " + headerArray[3] + "\n 5: "
 					+ headerArray[4]);
 			statSelection = getInt("Enter the number for your attribute:", userInput);
+			
 		}
 		// [CPU MOVE]
 		else {
 			statSelection = cpuPlayCard(playersList, 0);
+			System.out.println("Cpu Stat Selection = "+ statSelection); 
 		}
 		return statSelection;
 	}
@@ -265,6 +271,7 @@ public class TopTrumpsModel {
 					System.out.println("Player number " + i + "was eliminated");
 					// remove CPU that lost from the players list
 					playersList.remove(i);
+					System.out.println("player list size = "+ playersList.size());
 				}
 			}
 		}
@@ -273,6 +280,7 @@ public class TopTrumpsModel {
 	public int cpuPlayCard(ArrayList<Player> playersList, int pos) {
 		Card currentCpuCard = playersList.get(pos).getDeck().peekFirst();
 		int cpuStatChoice = currentCpuCard.returnHighestStat(currentCpuCard);
+		System.out.println("the computer stat = "+cpuStatChoice);
 		return cpuStatChoice;
 	}
 
