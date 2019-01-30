@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Deque;
 import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import SQL.SQL;
@@ -92,14 +93,25 @@ public class TopTrumpsModel {
 			System.out.println("There are " + playersList.get(playerArrayPos).getDeck().size() + " cards in your deck");
 
 			// check who's the current player - user or cpu
+			try {
 			statSelection = currentPlayerMove(playerArrayPos, statSelection, userInput);
-
+			}catch(NoSuchElementException e) {
+				
+				System.out.println("Doesn't Exist");
+				
+			}
+			
+			int highestStatPlayer=0;
 			// collect hands
 			collectCurrentHands(statSelection);
-
+try {
 			// compare stat between the players
-			int highestStatPlayer = compareStat(statSelection);
-
+			
+			highestStatPlayer = compareStat(statSelection);
+}catch(IndexOutOfBoundsException e) {
+	
+	System.out.println("Too Big");
+}
 			// <draw>
 			if (highestStatPlayer == 6) {
 				for (int i = 0; i < currentHands.size(); i++) {
