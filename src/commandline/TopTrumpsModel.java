@@ -28,7 +28,7 @@ public class TopTrumpsModel {
 	private Deque<Card> cpu2Deck = new ArrayDeque<Card>();
 	private Deque<Card> cpu3Deck = new ArrayDeque<Card>();
 	private Deque<Card> cpu4Deck = new ArrayDeque<Card>();
-	private Player player = new Player("Player", playerDeck);
+	private Player player = new Player("Human", playerDeck);
 	private ArrayList<Player> playersList = new ArrayList<Player>();
 	private ArrayList<Card> currentHands = new ArrayList<Card>();
 	// common pile used in case of a draw
@@ -69,27 +69,39 @@ public class TopTrumpsModel {
 
 		Scanner userInput = new Scanner(System.in);
 		int roundNumber = 1;
+		//stat that will be played in the given round
 		int statSelection = 0;
 
 		dealCards(cpuNumber, cardList);
-		// ArrayList<Player> playersArray = createPlayersArray(cpuNumber);
+		
 
+		//REDUNDANT CODE? <ignore>:
 		// find where in the ArrayList the player is after shuffling so he can be
 		// accessed
 		// int playerArrayPos = findPlayerPosition(playersList);
+		
 		System.out.println("Game Start");
 
 		while (true) {
 
-			int playerArrayPos = playersList.indexOf(player);
-			// playerArrayPos = findPlayerPosition(playersList);
-			System.out.println("Round " + roundNumber);
+			//if this value = 0, it means that the player starts the round
+			int playerArrayPos = 1;
+
+			System.out.println("\n \n Round " + roundNumber + "\n______________ ");
 			System.out.println("\n Round " + roundNumber + ": Players have drawn their cards");
 
-			Card currentCard = playersList.get(playerArrayPos).getDeck().peekFirst();
+			//if player was not eliminated from the game, do this:
+			if(!playerDeck.isEmpty()) {
+				//check position of the player in the array (if 0, he starts the round)
+				playerArrayPos = playersList.indexOf(player);
+				//peek first card
+				Card currentCard = playersList.get(playerArrayPos).getDeck().peekFirst();
 
-			System.out.println("You drew " + currentCard.toString());
-			System.out.println("There are " + playersList.get(playerArrayPos).getDeck().size() + " cards in your deck");
+				//display drawn card
+				System.out.println("You drew " + currentCard.toString());
+				System.out.println("There are " + playersList.get(playerArrayPos).getDeck().size() + " cards in your deck");
+			}
+			
 
 			// check who's the current player - user or cpu
 			try {
@@ -100,12 +112,12 @@ public class TopTrumpsModel {
 
 			}
 
+			//player with the highest stat, initially 0
 			int highestStatPlayer = 0;
-			// collect hands
+			// collect hands (first card from each player)
 			collectCurrentHands();
 			try {
 				// compare stat between the players
-
 				highestStatPlayer = compareStat(statSelection);
 			} catch (IndexOutOfBoundsException e) {
 
@@ -150,15 +162,25 @@ public class TopTrumpsModel {
 				break;
 			}
 
+			//alternative winning condition - check if any player has over 40 cards
+//			for (int i=0;i>playersList.size();i++) {
+//				if(playersList.get(i).getDeck().size() >= 40) {
+//					break;
+//				}
+//			}
+			
+			
 			// stop the game at the end of the round
 			pressAnyKeyToContinue();
 
 			// move on to the next round
 			roundNumber++;
 
+			//summary of the common pile where cards are put in case of a draw
+			System.out.println("Common pile: " + commonPile.size());
 		}
 
-		// game end:
+		// game end (placeholder):
 		GameStats gameStats = new GameStats(0, "winner", roundNumber, playerRoundWin, cpu1RoundWin, cpu2RoundWin,
 				cpu3RoundWin, cpu4RoundWin, drawNumber);
 		return gameStats;
@@ -168,7 +190,7 @@ public class TopTrumpsModel {
 	}
 
 	public void increaseRoundWinStat(int winner) {
-		// PLAYER IS NOT ALWAYS ON POSITION 1
+		// CHANGE - PLAYER IS NOT ALWAYS ON POSITION 1
 
 		switch (winner) {
 		case 0:
@@ -210,8 +232,10 @@ public class TopTrumpsModel {
 
 	public int compareStat(int statSelection) {
 		int highestStatPlayer = 0;
+		System.out.println("Debugging: value of the chosen stat for the player on position 0: "
+				+ currentHands.get(0).returnStat(statSelection));
 		for (int i = 1; i < currentHands.size(); i++) {
-			System.out.println("This should print values of the chosen stat for each hand: "
+			System.out.println("Debugging: value of the chosen stat for the player on position " + i + ": "
 					+ currentHands.get(i).returnStat(statSelection));
 			if (currentHands.get(i).returnStat(statSelection) > currentHands.get(highestStatPlayer)
 					.returnStat(statSelection)) {
@@ -228,6 +252,7 @@ public class TopTrumpsModel {
 	}
 
 	public void collectCurrentHands() {
+
 		//int statComparisonArray[] = new int[playersList.size()];
 		
 		for (int i = 0; i < playersList.size(); i++) {
@@ -239,8 +264,10 @@ public class TopTrumpsModel {
 			currentHands.add(currentHandCard);
 			 
 		}
+
 		System.out.println("Current hand size =" +currentHands.size());
 		//return statComparisonArray;
+
 	}
 
 	public int currentPlayerMove(int playerArrayPos, int statSelection, Scanner userInput) {
@@ -268,7 +295,7 @@ public class TopTrumpsModel {
 					System.out.println("Game over - you lost");
 					break;
 				} else {
-					System.out.println("Player number " + i + "was eliminated");
+					System.out.println(playersList.get(i).toString() + " was eliminated");
 					// remove CPU that lost from the players list
 					playersList.remove(i);
 					System.out.println("player list size = "+ playersList.size());
