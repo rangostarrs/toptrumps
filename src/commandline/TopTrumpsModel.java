@@ -34,11 +34,15 @@ public class TopTrumpsModel {
 	// common pile used in case of a draw
 	private ArrayList<Card> commonPile = new ArrayList<Card>();
 	private int drawNumber = 0;
-	private int playerRoundWin = 0;
-	private int cpu1RoundWin = 0;
-	private int cpu2RoundWin = 0;
-	private int cpu3RoundWin = 0;
-	private int cpu4RoundWin = 0;
+//	private int playerRoundWin = 0;
+//	private int cpu1RoundWin = 0;
+//	private int cpu2RoundWin = 0;
+//	private int cpu3RoundWin = 0;
+//	private int cpu4RoundWin = 0;
+	//player with the highest stat, initially 0
+	private int highestStatPlayer = 0;
+	//THIS IS CURRENTLY HARDCODED FOR 4 AI PLAYERS:
+	private int[] gameResults = {0, 0, 0, 0, 0};
 
 	TopTrumpsModel() {
 
@@ -86,7 +90,10 @@ public class TopTrumpsModel {
 
 			//if this value = 0, it means that the player starts the round
 			int playerArrayPos = 1;
-
+			
+			//reset variable
+			highestStatPlayer = 0;
+			
 			System.out.println("\n \n Round " + roundNumber + "\n______________ ");
 			System.out.println("\n Round " + roundNumber + ": Players have drawn their cards");
 
@@ -105,6 +112,9 @@ public class TopTrumpsModel {
 
 			// check who's the current player - user or cpu
 			try {
+				//THERE WAS A LOGIC ERROR IN CARD CLASS RETURNING HIGHEST STAT -
+				//IT WAS RETURNING VALUE OF THE STAT, NOT STAT INDEX -
+				//try-catch NOT NEEDED ANYMORE?
 				statSelection = currentPlayerMove(playerArrayPos, statSelection, userInput);
 			} catch (NoSuchElementException e) {
 
@@ -112,17 +122,17 @@ public class TopTrumpsModel {
 
 			}
 
-			//player with the highest stat, initially 0
-			int highestStatPlayer = 0;
+
+			
 			// collect hands (first card from each player)
 			collectCurrentHands();
-			try {
+//			try {
 				// compare stat between the players
 				highestStatPlayer = compareStat(statSelection);
-			} catch (IndexOutOfBoundsException e) {
-
-				System.out.println("Too Big");
-			}
+//			} catch (IndexOutOfBoundsException e) {
+//
+//				System.out.println("Too Big");
+//			}
 			// <draw>
 			if (highestStatPlayer == 6) {
 				for (int i = 0; i < currentHands.size(); i++) {
@@ -134,6 +144,8 @@ public class TopTrumpsModel {
 
 				System.out.println("DRAW \n");
 				drawNumber++;
+				
+				checkPlayerEliminated(playerArrayPos);
 
 			}
 			// </end of draw>
@@ -152,13 +164,32 @@ public class TopTrumpsModel {
 				// adjust playersList (add winner on position 0)
 				reorderPlayersList(playersList, highestStatPlayer);
 
-				// clear hands
-				currentHands.clear();
+				// increase number of wins for the current player
+				//PLACEHOLDER METHOD
+				if (playersList.get(highestStatPlayer).toString() == "Human") {
+					gameResults[0] = gameResults[0] + 1;
+				}
+				else if (playersList.get(highestStatPlayer).toString() == "Opponent 1") {
+					gameResults[1] = gameResults[1] + 1;
+				}
+				
+				else if(playersList.get(highestStatPlayer).toString() == "Opponent 2") {
+					gameResults[2] = gameResults[2] + 1;
+				}
+				
+				else if(playersList.get(highestStatPlayer).toString() == "Opponent 3") {
+					gameResults[3] = gameResults[3] + 1;
+				}
+				
+				else if(playersList.get(highestStatPlayer).toString() == "Opponent 4") {
+					gameResults[4] = gameResults[4] + 1;
+				}
+				
 			}
 
 			// in case of win:
 			if (playersList.size() == 1) {
-				System.out.println("Game's finished");
+				System.out.println("Game End");
 				break;
 			}
 
@@ -179,36 +210,46 @@ public class TopTrumpsModel {
 			//summary of the common pile where cards are put in case of a draw
 			System.out.println("Common pile: " + commonPile.size());
 		}
+		
+		// print out how many games the player won
+			System.out.println("The overall winner was " + playersList.get(0).toString() +
+			"\n Scores: "
+			+ "\n Human: " + gameResults[0] + 
+			 "\n Opponent 1: " + gameResults[1] + 
+			 "\n Opponent 2: " + gameResults[2] + 
+			 "\n Opponent 3: " + gameResults[3] + 
+			 "\n Opponent 4: " + gameResults[4]);
+
 
 		// game end (placeholder):
-		GameStats gameStats = new GameStats(0, "winner", roundNumber, playerRoundWin, cpu1RoundWin, cpu2RoundWin,
-				cpu3RoundWin, cpu4RoundWin, drawNumber);
+		GameStats gameStats = new GameStats(0, playersList.get(0).toString(), roundNumber, gameResults[0], gameResults[1], gameResults[2],
+				gameResults[3], gameResults[4], drawNumber);
 		return gameStats;
 
-		// print out how many games the player won
+		
 
 	}
 
 	public void increaseRoundWinStat(int winner) {
 		// CHANGE - PLAYER IS NOT ALWAYS ON POSITION 1
-
-		switch (winner) {
-		case 0:
-			playerRoundWin++;
-			break;
-		case 1:
-			cpu1RoundWin++;
-			break;
-		case 2:
-			cpu2RoundWin++;
-			break;
-		case 3:
-			cpu3RoundWin++;
-			break;
-		case 4:
-			cpu4RoundWin++;
-			break;
-		}
+//
+//		switch (winner) {
+//		case 0:
+//			playerRoundWin++;
+//			break;
+//		case 1:
+//			cpu1RoundWin++;
+//			break;
+//		case 2:
+//			cpu2RoundWin++;
+//			break;
+//		case 3:
+//			cpu3RoundWin++;
+//			break;
+//		case 4:
+//			cpu4RoundWin++;
+//			break;
+//		}
 	}
 
 	public void reorderPlayersList(ArrayList<Player> playersList, int highestStatPlayer) {
@@ -232,22 +273,30 @@ public class TopTrumpsModel {
 
 	public int compareStat(int statSelection) {
 		int highestStatPlayer = 0;
-		System.out.println("Debugging: value of the chosen stat for the player on position 0: "
-				+ currentHands.get(0).returnStat(statSelection));
+//		System.out.println("Debugging: value of the chosen stat for the player on position 0: "
+//				+ currentHands.get(0).returnStat(statSelection));
 		for (int i = 1; i < currentHands.size(); i++) {
-			System.out.println("Debugging: value of the chosen stat for the player on position " + i + ": "
-					+ currentHands.get(i).returnStat(statSelection));
+//			System.out.println("Debugging: value of the chosen stat for the player on position " + i + ": "
+//					+ currentHands.get(i).returnStat(statSelection));
 			if (currentHands.get(i).returnStat(statSelection) > currentHands.get(highestStatPlayer)
 					.returnStat(statSelection)) {
 				highestStatPlayer = i;
 
-			} else if (currentHands.get(i).returnStat(statSelection) == currentHands.get(highestStatPlayer)
+			} 
+		}
+			for (int i = 1; i < currentHands.size(); i++)
+			{
+				if(i == highestStatPlayer) {
+					//skip this index
+				}
+				else if (currentHands.get(i).returnStat(statSelection) == currentHands.get(highestStatPlayer)
 					.returnStat(statSelection)) {
 				// if draw, set highestStatPlayer to 6 (max value of i is 5)
 				highestStatPlayer = 6;
+				break;
 			}
 		}
-		System.out.println("The highest stat player is" +highestStatPlayer );
+		System.out.println("The highest stat player is: " + highestStatPlayer );
 		return highestStatPlayer;
 	}
 
@@ -289,17 +338,18 @@ public class TopTrumpsModel {
 	}
 
 	public void checkPlayerEliminated(int playerPos) {
+		//NOT SURE IF playersList size is verified on each iteration?
 		for (int i = 0; i < playersList.size(); i++) {
 			if (playersList.get(i).getDeck().isEmpty()) {
-				if (i == playerPos) {
-					System.out.println("Game over - you lost");
-					break;
-				} else {
+//				if (i == playerPos  && playersList.size() > 1) {
+//					System.out.println("You have been eliminated from the game");
+//				} else {
 					System.out.println(playersList.get(i).toString() + " was eliminated");
-					// remove CPU that lost from the players list
-					playersList.remove(i);
-					System.out.println("player list size = "+ playersList.size());
-				}
+//				}
+				//remove players without cards from the playersList
+				playersList.remove(i);
+				System.out.println("player list size = "+ playersList.size());
+				i--;
 			}
 		}
 	}
@@ -307,7 +357,7 @@ public class TopTrumpsModel {
 	public int cpuPlayCard(ArrayList<Player> playersList, int pos) {
 		Card currentCpuCard = playersList.get(pos).getDeck().peekFirst();
 		int cpuStatChoice = currentCpuCard.returnHighestStat(currentCpuCard);
-		System.out.println("the computer stat = "+cpuStatChoice);
+		System.out.println("the computer stat = " + cpuStatChoice);
 		return cpuStatChoice;
 	}
 
@@ -349,7 +399,7 @@ public class TopTrumpsModel {
 	public void dealCards(int cpuNumber, ArrayList<Card> cardList) {
 
 		mainDeck = shuffleCards(cardList);
-		System.out.println("Main deck" + mainDeck.toString());
+		//System.out.println("Main deck" + mainDeck.toString());
 		while (!mainDeck.isEmpty()) {
 			if (mainDeck.isEmpty()) {
 				break;
