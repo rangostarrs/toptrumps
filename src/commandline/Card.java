@@ -106,6 +106,7 @@ public class Card {
 //		//OR this?
 //		
 		int best=0;
+		int bestIndex=0;
 		int [] choice = new int[5];
 		choice[0]= c.size;
 		choice[1]= c.speed;
@@ -115,10 +116,10 @@ public class Card {
 		for (int i = 0;i<choice.length;i++) {
 			if (choice[i]>best) {
 				best = choice[i];
-
+				bestIndex=i;
 			}
 		}
-		return best;
+		return bestIndex;
 		//int Math.max(int this.size, int this.speed);
 		//AS HERE? https://stackoverflow.com/questions/12792692/need-to-find-a-max-of-three-numbers-in-java
 	}
