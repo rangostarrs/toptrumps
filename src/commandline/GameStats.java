@@ -2,7 +2,7 @@ package commandline;
 
 public class GameStats {
 
-	// Upon completion of the game, the user should automatically write the
+	static // Upon completion of the game, the user should automatically write the
 	// following information about the game play to a database:
 
     //A generated gameId number for the database
@@ -68,7 +68,7 @@ public class GameStats {
 
 	}
 
-	public int getGameID() {
+	public static int getGameID() {
 		return gameID;
 	}
 	public void setGameID(int gameID) {
