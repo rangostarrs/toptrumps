@@ -85,7 +85,7 @@ public class TopTrumpsModel {
 		return selection;
 	}
 
-	public void gameLoop(int cpuNumber, ArrayList<Card> cardList) {
+	public GameStats gameLoop(int cpuNumber, ArrayList<Card> cardList) {
 
 		Scanner userInput = new Scanner(System.in);
 		roundNumber = 1;
