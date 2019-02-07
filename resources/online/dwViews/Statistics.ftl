@@ -17,15 +17,19 @@
     	<link rel="stylesheet" href="http://dcs.gla.ac.uk/~richardm/assets/stylesheets/vex-theme-os.css"/>
     	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		<style type="text/css"> <#include "styles.css"> </style> 
 
 	</head>
 
     <body onload="initalize()"> <!-- Call the initalize method when the page loads -->
+    
+    	<header>
+    		<div class="view" style="background-image: url('https://i.imgur.com/J46cBUQ.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;"></div>
+    	</header>
     	
     	<div class="container">
 
-			<!-- Add your HTML Here -->
-			<h>you can find statistics here</h>		
+			<!-- Add your HTML Here -->	
 		
 		</div>
 		
