@@ -17,32 +17,40 @@
     	<link rel="stylesheet" href="http://dcs.gla.ac.uk/~richardm/assets/stylesheets/vex-theme-os.css"/>
     	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		<style type="text/css"> <#include "styles.css"> </style> 
 
 	</head>
 
     <body onload="initalize()"> <!-- Call the initalize method when the page loads -->
     	
-    	<div class="container">
-
-			<!-- Add your HTML Here -->
-			<h>Hello!</h>		
-		
-		</div>
+    	<div class="view" style="background-image: url('https://i.imgur.com/J46cBUQ.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+    		<div class="overlay"></div>
+    			<div class="container">
+      				<div class="row">
+       					<div class="col-lg-8 col-md-10 mx-auto">
+          					<div class="site-heading">
+            					<h1>Top Trumps</h1>
+            					<button type="button" class="btn btn-primary btn-lg">Play</button>
+            					<button type="button" class="btn btn-primary btn-lg">Statistics</button>
+         					 </div>
+        				</div>
+      				</div>
+    			</div>
+    	</div>
 		
 		<script type="text/javascript">
 		
-			// Method that is called on page load
-/* 			function initalize() { */
+ 			// Method that is called on page load
+ 			function initalize() { 
 			
 				// --------------------------------------------------------------------------
 				// You can call other methods you want to run when the page first loads here
 				// --------------------------------------------------------------------------
 				
 				// For example, lets call our sample methods
-/* 				helloJSONList();
-				helloWord("Student"); */
-				
-/* 			} */
+/*  				helloJSONList();
+				helloWord("Student"); */ 
+				} 
 			
 			// -----------------------------------------
 			// Add your other Javascript methods Here
