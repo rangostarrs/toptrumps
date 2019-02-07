@@ -44,6 +44,8 @@ public class TopTrumpsModel {
 	private int[] gameResults = { 0, 0, 0, 0, 0 };
 	private int gameID;
 	private int roundNumber = 1;
+	private String winner;
+
 
 	TopTrumpsModel() {
 
@@ -83,11 +85,11 @@ public class TopTrumpsModel {
 		return selection;
 	}
 
-	public GameStats gameLoop(int cpuNumber, ArrayList<Card> cardList) {
+	public void gameLoop(int cpuNumber, ArrayList<Card> cardList) {
 
 		Scanner userInput = new Scanner(System.in);
-
-		// stat that will be played in the given round
+		roundNumber = 1;
+		//stat that will be played in the given round
 		int statSelection = 0;
 
 		dealCards(cpuNumber, cardList);
@@ -137,7 +139,8 @@ public class TopTrumpsModel {
 				currentHands.clear();
 
 				System.out.println("DRAW \nStat chosen was: " + headerArray[statSelection]);
-				drawNumber++;
+
+				setDrawNumber(getDrawNumber() + 1);
 
 				checkPlayerEliminated(playerArrayPos);
 			}
@@ -180,9 +183,14 @@ public class TopTrumpsModel {
 		}
 
 		// print out how many games the player won
+
 		System.out.println("The overall winner was " + playersList.get(0).toString() + "\n Scores: " + "\n Human: "
 				+ gameResults[0] + "\n Opponent 1: " + gameResults[1] + "\n Opponent 2: " + gameResults[2]
 				+ "\n Opponent 3: " + gameResults[3] + "\n Opponent 4: " + gameResults[4]);
+			
+			winner = playersList.get(0).toString();
+
+			System.out.println("\n" + "GameID is " + gameID);
 
 		// game end:
 		GameStats gameStats = new GameStats(gameID, playersList.get(0).toString(), roundNumber, playerRoundWin,
@@ -454,6 +462,74 @@ public class TopTrumpsModel {
 
 	public static String[] getHeaderArray() {
 		return headerArray;
+	}
+
+	public int getGameID() {
+		return gameID;
+	}
+
+	public void setGameID(int gameID) {
+		this.gameID = gameID;
+	}
+
+	public String getWinner() {
+		return winner;
+	}
+
+	public int getDrawNumber() {
+		return drawNumber;
+	}
+
+	public void setDrawNumber(int drawNumber) {
+		this.drawNumber = drawNumber;
+	}
+
+	public int getPlayerRoundWin() {
+		return playerRoundWin;
+	}
+
+	public void setPlayerRoundWin(int playerRoundWin) {
+		this.playerRoundWin = playerRoundWin;
+	}
+
+	public int getCpu1RoundWin() {
+		return cpu1RoundWin;
+	}
+
+	public void setCpu1RoundWin(int cpu1RoundWin) {
+		this.cpu1RoundWin = cpu1RoundWin;
+	}
+
+	public int getCpu2RoundWin() {
+		return cpu2RoundWin;
+	}
+
+	public void setCpu2RoundWin(int cpu2RoundWin) {
+		this.cpu2RoundWin = cpu2RoundWin;
+	}
+
+	public int getCpu3RoundWin() {
+		return cpu3RoundWin;
+	}
+
+	public void setCpu3RoundWin(int cpu3RoundWin) {
+		this.cpu3RoundWin = cpu3RoundWin;
+	}
+
+	public int getCpu4RoundWin() {
+		return cpu4RoundWin;
+	}
+
+	public void setCpu4RoundWin(int cpu4RoundWin) {
+		this.cpu4RoundWin = cpu4RoundWin;
+	}
+
+	public int getRoundNumber() {
+		return roundNumber;
+	}
+
+	public void setRoundNumber(int roundNumber) {
+		this.roundNumber = roundNumber;
 	}
 
 }

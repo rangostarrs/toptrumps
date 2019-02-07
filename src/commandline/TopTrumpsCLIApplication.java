@@ -42,21 +42,63 @@ public class TopTrumpsCLIApplication {
 			// ----------------------------------------------------
 
 			userWantsToQuit = true; // use this when the user wants to exit the game
-			int x = model.gameIntro();
-
-			model.addCardsToList();
-			if (x == 1) {
-				/// load the JDBC Driver
-				try {
-					Class.forName("org.postgresql.Driver");
-				} catch (ClassNotFoundException ex) {
-					System.out.println("Error: unable to load driver class!");
-					System.exit(1);
+			
+			try {
+				   Class.forName("org.postgresql.Driver");
 				}
-				System.out.println("PostgreSQL JDBC Driver Found!");
+				catch(ClassNotFoundException ex) {
+				   System.out.println("Error: unable to load driver class!");
+				   System.exit(1);
+				}
+		System.out.println("PostgreSQL JDBC Driver Found!");
+		
+		Connection c = null;
+			
+		try {
 
-				Connection c = null;
-				try {
+			c = DriverManager.getConnection("jdbc:postgresql://yacata.dcs.gla.ac.uk:5432/", "m_18_2417046l", "2417046l");
+			System.out.println("Connection succeeded");
+			Statement stmt = c.createStatement();         
+	        ResultSet rs = stmt.executeQuery("Select Max (gameid) \r \n" +
+			 "From game;");
+			
+	        
+	        
+	         while ( rs.next() ) {             
+	        	 int gameid = rs.getInt(1) + 1;
+	        	 System.out.println("There has been " + gameid + " games in total.");
+	        	 model.setGameID(gameid);
+	         }
+	         	
+	         
+	         rs.close();
+	         stmt.close();
+	         c.close();
+	         c = null;
+		}catch(SQLException e) {
+			System.out.println("Connection Failed22!");
+			e.printStackTrace();
+			return;}
+			
+			
+			
+			
+				int x = model.gameIntro();
+				
+				model.addCardsToList();
+				if(x==1) {
+					/// load the JDBC Driver 
+					try {
+						   Class.forName("org.postgresql.Driver");
+						}
+						catch(ClassNotFoundException ex) {
+						   System.out.println("Error: unable to load driver class!");
+						   System.exit(1);
+						}
+				System.out.println("PostgreSQL JDBC Driver Found!");
+				
+				
+					try {
 
 					c = DriverManager.getConnection("jdbc:postgresql://yacata.dcs.gla.ac.uk:5432/", "m_18_2417046l",
 							"2417046l");
@@ -139,6 +181,26 @@ public class TopTrumpsCLIApplication {
 
 			}
 
+		} else if(x == 2) {
+			
+			try {
+
+				c = DriverManager.getConnection("jdbc:postgresql://yacata.dcs.gla.ac.uk:5432/", "m_18_2417046l", "2417046l");
+				System.out.println("Connection succeeded");
+				Statement stmt = c.createStatement();         
+		        
+				//stmt.executeUpdate("INSERT INTO Game " + "VALUES (9, 'player', 45)");
+				stmt.executeUpdate("INSERT INTO Game " + "VALUES (" + model.getGameID() + ", " + "'" + model.getWinner() + "', " + model.getRoundNumber() + ", " + model.getDrawNumber() + ", " + model.getPlayerRoundWin() + ", " + model.getCpu1RoundWin() + ", " + model.getCpu2RoundWin() + ", " + model.getCpu3RoundWin() + ", " + model.getCpu4RoundWin() + ")");
+		         
+		        stmt.close();
+		         
+		         c.close();
+		         c = null;
+			}catch(SQLException e) {
+				System.out.println("Connection Failed22!");
+				e.printStackTrace();
+				return;}
+			
 		}
 
 	}
