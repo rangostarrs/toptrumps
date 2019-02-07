@@ -3,21 +3,21 @@ package commandline;
 public class Card {
 
 	private String description;
-	private int size;
-	private int speed;
-	private int range;
-	private int firepower;
-	private int cargo;
+	private int stat1;
+	private int stat2;
+	private int stat3;
+	private int stat4;
+	private int stat5;
 
 	// constructor
 	public Card(String d, int si, int sp, int r, int f, int c) {
 
 		this.setDescription(d);
-		this.setSize(si);
-		this.setSpeed(sp);
-		this.setRange(r);
-		this.setFirepower(f);
-		this.setCargo(c);
+		this.setstat1(si);
+		this.setstat2(sp);
+		this.setstat3(r);
+		this.setstat4(f);
+		this.setstat5(c);
 
 	}
 
@@ -26,24 +26,24 @@ public class Card {
 		description = d;
 	}
 
-	public void setSize(int si) {
-		size = si;
+	public void setstat1(int si) {
+		stat1 = si;
 	}
 
-	public void setSpeed(int sp) {
-		speed = sp;
+	public void setstat2(int sp) {
+		stat2 = sp;
 	}
 
-	public void setRange(int r) {
-		range = r;
+	public void setstat3(int r) {
+		stat3 = r;
 	}
 
-	public void setFirepower(int f) {
-		firepower = f;
+	public void setstat4(int f) {
+		stat4 = f;
 	}
 
-	public void setCargo(int c) {
-		cargo = c;
+	public void setstat5(int c) {
+		stat5 = c;
 	}
 
 	// getters
@@ -51,24 +51,24 @@ public class Card {
 		return description;
 	}
 
-	public int getSize() {
-		return size;
+	public int getstat1() {
+		return stat1;
 	}
 
-	public int getSpeed() {
-		return speed;
+	public int getstat2() {
+		return stat2;
 	}
 
-	public int getRange() {
-		return range;
+	public int getstat3() {
+		return stat3;
 	}
 
-	public int getFirepower() {
-		return firepower;
+	public int getstat4() {
+		return stat4;
 	}
 
-	public int getCargo() {
-		return cargo;
+	public int getstat5() {
+		return stat5;
 	}
 	
 	public int returnStat(int statChoice) {
@@ -76,15 +76,15 @@ public class Card {
 		int stat = 0;
 		
 		switch (statChoice) {
-        case 1:  stat = getSize();
+        case 1:  stat = getstat1();
         break;
-        case 2:  stat = getSpeed();
+        case 2:  stat = getstat2();
         break;
-        case 3:  stat = getRange();
+        case 3:  stat = getstat3();
         break;
-        case 4:  stat = getFirepower();
+        case 4:  stat = getstat4();
         break;
-        case 5:  stat = getCargo();
+        case 5:  stat = getstat5();
         break;
 
 		}
@@ -92,27 +92,15 @@ public class Card {
 	}
 
 	public int returnHighestStat(Card c) {
-		
-		// CREATE METHOD FOR RETURNING HIGHEST STAT
-			//something like this maybe?
-//		
-//		int firsttwo = Math.max( this.size,  this.speed);
-//		int nexttwo = Math.max(this.range, this.firepower);
-//		int bestoffour = Math.max(firsttwo, nexttwo);
-//		int AndTheWinnerIs = Math.max(bestoffour, cargo); 
-//		return AndTheWinnerIs;
-		
-		
-//		//OR this?
-//		
+			
 		int best=0;
 		int bestIndex=0;
 		int [] choice = new int[5];
-		choice[0]= c.size;
-		choice[1]= c.speed;
-		choice[2]= c.range;
-		choice[3]= c.firepower;
-		choice[4]= c.cargo;
+		choice[0]= c.stat1;
+		choice[1]= c.stat2;
+		choice[2]= c.stat3;
+		choice[3]= c.stat4;
+		choice[4]= c.stat5;
 		for (int i = 0;i<choice.length;i++) {
 			if (choice[i]>best) {
 				best = choice[i];
@@ -120,15 +108,14 @@ public class Card {
 			}
 		}
 		return bestIndex;
-		//int Math.max(int this.size, int this.speed);
-		//AS HERE? https://stackoverflow.com/questions/12792692/need-to-find-a-max-of-three-numbers-in-java
 	}
 
 	@Override
 	public String toString() {
-		return ("\n" + "Description: " + description + "\n" + " > " + "Size: " + size + "\n" + " > " + "Speed: " + speed
-				+ "\n" + " > " + "Range: " + range + "\n" + " > " + "Firepower: " + firepower + "\n" + " > " + "Cargo: "
-				+ cargo + "\n");
+		return ("\n" + (TopTrumpsModel.getHeaderArray())[0] + ": " + description + "\n" + " > " + TopTrumpsModel.getHeaderArray()[1] +
+				": " + stat1 + "\n" + " > " + (TopTrumpsModel.getHeaderArray())[2] + ": " + stat2 + "\n" + " > " +
+				(TopTrumpsModel.getHeaderArray())[3] + ": " + stat3 + "\n" + " > " + (TopTrumpsModel.getHeaderArray())[4] +
+				": " + stat4 + "\n" + " > " + (TopTrumpsModel.getHeaderArray())[5] + ": " + stat5 + "\n");
 	}
 
 }
