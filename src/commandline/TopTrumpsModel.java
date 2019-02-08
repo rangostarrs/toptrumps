@@ -299,7 +299,7 @@ public class TopTrumpsModel {
 		return statSelection;
 	}
 
-	public void checkPlayerEliminated(int playerPos) {
+	public int checkPlayerEliminated(ArrayList<Player> playersList) {
 		for (int i = 0; i < playersList.size(); i++) {
 			if (playersList.get(i).getDeck().isEmpty()) {
 				System.out.println(playersList.get(i).toString() + " was eliminated");
@@ -309,6 +309,7 @@ public class TopTrumpsModel {
 				i--;
 			}
 		}
+		return playersList.size();
 	}
 
 	public int cpuPlayCard(ArrayList<Player> playersList, int pos) {
@@ -351,7 +352,7 @@ public class TopTrumpsModel {
 		return playersList;
 	}
 
-	public void dealCards(int cpuNumber, ArrayList<Card> cardList) {
+	public Deque<Card> dealCards(int cpuNumber, ArrayList<Card> cardList) {
 
 		mainDeck = shuffleCards(cardList);
 		while (!mainDeck.isEmpty()) {
@@ -383,6 +384,7 @@ public class TopTrumpsModel {
 			}
 		}
 		createPlayersArray(cpuNumber);
+		return mainDeck;
 	}
 
 	public Deque<Card> shuffleCards(ArrayList<Card> cardList) {
@@ -393,7 +395,7 @@ public class TopTrumpsModel {
 		return mainDeck;
 	}
 
-	public void addCardsToList() {
+	public ArrayList<Card> addCardsToList() {
 
 		FileReader reader = null;
 
@@ -438,6 +440,7 @@ public class TopTrumpsModel {
 				}
 			}
 		}
+		return cardList;
 
 	}
 
