@@ -40,7 +40,7 @@
 		<font size="5"></font>
 		<h1 align="center">Game Statistics</h1>
 			<div class="row">
-				<table border="1" style="color:black; margin-top:50px; margin-left:400px;">
+				<table style="margin-top:50px; margin-left:400px;">
 					  <tr>
 					    <th width="500">Statistic</th>
 					    <th width="100">Value</th>
