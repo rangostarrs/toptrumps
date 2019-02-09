@@ -24,14 +24,16 @@
     <body onload="initalize()"> <!-- Call the initalize method when the page loads -->
     	
     	<div class="view" style="background-image: url('https://i.imgur.com/J46cBUQ.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
-    		<div class="overlay"></div>
+<!--     		<div class="overlay2"></div> -->
     			<div class="container">
       				<div class="row">
        					<div class="col-lg-8 col-md-10 mx-auto">
           					<div class="site-heading">
             					<h1>Top Trumps</h1>
-            					<button type="button" class="btn btn-primary btn-lg">Play</button>
-            					<button type="button" class="btn btn-primary btn-lg">Statistics</button>
+            					<form>
+            					<button type="button" onclick="window.location.href ='http://localhost:7777/toptrumps/game';"class="btn btn-primary btn-lg">Play</button>
+            					<button type="button" onclick="window.location.href= 'http://localhost:7777/toptrumps/stats';" class="btn btn-primary btn-lg">Statistics</button>
+            					</form>
          					 </div>
         				</div>
       				</div>
