@@ -301,13 +301,16 @@ public class TopTrumpsModel {
 			// [USER MOVE]
 			System.out.println("It is your turn to select a category, the categories are:" + "\n 1: " + headerArray[1]
 					+ "\n 2: " + headerArray[2] + "\n 3: " + headerArray[3] + "\n 4: " + headerArray[4] + "\n 5: "
-					+ headerArray[5]);
+	                + headerArray[5]);
+			
 			while (true) {
+				try {
 				statSelection = getInt("Enter the number for your attribute (1-5):", userInput);
 				if (statSelection > 0 && statSelection < 6) {
 					break;
-				}
-			}
+				}}catch(NoSuchElementException e) {
+					System.out.println("Try Again, Friend");
+			}}
 
 		}
 		// [CPU MOVE]
