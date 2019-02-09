@@ -105,18 +105,18 @@ class TopTrumpsModelTest {
 		
 	}
 	
-	@Test
-	
-	void giveHandsToWinnerTest() {
-		
-		
-	}
-    @Test
-	
-	void collectCurrrentHandsTest() {
-	
-	
-	}
+//	@Test
+//	
+//	void giveHandsToWinnerTest() {
+//		
+//		
+//	}
+//    @Test
+//	
+//	void collectCurrrentHandsTest() {
+//	
+//	
+//	}
     @Test
     void cpuPlayCardTest() {
     	
