@@ -1,5 +1,6 @@
 package commandline;
 
+import java.awt.List;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -7,9 +8,12 @@ import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Deque;
+import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
+
+import com.sun.javafx.collections.MappingChange.Map;
 
 import SQL.SQL;
 
@@ -127,7 +131,7 @@ public class TopTrumpsModel {
 			collectCurrentHands();
 
 			// compare stat between the players
-			highestStatPlayer = compareStat(statSelection);
+			highestStatPlayer = compareStat(statSelection, currentHands);
 
 			// <draw>
 			if (highestStatPlayer == 6) {
@@ -142,7 +146,7 @@ public class TopTrumpsModel {
 
 				setDrawNumber(getDrawNumber() + 1);
 
-				checkPlayerEliminated(playerArrayPos);
+				checkPlayerEliminated(playersList);
 			}
 			// </end of draw>
 			else {
@@ -157,7 +161,7 @@ public class TopTrumpsModel {
 				giveHandsToWinner(highestStatPlayer);
 
 				// check if any decks are empty
-				checkPlayerEliminated(playerArrayPos);
+				checkPlayerEliminated(playersList);
 
 				// adjust playersList (add winner on position 0)
 				reorderPlayersList(playersList, highestStatPlayer);
@@ -227,10 +231,13 @@ public class TopTrumpsModel {
 	}
 
 	public void reorderPlayersList(ArrayList<Player> playersList, int highestStatPlayer) {
+		try {
 		playersList.add(0, playersList.remove(highestStatPlayer));
+		}catch(IndexOutOfBoundsException e) {}
 	}
 
-	public void giveHandsToWinner(int highestStatPlayer) {
+	public ArrayList<ArrayList<Card>> giveHandsToWinner(int highestStatPlayer) {
+	
 		for (int i = 0; i < currentHands.size(); i++) {
 			playersList.get(highestStatPlayer).getDeck().addLast(currentHands.get(i));
 
@@ -241,11 +248,19 @@ public class TopTrumpsModel {
 			}
 		}
 		System.out.println("\nThe winner now has " + playersList.get(highestStatPlayer).getDeck().size() + " cards \n");
+		
+		//Added this ArrayList of ArrayLists to test in JUnit
+		ArrayList <ArrayList<Card>>returnVal = new ArrayList();
+		
 		currentHands.clear();
 		commonPile.clear();
+		returnVal.add(currentHands);
+		returnVal.add(commonPile);
+		return returnVal;
 	}
 
-	public int compareStat(int statSelection) {
+	public int compareStat(int statSelection, ArrayList<Card> currentHands) {
+		
 		// return index of the player with the highest score
 		int highestStatPlayer = 0;
 		for (int i = 1; i < currentHands.size(); i++) {
@@ -267,7 +282,7 @@ public class TopTrumpsModel {
 		return highestStatPlayer;
 	}
 
-	public void collectCurrentHands() {
+	public ArrayList<Card> collectCurrentHands() {
 
 		for (int i = 0; i < playersList.size(); i++) {
 			// retrieve hand of each player
@@ -275,6 +290,7 @@ public class TopTrumpsModel {
 			currentHands.add(currentHandCard);
 
 		}
+		return currentHands;
 	}
 
 	public int currentPlayerMove(int playerArrayPos, int statSelection, Scanner userInput) {

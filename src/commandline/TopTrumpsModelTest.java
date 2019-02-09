@@ -23,7 +23,7 @@ class TopTrumpsModelTest {
 	private Deque<Card> cpu2Deck = new ArrayDeque<Card>();
 	private Deque<Card> cpu3Deck = new ArrayDeque<Card>();
 	private Deque<Card> cpu4Deck = new ArrayDeque<Card>();
-
+	private ArrayList<Card> currentHands = new ArrayList<Card>();
 	
 	@BeforeEach
 	void setUp() throws Exception {
@@ -51,8 +51,10 @@ class TopTrumpsModelTest {
 	void checkPlayerEliminatedTest() {
 		
 		ArrayList<Player> p= m.createPlayersArray(5);
+		
 		// i *think* this works because none of the player decks have been filled with any cards
 		//therefore causing all the players to be eliminated when the method is run
+		
 		assertEquals(0,m.checkPlayerEliminated(p));
 	
 	}
@@ -77,6 +79,51 @@ class TopTrumpsModelTest {
 		
 		
 	}
-
 	
+	@Test
+	void compareStatTest() {
+		//checking that method for determining a draw works
+		for (int i = 0; i<4;i++){
+			Card x = new Card ("Fun guy", 9, 8, 7, 6, 3);
+			currentHands.add(x);
+		}
+		//the int in this case is three but it doesn't matter what value is used
+		//between 1 and 5 as all the cards are the same
+		assertEquals(6,m.compareStat(3, currentHands));
+		
+		
+		}
+
+	@Test
+	void createPlayersArrayTest () {
+		
+		//Showing that creating the players are is being created 
+		//and the player array  filled 
+		p=m.createPlayersArray(3);
+		
+		assertFalse(p.isEmpty());
+		
+	}
+	
+	@Test
+	
+	void giveHandsToWinnerTest() {
+		
+		
+	}
+    @Test
+	
+	void collectCurrrentHandsTest() {
+	
+	
+	}
+    @Test
+    void cpuPlayCardTest() {
+    	
+    	p=m.createPlayersArray(2);
+    	m.dealCards(2, m.addCardsToList());
+    	int a =m.cpuPlayCard(p,2);
+    	Card curr;
+    	assertTrue(a>0);
+    }
 }
