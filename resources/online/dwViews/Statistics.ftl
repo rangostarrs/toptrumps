@@ -29,7 +29,61 @@
     	
     	<div class="container">
 
-			<!-- Add your HTML Here -->	
+			</style>
+
+	</head>
+
+<body onload="initalize()">
+<!-- Call the initalize method when the page loads -->
+	<body style=" opacity:0.5; color:black; background: url(https://www.elegantthemes.com/blog/wp-content/uploads/2013/09/bg-5-full.jpg)">
+	<div class="header">
+		<font size="5"></font>
+		<h1 align="center">Game Statistics</h1>
+			<div class="row">
+				<table border="1" style="color:black; margin-top:50px; margin-left:400px;">
+					  <tr>
+					    <th width="500">Statistic</th>
+					    <th width="100">Value</th>
+					  </tr>
+					  <tr>
+					    <td height="50">Number of Games Played</td>
+					    <td height="50">0</td>
+					  </tr>
+					  <tr>
+					    <td height="50">Number of Player Wins</td>
+					    <td height="50">0</td>
+					  </tr>
+					  <tr>
+					    <td height="50">Number of CPU Wins</td>
+					    <td height="50">0</td>
+					  </tr>
+					  <tr>
+					    <td height="50">Average Number of Draws</td>
+					    <td height="50">0</td>
+					  </tr>
+					  <tr>
+					    <td height="50">Highest Number of Rounds</td>
+					    <td height="50">0</td>
+					  </tr>
+					</table>
+
+
+			</div>
+		</div>
+
+</body>
+
+
+
+
+
+
+<body />
+
+
+
+
+</html>
 		
 		</div>
 		
