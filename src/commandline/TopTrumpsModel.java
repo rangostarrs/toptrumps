@@ -37,6 +37,7 @@ public class TopTrumpsModel {
 	private ArrayList<Card> currentHands = new ArrayList<Card>();
 	// common pile used in case of a draw
 	private ArrayList<Card> commonPile = new ArrayList<Card>();
+	//Stats used to create and update the database
 	private int drawNumber = 0;
 	private int playerRoundWin = 0;
 	private int cpu1RoundWin = 0;
@@ -236,7 +237,7 @@ public class TopTrumpsModel {
 		}catch(IndexOutOfBoundsException e) {}
 	}
 
-	public ArrayList<ArrayList<Card>> giveHandsToWinner(int highestStatPlayer) {
+	public int giveHandsToWinner(int highestStatPlayer) {
 	
 		for (int i = 0; i < currentHands.size(); i++) {
 			playersList.get(highestStatPlayer).getDeck().addLast(currentHands.get(i));
@@ -247,16 +248,17 @@ public class TopTrumpsModel {
 				playersList.get(highestStatPlayer).getDeck().addLast(commonPile.get(i));
 			}
 		}
+		int g = currentHands.size()+commonPile.size();
+		System.out.println("The winner takes " + g + " cards");
 		System.out.println("\nThe winner now has " + playersList.get(highestStatPlayer).getDeck().size() + " cards \n");
 		
 		//Added this ArrayList of ArrayLists to test in JUnit
-		ArrayList <ArrayList<Card>>returnVal = new ArrayList();
+		
 		
 		currentHands.clear();
 		commonPile.clear();
-		returnVal.add(currentHands);
-		returnVal.add(commonPile);
-		return returnVal;
+		return g;
+		
 	}
 
 	public int compareStat(int statSelection, ArrayList<Card> currentHands) {
@@ -347,6 +349,8 @@ public class TopTrumpsModel {
 
 	public ArrayList<Player> createPlayersArray(int cpuNumber) {
 
+		
+		
 		playersList.add(player);
 		Player cpu1 = new Player("Opponent 1", cpu1Deck);
 		playersList.add(cpu1);
@@ -368,30 +372,36 @@ public class TopTrumpsModel {
 		return playersList;
 	}
 
-	public Deque<Card> dealCards(int cpuNumber, ArrayList<Card> cardList) {
-
+	public ArrayList<Deque<Card>> dealCards(int cpuNumber, ArrayList<Card> cardList) {
+		ArrayList <Deque<Card>> playerDeques = new ArrayList();
 		mainDeck = shuffleCards(cardList);
 		while (!mainDeck.isEmpty()) {
 			playerDeck.addFirst(mainDeck.pollFirst());
+			
 			if (mainDeck.isEmpty()) {
 				break;
 			}
 			cpu1Deck.addFirst(mainDeck.pollFirst());
+			
 			if (mainDeck.isEmpty()) {
+				
 				break;
 			}
 			if (cpuNumber > 1) {
 				cpu2Deck.addFirst(mainDeck.pollFirst());
+				
 				if (mainDeck.isEmpty()) {
 					break;
 				}
 				if (cpuNumber > 2) {
 					cpu3Deck.addFirst(mainDeck.pollFirst());
+					
 					if (mainDeck.isEmpty()) {
 						break;
 					}
 					if (cpuNumber > 3) {
 						cpu4Deck.addFirst(mainDeck.pollFirst());
+						
 						if (mainDeck.isEmpty()) {
 							break;
 						}
@@ -399,8 +409,14 @@ public class TopTrumpsModel {
 				}
 			}
 		}
+		playerDeques.add(playerDeck);
+		playerDeques.add(cpu1Deck);
+		playerDeques.add(cpu2Deck);
+		playerDeques.add(cpu3Deck);
+		playerDeques.add(cpu4Deck);
+		
 		createPlayersArray(cpuNumber);
-		return mainDeck;
+		return playerDeques;
 	}
 
 	public Deque<Card> shuffleCards(ArrayList<Card> cardList) {

@@ -24,6 +24,7 @@ class TopTrumpsModelTest {
 	private Deque<Card> cpu3Deck = new ArrayDeque<Card>();
 	private Deque<Card> cpu4Deck = new ArrayDeque<Card>();
 	private ArrayList<Card> currentHands = new ArrayList<Card>();
+	private ArrayList<Card> commonPile = new ArrayList<Card>();
 	
 	@BeforeEach
 	void setUp() throws Exception {
@@ -52,8 +53,10 @@ class TopTrumpsModelTest {
 		
 		ArrayList<Player> p= m.createPlayersArray(5);
 		
-		// i *think* this works because none of the player decks have been filled with any cards
+		//  this test works by demonstrating that players with no cards are immediately eliminated/
+		// players are created without the decks being filled with any cards
 		//therefore causing all the players to be eliminated when the method is run
+		//see console 
 		
 		assertEquals(0,m.checkPlayerEliminated(p));
 	
@@ -62,21 +65,33 @@ class TopTrumpsModelTest {
 	@Test
 	void dealCardsTest() {
 		
-	//This Section Tests the Method addCardsToList 
+	//THIS FIRST SECTION TESTS THE addCardsToList METHOD 
+			
 	//The size of the previously Empty Arraylist of Cards (i.e the game deck) is now equal to 40
 		c =(m.addCardsToList());
 		assertEquals(40,c.size());
 		
 		
-	//	This Section tests the Method dealCards by checking if the same ArrayList from above (which has now been 
+	//	THE SECTION TESTS THE METHOD dealCards by checking if the same ArrayList from above (which has now been 
 	//  changed to a deque) still has any cards in it (which it shouldn't if the method has been successful)
 	//
-		assertTrue(m.dealCards(5, c).isEmpty());
 		
 		
-	// This section checks the cards have been dealt properly by running the test
-	//through the game loop method	
+		//showing that the array contains decks and therefore something has been returned
+
+		 ArrayList <Deque<Card>> playerDeques = m.dealCards(2, c);
+		assertFalse(playerDeques.isEmpty());
 		
+		
+		//in the case of a three player game the card split should come out unevenly
+		//this section checks that split has been done correctly
+		assertEquals(14,playerDeques.get(0).size());
+		assertEquals(13,playerDeques.get(1).size());
+		assertEquals(13,playerDeques.get(2).size());
+		
+	
+		
+			
 		
 	}
 	
@@ -101,16 +116,76 @@ class TopTrumpsModelTest {
 		//and the player array  filled 
 		p=m.createPlayersArray(3);
 		
-		assertFalse(p.isEmpty());
+		//this is equal to four because the number of players is always the method argument's
+		//input value plus one for the human player
+		assertEquals(4,p.size());
+		
 		
 	}
 	
-//	@Test
-//	
-//	void giveHandsToWinnerTest() {
-//		
-//		
-//	}
+	@Test
+	
+	void giveHandsToWinnerTest() {
+		
+		// this test 
+		//variables to represent card stats
+		int a=0,b=0,c=0,d =0,e=0;
+		Card x;
+		Card y;
+		//In this case we have created 4 cards that are identical to simulate a draw situation
+		//in a hypothetical 4 player game
+		for (int i = 0; i<4;i++){
+			x = new Card ("Fun guy", a, b, c, d, e);
+			currentHands.add(x);
+			//DRAW!!
+			}
+		assertEquals(4, currentHands.size());
+		
+		System.out.println("CurrHand size "+ currentHands.size());
+		
+		//The cards are added to the commonPile
+		for (int j= 0; j<8;j++) {
+			
+	if (!currentHands.isEmpty()) {
+			y = currentHands.remove(0); 
+			commonPile.add(y);
+		}}
+		
+		
+		// check to make sure that this has happened correctly
+		
+		
+		assertEquals(0, currentHands.size());
+		assertEquals(4, commonPile.size());
+		
+		
+		// now adding a case in which the content current hands
+		//and 
+		for (int i = 0; i<4;i++){
+			Card z = new Card ("Fun guy", a, b, c, d, e);
+			currentHands.add(z);
+			a++;
+			b+=2;
+			c+=2;
+			d++;
+			e+=2;
+			// This case has been setup such that computer player 4 wins this round
+			
+		}
+		
+		for (int i=0;i<10;i++) {
+			
+			if (!currentHands.isEmpty()) {
+				y = currentHands.remove(0); 
+				commonPile.add(y);
+			}
+			
+		}
+
+		
+		
+		
+	}
 //    @Test
 //	
 //	void collectCurrrentHandsTest() {
