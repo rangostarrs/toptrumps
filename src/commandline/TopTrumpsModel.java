@@ -147,9 +147,17 @@ public class TopTrumpsModel  {
 			// <draw>
 			if (highestStatPlayer == 6) {
 				// add hands to the common pile in case of a draw
+				
 				for (int i = 0; i < currentHands.size(); i++) {
 					commonPile.add(currentHands.get(i));
 				}
+				System.setOut(o);
+				System.out.println("-------------------------------");
+				System.out.println("Common Pile Contents");
+				for (Card c: commonPile) {
+					System.out.println(c.toString());
+				}
+				System.setOut(c);
 				// clear hands
 				currentHands.clear();
 
