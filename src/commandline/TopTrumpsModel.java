@@ -1,9 +1,11 @@
 package commandline;
 
 import java.awt.List;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayDeque;
@@ -24,7 +26,7 @@ import com.sun.javafx.collections.MappingChange.Map;
 //When we take a card from the top of our stack, we use pollFirst()
 //When we put cards on the bottom of our stack, we use addLast()
 //--------------------------------
-public class TopTrumpsModel {
+public class TopTrumpsModel  {
 
 	private ArrayList<Card> cardList = new ArrayList<Card>();
 	private static String headerArray[] = new String[6];
@@ -53,9 +55,9 @@ public class TopTrumpsModel {
 	private  int roundNumber;
 	private  String winner;
 	private SQL db;
-
-
-	TopTrumpsModel() {
+	private PrintStream o = new PrintStream(new File("Long.txt"));
+	private PrintStream c = System.out;
+	TopTrumpsModel() throws FileNotFoundException {
 
 	}
 
@@ -82,8 +84,8 @@ public class TopTrumpsModel {
 						break;
 					}
 				}
-				db = new SQL();
-				gameID = db.getGameIDfromDB();
+				//db = new SQL();
+				//gameID = db.getGameIDfromDB();
 				addCardsToList();
 				gameLoop(cpuNumber, cardList);
 				
@@ -309,6 +311,14 @@ public class TopTrumpsModel {
 			currentHands.add(currentHandCard);
 
 		}
+		System.setOut(o);
+		System.out.println("-------------");
+		System.out.println("Current Hands");
+		for (Card c: currentHands) {
+			System.out.println(c.toString());
+		}
+		
+		System.setOut(c);
 		return currentHands;
 	}
 
@@ -434,7 +444,34 @@ public class TopTrumpsModel {
 		playerDeques.add(cpu2Deck);
 		playerDeques.add(cpu3Deck);
 		playerDeques.add(cpu4Deck);
-		
+		System.setOut(o);
+		System.out.println("Player Deck------------------------------------------");
+		for (Card c:playerDeck) {
+			
+			System.out.println(c.toString());
+		}
+		System.out.println("cpu1Deck------------------------------------------");
+		for (Card c:cpu1Deck) {
+			
+			System.out.println(c.toString());
+		}
+		System.out.println("cpu2Deck------------------------------------------");
+		for (Card c:cpu2Deck) {
+			
+			System.out.println(c.toString());
+		}
+		System.out.println("cpu3Deck------------------------------------------");
+		for (Card c:cpu3Deck) {
+			
+			System.out.println(c.toString());
+		}
+		System.out.println("cpu4Deck------------------------------------------");
+		for (Card c:cpu4Deck) {
+			
+			System.out.println(c.toString());
+		}
+		System.out.println("");
+		System.setOut(c);
 		createPlayersArray(cpuNumber);
 		return playerDeques;
 	}
@@ -443,7 +480,15 @@ public class TopTrumpsModel {
 
 		Collections.shuffle(cardList);
 		mainDeck = new ArrayDeque<Card>(cardList);
-
+		System.setOut(o);
+		
+		System.out.println("-----------------------------------------\n");
+		System.out.println("Shuffled Cards list");
+		for (Card c: mainDeck) {
+			
+			System.out.println(c.toString());
+		}
+		System.setOut(c);
 		return mainDeck;
 	}
 
@@ -492,6 +537,19 @@ public class TopTrumpsModel {
 				}
 			}
 		}
+		System.setOut(o);
+		System.out.println("Unshuffled Cards list:");
+		
+		for (Card c: cardList){
+			
+			
+			System.out.println(c.toString());
+		}
+		
+		System.out.println("--------------------");
+		
+		System.setOut(c);
+		
 		return cardList;
 
 	}

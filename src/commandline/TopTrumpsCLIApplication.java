@@ -22,7 +22,7 @@ public class TopTrumpsCLIApplication {
 	 * 
 	 * @param args
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 
 		TopTrumpsModel model = new TopTrumpsModel();
 		TopTrumpsView view = new TopTrumpsView(model);
@@ -54,8 +54,8 @@ public class TopTrumpsCLIApplication {
 				model.addCardsToList();
 				if(x==1) {
 					
-					SQL db = new SQL();
-					db.getGameStats();
+//					SQL db = new SQL();
+//					db.getGameStats();
 				
 				
 
