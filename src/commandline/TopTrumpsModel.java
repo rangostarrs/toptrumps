@@ -4,6 +4,8 @@ import java.awt.List;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,7 +17,7 @@ import java.util.Scanner;
 
 import com.sun.javafx.collections.MappingChange.Map;
 
-import SQL.SQL;
+
 
 //--------------------------------
 //When we deal cards, we add cards at the TOP of the deque (addFirst() method)
@@ -38,18 +40,19 @@ public class TopTrumpsModel {
 	// common pile used in case of a draw
 	private ArrayList<Card> commonPile = new ArrayList<Card>();
 	//Stats used to create and update the database
-	private int drawNumber = 0;
-	private int playerRoundWin = 0;
-	private int cpu1RoundWin = 0;
-	private int cpu2RoundWin = 0;
-	private int cpu3RoundWin = 0;
-	private int cpu4RoundWin = 0;
+	private  int drawNumber = 0;
+	private  int playerRoundWin = 0;
+	private  int cpu1RoundWin = 0;
+	private  int cpu2RoundWin = 0;
+	private  int cpu3RoundWin = 0;
+	private  int cpu4RoundWin = 0;
 	// player with the highest stat, initially 0
 	private int highestStatPlayer = 0;
 	private int[] gameResults = { 0, 0, 0, 0, 0 };
-	private int gameID;
-	private int roundNumber = 1;
-	private String winner;
+	private  int gameID;
+	private  int roundNumber;
+	private  String winner;
+	private SQL db;
 
 
 	TopTrumpsModel() {
@@ -71,7 +74,7 @@ public class TopTrumpsModel {
 		while (true) {
 			selection = getInt("Enter the number for your selection:", userInput);
 			if (selection == 1) {
-				// code for the database
+				break;
 			} else if (selection == 2) {
 				while (true) {
 					cpuNumber = getInt("Choose number of oppononents (1-4)", userInput);
@@ -79,9 +82,14 @@ public class TopTrumpsModel {
 						break;
 					}
 				}
-
+				db = new SQL();
+				gameID = db.getGameIDfromDB();
 				addCardsToList();
 				gameLoop(cpuNumber, cardList);
+				
+			    
+					
+				
 				break;
 			} else {
 				System.out.println("Please enter '1' to print game statistics or '2' to play game");
@@ -90,8 +98,8 @@ public class TopTrumpsModel {
 		return selection;
 	}
 
-	public GameStats gameLoop(int cpuNumber, ArrayList<Card> cardList) {
-
+	public void gameLoop(int cpuNumber, ArrayList<Card> cardList) {
+		
 		Scanner userInput = new Scanner(System.in);
 		roundNumber = 1;
 		//stat that will be played in the given round
@@ -168,7 +176,12 @@ public class TopTrumpsModel {
 				reorderPlayersList(playersList, highestStatPlayer);
 
 				// increase number of wins for the current player
-				increaseRoundWin(highestStatPlayer);
+				try{
+					increaseRoundWin(highestStatPlayer);
+					
+				}catch(IndexOutOfBoundsException e) {
+					e.printStackTrace();
+				}
 			}
 
 			// finish the game if only 1 player left
@@ -190,43 +203,47 @@ public class TopTrumpsModel {
 		// print out how many games the player won
 
 		System.out.println("The overall winner was " + playersList.get(0).toString() + "\n Scores: " + "\n Human: "
-				+ gameResults[0] + "\n Opponent 1: " + gameResults[1] + "\n Opponent 2: " + gameResults[2]
-				+ "\n Opponent 3: " + gameResults[3] + "\n Opponent 4: " + gameResults[4]);
+				+ playerRoundWin + "\n Opponent 1: " + cpu1RoundWin + "\n Opponent 2: " + cpu2RoundWin
+				+ "\n Opponent 3: " + cpu3RoundWin + "\n Opponent 4: " + cpu4RoundWin);
 			
 			winner = playersList.get(0).toString();
 
 			System.out.println("\n" + "GameID is " + gameID);
 
 		// game end:
-		GameStats gameStats = new GameStats(gameID, playersList.get(0).toString(), roundNumber, playerRoundWin,
-				cpu1RoundWin, cpu2RoundWin, cpu3RoundWin, cpu4RoundWin, drawNumber);
-		return gameStats;
+		//GameStats gameStats = new GameStats(gameID, playersList.get(0).toString(), roundNumber, playerRoundWin,
+			//	cpu1RoundWin, cpu2RoundWin, cpu3RoundWin, cpu4RoundWin, drawNumber);
+		
+		saveStats();
+		
+		
+		
 
 	}
 
 	public void increaseRoundWin(int highestStatPlayer) {
 
 		if (playersList.get(highestStatPlayer).toString() == "Human") {
-			gameResults[0] = gameResults[0] + 1;
+			//gameResults[0] = gameResults[0] + 1;
 			playerRoundWin++;
 
 		} else if (playersList.get(highestStatPlayer).toString() == "Opponent 1") {
-			gameResults[1] = gameResults[1] + 1;
+			//gameResults[1] = gameResults[1] + 1;
 			cpu1RoundWin++;
 		}
 
 		else if (playersList.get(highestStatPlayer).toString() == "Opponent 2") {
-			gameResults[2] = gameResults[2] + 1;
+			//gameResults[2] = gameResults[2] + 1;
 			cpu2RoundWin++;
 		}
 
 		else if (playersList.get(highestStatPlayer).toString() == "Opponent 3") {
-			gameResults[3] = gameResults[3] + 1;
+			//gameResults[3] = gameResults[3] + 1;
 			cpu3RoundWin++;
 		}
 
 		else if (playersList.get(highestStatPlayer).toString() == "Opponent 4") {
-			gameResults[4] = gameResults[4] + 1;
+			//gameResults[4] = gameResults[4] + 1;
 			cpu4RoundWin++;
 		}
 	}
@@ -498,6 +515,13 @@ public class TopTrumpsModel {
 
 	}
 
+	public void saveStats() {
+		db = new SQL();
+		db.setgameInfotoSQL(gameID, winner, roundNumber, drawNumber, playerRoundWin, cpu1RoundWin, cpu2RoundWin, cpu3RoundWin, cpu4RoundWin);
+	}
+	
+	
+	
 	public static String[] getHeaderArray() {
 		return headerArray;
 	}
