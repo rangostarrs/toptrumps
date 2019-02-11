@@ -296,7 +296,7 @@ public class TopTrumpsModel  {
 			if (currentHands.get(i).returnStat(statSelection) > currentHands.get(highestStatPlayer)
 					.returnStat(statSelection)) {
 				System.out.println("");
-				System.out.println("the stat selection of the active  player  = "+ currentHands.get(i).returnStat(statSelection));
+				System.out.println("the stat selection value of the active player  = "+ currentHands.get(i).returnStat(statSelection));
 				highestStatPlayer = i;
 			}
 		}
