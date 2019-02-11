@@ -268,7 +268,7 @@ public class TopTrumpsModel  {
 	
 		for (int i = 0; i < currentHands.size(); i++) {
 			playersList.get(highestStatPlayer).getDeck().addLast(currentHands.get(i));
-
+			
 		}
 		if (!commonPile.isEmpty()) {
 			for (int i = 0; i < commonPile.size(); i++) {
@@ -289,12 +289,14 @@ public class TopTrumpsModel  {
 	}
 
 	public int compareStat(int statSelection, ArrayList<Card> currentHands) {
-		
+		System.setOut(o);
 		// return index of the player with the highest score
 		int highestStatPlayer = 0;
 		for (int i = 1; i < currentHands.size(); i++) {
 			if (currentHands.get(i).returnStat(statSelection) > currentHands.get(highestStatPlayer)
 					.returnStat(statSelection)) {
+				System.out.println("");
+				System.out.println("the stat selection of the active  player  = "+ currentHands.get(i).returnStat(statSelection));
 				highestStatPlayer = i;
 			}
 		}
@@ -308,6 +310,8 @@ public class TopTrumpsModel  {
 				break;
 			}
 		}
+		System.out.println("-------------------------");
+		System.setOut(c);
 		return highestStatPlayer;
 	}
 
