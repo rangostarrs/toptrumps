@@ -1,3 +1,5 @@
+import java.io.FileNotFoundException;
+
 import commandline.TopTrumpsCLIApplication;
 
 import online.TopTrumpsOnlineApplication;
@@ -6,8 +8,9 @@ import online.TopTrumpsOnlineApplication;
 
 public class TopTrumps {
 
-	/** This is the main class for the TopTrumps Application */
-	public static void main(String[] args) {
+	/** This is the main class for the TopTrumps Application 
+	 * @throws FileNotFoundException */
+	public static void main(String[] args) throws FileNotFoundException {
 		
 		System.out.println("--------------------");
 		System.out.println("--- Top Trumps   ---");
@@ -47,3 +50,4 @@ public class TopTrumps {
 	}
 	
 }
+
