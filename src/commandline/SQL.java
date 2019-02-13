@@ -15,7 +15,11 @@ public class SQL {
 		private Connection c = null;
 		private GameStats gamestats;
 		private TopTrumpsModel model;
-		
+		private int gameid;
+		private int h_wins;
+		private int c_wins;
+		private double avg_draws;
+		private int highest_totalRounds;
 		public SQL() {
 			connectToDB();
 			
@@ -45,6 +49,17 @@ public class SQL {
 			}
 			
 			
+			
+		}
+		
+		public void closeConnectionToDB() {
+			
+			try {
+				c.close();
+				
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
 			
 		}
 		
@@ -83,14 +98,14 @@ public class SQL {
 	        System.out.println("The history of game statistics is the following:");
 	        
 	         while ( rs.next() ) {             
-	        	 int gameid = rs.getInt(1);
+	        	 gameid = rs.getInt(1);
 	        	 System.out.println("There has been " + gameid + " games in total.");}
 	         rs.close();
 	         stmt.close();
 	         Statement stm2 = c.createStatement();
 	         ResultSet rs2 = stm2.executeQuery("Select Count (winner) \r \n" + "From Game \r \n" + "Where winner LIKE 'cpu%';");
 	         while(rs2.next()) {
-	        	 int c_wins = rs2.getInt(1);
+	        	 c_wins = rs2.getInt(1);
 	        	 System.out.println("CPU has won " + c_wins + " times.");
 	         }
 	         rs2.close();
@@ -99,7 +114,7 @@ public class SQL {
 	         ResultSet rs3 = stm3.executeQuery("Select Count (winner) \r \n" + "From Game \r \n" + "Where winner LIKE 'p%';");
 	         
 	         while(rs3.next()) {
-	        	 int h_wins = rs3.getInt(1);
+	        	 h_wins = rs3.getInt(1);
 	        	 System.out.println("Humans have won " + h_wins + " times.");
 	         }
 	         rs3.close();
@@ -108,7 +123,7 @@ public class SQL {
 	         ResultSet rs4 = stm4.executeQuery("Select Avg(draws) \r \n" + "From Game;");
 	         
 	         while(rs4.next()) {
-	        	 double avg_draws = rs4.getDouble(1);
+	        	 avg_draws = rs4.getDouble(1);
 	        	 NumberFormat formatter = new DecimalFormat("#0");
 	        	 System.out.println("There has been approximately " + formatter.format(avg_draws) + " draws per game.");
 	        	 
@@ -119,8 +134,8 @@ public class SQL {
 	         ResultSet rs5 = stm5.executeQuery("Select Max(totalrounds) \r \n" + "From Game;");
 	         
 	         while(rs5.next()) {
-	        	 int highest_totalrounds = rs5.getInt(1);
-	        	 System.out.println("The highest number of rounds played in any of the games has been " + highest_totalrounds + ".");
+	        	 highest_totalRounds = rs5.getInt(1);
+	        	 System.out.println("The highest number of rounds played in any of the games has been " + highest_totalRounds + ".");
 	         }
 	         rs5.close();
 	         stm5.close();
@@ -194,7 +209,14 @@ public class SQL {
 		}
 
 
-
+		public int[]insertGameStatsOnline(){
+			getGameStats();
+			
+			int[] statistics = {gameid,h_wins,c_wins,highest_totalRounds,(int) avg_draws};
+			
+			return statistics;
+		
+		}
 		
 			
 		}

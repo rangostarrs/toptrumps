@@ -27,80 +27,83 @@
     		<div class="view" style="background-image: url('https://i.imgur.com/J46cBUQ.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;"></div>
     	</header>
     	
-    	<div class="container">
+    	<div class="container"></div>
 
-			</style>
+			
 
 	</head>
 
-<body onload="initalize()">
 <!-- Call the initalize method when the page loads -->
-	<body style=" opacity:0.5; color:black; background: url(https://www.elegantthemes.com/blog/wp-content/uploads/2013/09/bg-5-full.jpg)">
-	<div class="header">
-		<font size="5"></font>
-		<h1 align="center">Game Statistics</h1>
-			<div class="row">
-				<table style="margin-top:50px; margin-left:400px;">
-					  <tr>
+<!-- 	<body onload="initalize()"> -->
+
+	<body style=" opacity:0.5; color:white; background: url(https://www.elegantthemes.com/blog/wp-content/uploads/2013/09/bg-5-full.jpg)">
+        		<div class="header">
+					<button type="button" onclick="window.location.href ='http://localhost:7777/toptrumps';"class="btn btn-primary btn-lg">Back</button>
+        			<font size="5"></font>
+        			<h1 align="center">Game Statistics</h1>
+        				<div class="row">
+        					<table style="margin-top:100px; margin-left:400px;">
+        					
+							  <tr>
 					    <th width="500">Statistic</th>
 					    <th width="100">Value</th>
 					  </tr>
 					  <tr>
-					    <td height="50">Number of Games Played</td>
-					    <td height="50">0</td>
+					  
+					    <td height="50">>Number of Games Played</td>
+					    <td id="num1"></td>
 					  </tr>
 					  <tr>
 					    <td height="50">Number of Player Wins</td>
-					    <td height="50">0</td>
+					    <td id="num2"></td>
 					  </tr>
 					  <tr>
 					    <td height="50">Number of CPU Wins</td>
-					    <td height="50">0</td>
+					    <td id="num3"></td>
 					  </tr>
 					  <tr>
 					    <td height="50">Average Number of Draws</td>
-					    <td height="50">0</td>
+					    <td id="num4"></td>
 					  </tr>
 					  <tr>
 					    <td height="50">Highest Number of Rounds</td>
-					    <td height="50">0</td>
+					    <td id="num5"></td>
 					  </tr>
-					</table>
+					  
+							</table>
+        				
+        				
+        				</div>
+        			</div>
+        	
+        	</body>
+        	
+
+	</div>
+	
+			
+
+	<body />
 
 
-			</div>
-		</div>
-
-</body>
 
 
 
-
-
-
-<body />
-
-
-
-
-</html>
 		
-		</div>
+		
 		
 		<script type="text/javascript">
 		
-			// Method that is called on page load
-/* 			function initalize() { */
+			
+		function initalize() { 
 			
 				// --------------------------------------------------------------------------
 				// You can call other methods you want to run when the page first loads here
 				// --------------------------------------------------------------------------
+				insertStatsOnline();
 				
-				// For example, lets call our sample methods
-/* 				helloJSONList();
-				helloWord("Student"); */
 				
-/* 			} */
+		} 
 			
 			// -----------------------------------------
 			// Add your other Javascript methods Here
@@ -135,6 +138,29 @@
 		
 		<!-- Here are examples of how to call REST API Methods -->
 		<script type="text/javascript">
+		
+		function insertStatsOnline() {
+			var xhr = createCORSRequest('GET',
+					"http://localhost:7777/toptrumps/statisticsonline");
+			if (!xhr) {
+				alert("Bad bad bad");
+			}
+			xhr.onload = function(e) {
+				var responseText = xhr.response; // the text of the response
+				var list = JSON.parse(responseText);
+
+				for (i = 0; i < 5; i++) {
+					var tuple = "#num" + (i + 1);
+					$(tuple).text(list[i]);
+				}
+			}
+			xhr.send();
+		}
+		
+		
+		
+		
+		
 		
 			// This calls the helloJSONList REST method from TopTrumpsRESTAPI
 /* 			function helloJSONList() {

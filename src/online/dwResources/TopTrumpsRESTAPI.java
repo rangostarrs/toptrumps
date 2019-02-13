@@ -16,6 +16,8 @@ import online.configuration.TopTrumpsJSONConfiguration;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 
+import commandline.*;
+
 @Path("/toptrumps") // Resources specified here should be hosted at http://localhost:7777/toptrumps
 @Produces(MediaType.APPLICATION_JSON) // This resource returns JSON content
 @Consumes(MediaType.APPLICATION_JSON) // This resource can take JSON content as input
@@ -82,6 +84,21 @@ public class TopTrumpsRESTAPI {
 	 */
 	public String helloWord(@QueryParam("Word") String Word) throws IOException {
 		return "Hello "+Word;
+	}
+	
+	@GET
+	@Path("/statisticsonline")
+	
+	public String insertStatsOnline() throws IOException {
+		
+		SQL connect = new SQL();
+	
+		int[]statistics = connect.insertGameStatsOnline();
+		
+		
+		String JSONStatisticsString = oWriter.writeValueAsString(statistics);
+		return JSONStatisticsString;
+	
 	}
 	
 }
