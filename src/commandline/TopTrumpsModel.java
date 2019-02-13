@@ -19,14 +19,12 @@ import java.util.Scanner;
 
 import com.sun.javafx.collections.MappingChange.Map;
 
-
-
 //--------------------------------
 //When we deal cards, we add cards at the TOP of the deque (addFirst() method)
 //When we take a card from the top of our stack, we use pollFirst()
 //When we put cards on the bottom of our stack, we use addLast()
 //--------------------------------
-public class TopTrumpsModel  {
+public class TopTrumpsModel {
 
 	private ArrayList<Card> cardList = new ArrayList<Card>();
 	private static String headerArray[] = new String[6];
@@ -41,22 +39,23 @@ public class TopTrumpsModel  {
 	private ArrayList<Card> currentHands = new ArrayList<Card>();
 	// common pile used in case of a draw
 	private ArrayList<Card> commonPile = new ArrayList<Card>();
-	//Stats used to create and update the database
-	private  int drawNumber = 0;
-	private  int playerRoundWin = 0;
-	private  int cpu1RoundWin = 0;
-	private  int cpu2RoundWin = 0;
-	private  int cpu3RoundWin = 0;
-	private  int cpu4RoundWin = 0;
+	// Stats used to create and update the database
+	private int drawNumber = 0;
+	private int playerRoundWin = 0;
+	private int cpu1RoundWin = 0;
+	private int cpu2RoundWin = 0;
+	private int cpu3RoundWin = 0;
+	private int cpu4RoundWin = 0;
 	// player with the highest stat, initially 0
 	private int highestStatPlayer = 0;
 	private int[] gameResults = { 0, 0, 0, 0, 0 };
-	private  int gameID;
-	private  int roundNumber;
-	private  String winner;
+	private int gameID;
+	private int roundNumber;
+	private String winner;
 	private SQL db;
 	private PrintStream o = new PrintStream(new File("Long.txt"));
 	private PrintStream c = System.out;
+
 	TopTrumpsModel() throws FileNotFoundException {
 
 	}
@@ -84,14 +83,11 @@ public class TopTrumpsModel  {
 						break;
 					}
 				}
-				//db = new SQL();
-				//gameID = db.getGameIDfromDB();
+				// db = new SQL();
+				// gameID = db.getGameIDfromDB();
 				addCardsToList();
 				gameLoop(cpuNumber, cardList);
-				
-			    
-					
-				
+
 				break;
 			} else {
 				System.out.println("Please enter '1' to print game statistics or '2' to play game");
@@ -101,10 +97,10 @@ public class TopTrumpsModel  {
 	}
 
 	public void gameLoop(int cpuNumber, ArrayList<Card> cardList) {
-		
+
 		Scanner userInput = new Scanner(System.in);
 		roundNumber = 1;
-		//stat that will be played in the given round
+		// stat that will be played in the given round
 		int statSelection = 0;
 
 		dealCards(cpuNumber, cardList);
@@ -147,14 +143,14 @@ public class TopTrumpsModel  {
 			// <draw>
 			if (highestStatPlayer == 6) {
 				// add hands to the common pile in case of a draw
-				
+
 				for (int i = 0; i < currentHands.size(); i++) {
 					commonPile.add(currentHands.get(i));
 				}
 				System.setOut(o);
 				System.out.println("-------------------------------");
 				System.out.println("Common Pile Contents");
-				for (Card c: commonPile) {
+				for (Card c : commonPile) {
 					System.out.println(c.toString());
 				}
 				System.setOut(c);
@@ -186,10 +182,10 @@ public class TopTrumpsModel  {
 				reorderPlayersList(playersList, highestStatPlayer);
 
 				// increase number of wins for the current player
-				try{
+				try {
 					increaseRoundWin(highestStatPlayer);
-					
-				}catch(IndexOutOfBoundsException e) {
+
+				} catch (IndexOutOfBoundsException e) {
 					e.printStackTrace();
 				}
 			}
@@ -215,77 +211,77 @@ public class TopTrumpsModel  {
 		System.out.println("The overall winner was " + playersList.get(0).toString() + "\n Scores: " + "\n Human: "
 				+ playerRoundWin + "\n Opponent 1: " + cpu1RoundWin + "\n Opponent 2: " + cpu2RoundWin
 				+ "\n Opponent 3: " + cpu3RoundWin + "\n Opponent 4: " + cpu4RoundWin);
-			
-			winner = playersList.get(0).toString();
 
-			System.out.println("\n" + "GameID is " + gameID);
+		winner = playersList.get(0).toString();
+
+		System.out.println("\n" + "GameID is " + gameID);
 
 		// game end:
-		//GameStats gameStats = new GameStats(gameID, playersList.get(0).toString(), roundNumber, playerRoundWin,
-			//	cpu1RoundWin, cpu2RoundWin, cpu3RoundWin, cpu4RoundWin, drawNumber);
-		
+		// GameStats gameStats = new GameStats(gameID, playersList.get(0).toString(),
+		// roundNumber, playerRoundWin,
+		// cpu1RoundWin, cpu2RoundWin, cpu3RoundWin, cpu4RoundWin, drawNumber);
+
 		saveStats();
-		
-		
-		
 
 	}
 
 	public void increaseRoundWin(int highestStatPlayer) {
 
-		if (playersList.get(highestStatPlayer).toString() == "Human") {
-			//gameResults[0] = gameResults[0] + 1;
+		if (highestStatPlayer == 6) {
+			// do nothing in case of a draw
+		} else if (playersList.get(highestStatPlayer).toString() == "Human") {
+			// gameResults[0] = gameResults[0] + 1;
 			playerRoundWin++;
 
 		} else if (playersList.get(highestStatPlayer).toString() == "Opponent 1") {
-			//gameResults[1] = gameResults[1] + 1;
+			// gameResults[1] = gameResults[1] + 1;
 			cpu1RoundWin++;
 		}
 
 		else if (playersList.get(highestStatPlayer).toString() == "Opponent 2") {
-			//gameResults[2] = gameResults[2] + 1;
+			// gameResults[2] = gameResults[2] + 1;
 			cpu2RoundWin++;
 		}
 
 		else if (playersList.get(highestStatPlayer).toString() == "Opponent 3") {
-			//gameResults[3] = gameResults[3] + 1;
+			// gameResults[3] = gameResults[3] + 1;
 			cpu3RoundWin++;
 		}
 
 		else if (playersList.get(highestStatPlayer).toString() == "Opponent 4") {
-			//gameResults[4] = gameResults[4] + 1;
+			// gameResults[4] = gameResults[4] + 1;
 			cpu4RoundWin++;
 		}
 	}
 
 	public void reorderPlayersList(ArrayList<Player> playersList, int highestStatPlayer) {
 		try {
-		playersList.add(0, playersList.remove(highestStatPlayer));
-		}catch(IndexOutOfBoundsException e) {}
+			playersList.add(0, playersList.remove(highestStatPlayer));
+		} catch (IndexOutOfBoundsException e) {
+		}
 	}
 
 	public int giveHandsToWinner(int highestStatPlayer) {
-	
+
 		for (int i = 0; i < currentHands.size(); i++) {
 			playersList.get(highestStatPlayer).getDeck().addLast(currentHands.get(i));
-			
+
 		}
 		if (!commonPile.isEmpty()) {
 			for (int i = 0; i < commonPile.size(); i++) {
 				playersList.get(highestStatPlayer).getDeck().addLast(commonPile.get(i));
 			}
 		}
-		int g = currentHands.size()+commonPile.size();
+		int g = currentHands.size() + commonPile.size();
 		System.out.println("The winner takes " + g + " cards");
 		System.out.println("\nThe winner now has " + playersList.get(highestStatPlayer).getDeck().size() + " cards \n");
-		
-		//Added this ArrayList of ArrayLists to test in JUnit
-		
-		
+
+		// Added this ArrayList of ArrayLists to test in JUnit
+
 		currentHands.clear();
 		commonPile.clear();
 		return g;
-		
+
 	}
 
 	public int compareStat(int statSelection, ArrayList<Card> currentHands) {
@@ -296,7 +292,8 @@ public class TopTrumpsModel  {
 			if (currentHands.get(i).returnStat(statSelection) > currentHands.get(highestStatPlayer)
 					.returnStat(statSelection)) {
 				System.out.println("");
-				System.out.println("the stat selection value of the active player  = "+ currentHands.get(i).returnStat(statSelection));
+				System.out.println("the stat selection value of the active player  = "
+						+ currentHands.get(i).returnStat(statSelection));
 				highestStatPlayer = i;
 			}
 		}
@@ -326,10 +323,10 @@ public class TopTrumpsModel  {
 		System.setOut(o);
 		System.out.println("-------------");
 		System.out.println("Current Hands");
-		for (Card c: currentHands) {
+		for (Card c : currentHands) {
 			System.out.println(c.toString());
 		}
-		
+
 		System.setOut(c);
 		return currentHands;
 	}
@@ -340,16 +337,18 @@ public class TopTrumpsModel  {
 			// [USER MOVE]
 			System.out.println("It is your turn to select a category, the categories are:" + "\n 1: " + headerArray[1]
 					+ "\n 2: " + headerArray[2] + "\n 3: " + headerArray[3] + "\n 4: " + headerArray[4] + "\n 5: "
-	                + headerArray[5]);
-			
+					+ headerArray[5]);
+
 			while (true) {
 				try {
-				statSelection = getInt("Enter the number for your attribute (1-5):", userInput);
-				if (statSelection > 0 && statSelection < 6) {
-					break;
-				}}catch(NoSuchElementException e) {
-					System.out.println("Try Again, Friend");
-			}}
+					statSelection = getInt("Enter the number for your attribute (1-5):", userInput);
+					if (statSelection > 0 && statSelection < 6) {
+						break;
+					}
+				} catch (NoSuchElementException e) {
+					System.out.println("Try Again");
+				}
+			}
 
 		}
 		// [CPU MOVE]
@@ -391,8 +390,6 @@ public class TopTrumpsModel  {
 
 	public ArrayList<Player> createPlayersArray(int cpuNumber) {
 
-		
-		
 		playersList.add(player);
 		Player cpu1 = new Player("Opponent 1", cpu1Deck);
 		playersList.add(cpu1);
@@ -415,35 +412,35 @@ public class TopTrumpsModel  {
 	}
 
 	public ArrayList<Deque<Card>> dealCards(int cpuNumber, ArrayList<Card> cardList) {
-		ArrayList <Deque<Card>> playerDeques = new ArrayList();
+		ArrayList<Deque<Card>> playerDeques = new ArrayList();
 		mainDeck = shuffleCards(cardList);
 		while (!mainDeck.isEmpty()) {
 			playerDeck.addFirst(mainDeck.pollFirst());
-			
+
 			if (mainDeck.isEmpty()) {
 				break;
 			}
 			cpu1Deck.addFirst(mainDeck.pollFirst());
-			
+
 			if (mainDeck.isEmpty()) {
-				
+
 				break;
 			}
 			if (cpuNumber > 1) {
 				cpu2Deck.addFirst(mainDeck.pollFirst());
-				
+
 				if (mainDeck.isEmpty()) {
 					break;
 				}
 				if (cpuNumber > 2) {
 					cpu3Deck.addFirst(mainDeck.pollFirst());
-					
+
 					if (mainDeck.isEmpty()) {
 						break;
 					}
 					if (cpuNumber > 3) {
 						cpu4Deck.addFirst(mainDeck.pollFirst());
-						
+
 						if (mainDeck.isEmpty()) {
 							break;
 						}
@@ -458,28 +455,28 @@ public class TopTrumpsModel  {
 		playerDeques.add(cpu4Deck);
 		System.setOut(o);
 		System.out.println("Player Deck------------------------------------------");
-		for (Card c:playerDeck) {
-			
+		for (Card c : playerDeck) {
+
 			System.out.println(c.toString());
 		}
 		System.out.println("cpu1Deck------------------------------------------");
-		for (Card c:cpu1Deck) {
-			
+		for (Card c : cpu1Deck) {
+
 			System.out.println(c.toString());
 		}
 		System.out.println("cpu2Deck------------------------------------------");
-		for (Card c:cpu2Deck) {
-			
+		for (Card c : cpu2Deck) {
+
 			System.out.println(c.toString());
 		}
 		System.out.println("cpu3Deck------------------------------------------");
-		for (Card c:cpu3Deck) {
-			
+		for (Card c : cpu3Deck) {
+
 			System.out.println(c.toString());
 		}
 		System.out.println("cpu4Deck------------------------------------------");
-		for (Card c:cpu4Deck) {
-			
+		for (Card c : cpu4Deck) {
+
 			System.out.println(c.toString());
 		}
 		System.out.println("");
@@ -493,11 +490,11 @@ public class TopTrumpsModel  {
 		Collections.shuffle(cardList);
 		mainDeck = new ArrayDeque<Card>(cardList);
 		System.setOut(o);
-		
+
 		System.out.println("-----------------------------------------\n");
 		System.out.println("Shuffled Cards list");
-		for (Card c: mainDeck) {
-			
+		for (Card c : mainDeck) {
+
 			System.out.println(c.toString());
 		}
 		System.setOut(c);
@@ -551,17 +548,16 @@ public class TopTrumpsModel  {
 		}
 		System.setOut(o);
 		System.out.println("Unshuffled Cards list:");
-		
-		for (Card c: cardList){
-			
-			
+
+		for (Card c : cardList) {
+
 			System.out.println(c.toString());
 		}
-		
+
 		System.out.println("--------------------");
-		
+
 		System.setOut(c);
-		
+
 		return cardList;
 
 	}
@@ -587,11 +583,10 @@ public class TopTrumpsModel  {
 
 	public void saveStats() {
 		db = new SQL();
-		db.setgameInfotoSQL(gameID, winner, roundNumber, drawNumber, playerRoundWin, cpu1RoundWin, cpu2RoundWin, cpu3RoundWin, cpu4RoundWin);
+		db.setgameInfotoSQL(gameID, winner, roundNumber, drawNumber, playerRoundWin, cpu1RoundWin, cpu2RoundWin,
+				cpu3RoundWin, cpu4RoundWin);
 	}
-	
-	
-	
+
 	public static String[] getHeaderArray() {
 		return headerArray;
 	}
