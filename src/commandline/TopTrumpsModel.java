@@ -139,7 +139,12 @@ public class TopTrumpsModel {
 
 			// compare stat between the players
 			highestStatPlayer = compareStat(statSelection, currentHands);
-
+			System.setOut(o);
+			System.out.println("The selected stat is number "+ statSelection);
+			for (Card c:currentHands) {
+				System.out.println(c.returnStat(statSelection));
+			}
+			System.setOut(c);
 			// <draw>
 			if (highestStatPlayer == 6) {
 				// add hands to the common pile in case of a draw
@@ -213,7 +218,10 @@ public class TopTrumpsModel {
 				+ "\n Opponent 3: " + cpu3RoundWin + "\n Opponent 4: " + cpu4RoundWin);
 
 		winner = playersList.get(0).toString();
-
+		
+		System.setOut(o);
+		System.out.println(winner);
+		System.setOut(c);
 		System.out.println("\n" + "GameID is " + gameID);
 
 		// game end:
@@ -600,6 +608,7 @@ public class TopTrumpsModel {
 	}
 
 	public String getWinner() {
+		
 		return winner;
 	}
 
