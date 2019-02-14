@@ -2,7 +2,6 @@ online/dwViews/SelectionScreenView.class
 online/dwResources/GameWebPagesResource.class
 commandline/TopTrumpsView.class
 commandline/Player.class
-SQL/SQL.class
 commandline/GameStats.class
 online/configuration/TopTrumpsJSONConfiguration.class
 commandline/TopTrumpsCLIApplication.class
