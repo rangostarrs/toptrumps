@@ -80,11 +80,7 @@ public class TopTrumpsRESTAPI {
 	}
 	
 	public void startGame() {
-		
-		cardList = addCardsToList(deckFile);
-		mainDeck = shuffleCards(cardList);
-		dealCards(numPlayers, cardList);
-		
+
 	}
 	
 	public ArrayList<Player> createPlayersArray(int cpuNumber) {
