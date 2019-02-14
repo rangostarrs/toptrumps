@@ -18,6 +18,7 @@ class TopTrumpsModelTest {
 	TopTrumpsModel m;
 	ArrayList <Player> p;
 	ArrayList<Card> c;
+	Deque<Card> shuffled;
 	Deque<Card> playerDeck;
 	Deque<Card> cpu1Deck;
 	Deque<Card> cpu2Deck;
@@ -31,6 +32,7 @@ class TopTrumpsModelTest {
 		m = new TopTrumpsModel();
 		p= new ArrayList<Player>();
 		c= new ArrayList<Card>();
+		shuffled = new ArrayDeque<Card>();
 		playerDeck = new ArrayDeque<Card>();
 		cpu1Deck = new ArrayDeque<Card>();
 		cpu2Deck = new ArrayDeque<Card>();
@@ -52,7 +54,7 @@ class TopTrumpsModelTest {
 //	void shuffleCardsTest() {
 //
 //		// i think a completely new object with different cards is being created by this 
-//		assertEquals(c,m.shuffleCards(c));
+//		assertEquals(c,);
 //
 //
 //	}
@@ -65,8 +67,8 @@ class TopTrumpsModelTest {
 
 		//  this test works by demonstrating that players with no cards are immediately eliminated/
 		// players are created without the decks being filled with any cards
-		//therefore causing all the players to be eliminated when the method is run
-		//see console 
+		// therefore causing all the players to be eliminated immediately when the method is run
+		// ***see console output***
 
 		assertEquals(0,m.checkPlayerEliminated(p));
 
@@ -81,7 +83,8 @@ class TopTrumpsModelTest {
 		c =(m.addCardsToList());
 		assertEquals(40,c.size());
 
-
+		
+		
 		//	THE SECTION TESTS THE METHOD dealCards by checking if the same ArrayList from above (which has now been 
 		//  changed to a deque) still has any cards in it (which it shouldn't if the method has been successful)
 		//
