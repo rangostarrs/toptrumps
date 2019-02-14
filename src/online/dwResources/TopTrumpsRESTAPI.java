@@ -7,7 +7,6 @@ import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Deque;
-import java.util.List;
 import java.util.Scanner;
 
 import javax.ws.rs.Consumes;
@@ -57,8 +56,6 @@ public class TopTrumpsRESTAPI {
 	private Card currentHandCard;
 	private static String headerArray[] = new String[6];
 
-
-
 	/** A Jackson Object writer. It allows us to turn Java objects
 	 * into JSON strings easily. */	
 	
@@ -83,6 +80,11 @@ public class TopTrumpsRESTAPI {
 	}
 	
 	public void startGame() {
+		
+		cardList = addCardsToList(deckFile);
+		mainDeck = shuffleCards(cardList);
+		dealCards(numPlayers, cardList);
+		
 	}
 	
 	public ArrayList<Player> createPlayersArray(int cpuNumber) {
@@ -156,7 +158,7 @@ public class TopTrumpsRESTAPI {
 
 		try {
 
-			reader = new FileReader(deckFile);
+			reader = new FileReader(fileName);
 			Scanner scanner = new Scanner(reader);
 			
 			String line = scanner.nextLine();
@@ -219,26 +221,25 @@ public class TopTrumpsRESTAPI {
 		cardList = addCardsToList(deckFile);
 		mainDeck = shuffleCards(cardList);
 		dealCards(numPlayers, cardList);
-		currentHands = collectCurrentHands();
 		
 		Card[] cardListCurrentHands = new Card[numPlayers];
 		
 		for (int i = 0; i < numPlayers; i++) {
 				switch (playersList.get(i).getName()) {
 				case ("Human"):
-					cardListCurrentHands[0] = currentHands.get(i);
+					cardListCurrentHands[0] = playersList.get(i).getDeck().pollFirst();
 					continue;
 				case ("Opponent 1"):
-					cardListCurrentHands[1] = currentHands.get(i);
+					cardListCurrentHands[1] = playersList.get(i).getDeck().pollFirst();
 					continue;
 				case ("Opponent 2"):
-					cardListCurrentHands[2] = currentHands.get(i);
+					cardListCurrentHands[2] = playersList.get(i).getDeck().pollFirst();
 					continue;
 				case ("Opponent 3"):
-					cardListCurrentHands[3] = currentHands.get(i);
+					cardListCurrentHands[3] = playersList.get(i).getDeck().pollFirst();
 					continue;
 				case ("Opponent 4"):
-					cardListCurrentHands[4] = currentHands.get(i);
+					cardListCurrentHands[4] = playersList.get(i).getDeck().pollFirst();
 					continue;
 				default:
 					System.err.println("There is no player");

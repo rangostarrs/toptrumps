@@ -4,7 +4,6 @@
 /Users/DJP0Land/git/toptrumps/src/commandline/Player.java
 /Users/DJP0Land/git/toptrumps/src/online/dwViews/SelectionScreenView.java
 /Users/DJP0Land/git/toptrumps/src/online/configuration/TopTrumpsJSONConfiguration.java
-/Users/DJP0Land/git/toptrumps/src/SQL/SQL.java
 /Users/DJP0Land/git/toptrumps/src/commandline/TopTrumpsCLIApplication.java
 /Users/DJP0Land/git/toptrumps/src/commandline/GameStats.java
 /Users/DJP0Land/git/toptrumps/src/online/TopTrumpsOnlineApplication.java
@@ -14,3 +13,4 @@
 /Users/DJP0Land/git/toptrumps/src/online/dwResources/GameWebPagesResource.java
 /Users/DJP0Land/git/toptrumps/src/commandline/TopTrumpsController.java
 /Users/DJP0Land/git/toptrumps/src/commandline/TopTrumpsModel.java
+/Users/DJP0Land/git/toptrumps/src/commandline/SQL.java
