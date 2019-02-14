@@ -1,8 +1,14 @@
 package online.dwResources;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Deque;
 import java.util.List;
+import java.util.Scanner;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -16,7 +22,8 @@ import online.configuration.TopTrumpsJSONConfiguration;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 
-import commandline.*;
+import commandline.Card;
+import commandline.Player;
 
 @Path("/toptrumps") // Resources specified here should be hosted at http://localhost:7777/toptrumps
 @Produces(MediaType.APPLICATION_JSON) // This resource returns JSON content
@@ -32,10 +39,28 @@ import commandline.*;
  * methods that allow a TopTrumps game to be controled from a Web page.
  */
 public class TopTrumpsRESTAPI {
+	
+	ObjectWriter oWriter = new ObjectMapper().writerWithDefaultPrettyPrinter();
+	private String deckFile;
+	private int numPlayers;
+	private Deque<Card> mainDeck;
+	private Deque<Card> playerDeck = new ArrayDeque<Card>();
+	private Deque<Card> cpu1Deck = new ArrayDeque<Card>(); 
+	private Deque<Card> cpu2Deck = new ArrayDeque<Card>(); 
+	private Deque<Card> cpu3Deck = new ArrayDeque<Card>();
+	private Deque<Card> cpu4Deck = new ArrayDeque<Card>();
+	private ArrayList<Card> cardList;
+	private Player playerAI1, playerAI2, playerAI3, playerAI4;
+	private ArrayList<Player> playersList;
+	private Player playerHuman = new Player("Human", playerDeck);
+	private ArrayList<Card> currentHands;
+	private Card currentHandCard;
+	private static String headerArray[] = new String[6];
+
+
 
 	/** A Jackson Object writer. It allows us to turn Java objects
-	 * into JSON strings easily. */
-	ObjectWriter oWriter = new ObjectMapper().writerWithDefaultPrettyPrinter();
+	 * into JSON strings easily. */	
 	
 	/**
 	 * Contructor method for the REST API. This is called first. It provides
@@ -44,61 +69,184 @@ public class TopTrumpsRESTAPI {
 	 * @param conf
 	 */
 	public TopTrumpsRESTAPI(TopTrumpsJSONConfiguration conf) {
-		// ----------------------------------------------------
-		// Add relevant initalization here
-		// ----------------------------------------------------
+		deckFile = conf.getDeckFile(); // card deck is loaded when the app is run
+		numPlayers = conf.getNumAIPlayers() + 1; // number of ai players plus human player
+	}
+
+	@GET
+	@Path("/setNumberOfPlayers")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void setNumberOfPlayers(@QueryParam("number") int number) throws IOException {
+		numPlayers = number + 1;
+		
+		startGame();
 	}
 	
-	// ----------------------------------------------------
-	// Add relevant API methods here
-	// ----------------------------------------------------
-	
-	@GET
-	@Path("/helloJSONList")
-	/**
-	 * Here is an example of a simple REST get request that returns a String.
-	 * We also illustrate here how we can convert Java objects to JSON strings.
-	 * @return - List of words as JSON
-	 * @throws IOException
-	 */
-	public String helloJSONList() throws IOException {
-		
-		List<String> listOfWords = new ArrayList<String>();
-		listOfWords.add("Hello");
-		listOfWords.add("World!");
-		
-		// We can turn arbatory Java objects directly into JSON strings using
-		// Jackson seralization, assuming that the Java objects are not too complex.
-		String listAsJSONString = oWriter.writeValueAsString(listOfWords);
-		
-		return listAsJSONString;
+	public void startGame() {
 	}
 	
-	@GET
-	@Path("/helloWord")
-	/**
-	 * Here is an example of how to read parameters provided in an HTML Get request.
-	 * @param Word - A word
-	 * @return - A String
-	 * @throws IOException
-	 */
-	public String helloWord(@QueryParam("Word") String Word) throws IOException {
-		return "Hello "+Word;
+	public ArrayList<Player> createPlayersArray(int cpuNumber) {
+		playersList = new ArrayList<Player>();		
+		
+		playersList.add(playerHuman);
+		playerAI1 = new Player("Opponent 1", cpu1Deck);
+		playersList.add(playerAI1);
+		if (cpuNumber > 1) {
+			playerAI2 = new Player("Opponent 2", cpu2Deck);
+			playersList.add(playerAI2);
+			if (cpuNumber > 2) {
+				playerAI3 = new Player("Opponent 3", cpu3Deck);
+				playersList.add(playerAI3);
+				if (cpuNumber > 3) {
+					playerAI4 = new Player("Opponent 4", cpu4Deck);
+					playersList.add(playerAI4);
+				}
+			}
+		}
+		
+		// randomise order in which the players start
+		Collections.shuffle(playersList);
+		return playersList;
+	}
+
+	public void dealCards(int cpuNumber, ArrayList<Card> cardList) {
+		
+		while (!mainDeck.isEmpty()) {
+			playerDeck.addFirst(mainDeck.pollFirst());
+			if (mainDeck.isEmpty()) {
+				break;
+			}
+			cpu1Deck.addFirst(mainDeck.pollFirst());
+			if (mainDeck.isEmpty()) {
+				break;
+			}
+			if (cpuNumber > 1) {
+				cpu2Deck.addFirst(mainDeck.pollFirst());
+				if (mainDeck.isEmpty()) {
+					break;
+				}
+				if (cpuNumber > 2) {
+					cpu3Deck.addFirst(mainDeck.pollFirst());
+					if (mainDeck.isEmpty()) {
+						break;
+					}
+					if (cpuNumber > 3) {
+						cpu4Deck.addFirst(mainDeck.pollFirst());
+						if (mainDeck.isEmpty()) {
+							break;
+						}
+					}
+				}
+			}
+		}
+		createPlayersArray(cpuNumber);
 	}
 	
+	public Deque<Card> shuffleCards(ArrayList<Card> cardList) {
+
+		Collections.shuffle(cardList);
+		mainDeck = new ArrayDeque<Card>(cardList);
+		
+		return mainDeck;
+	}
+	
+	public ArrayList<Card> addCardsToList(String fileName) {
+		cardList = new ArrayList<Card>();
+		FileReader reader = null;
+
+		try {
+
+			reader = new FileReader(deckFile);
+			Scanner scanner = new Scanner(reader);
+			
+			String line = scanner.nextLine();
+			String[] tokens = line.split(" ");
+
+			for (int i = 0; i < 6; i++) {
+				headerArray[i] = tokens[i];
+			}
+
+			while (scanner.hasNextLine()) {
+				line = scanner.nextLine();
+				tokens = line.split(" ");
+
+				String description = tokens[0];
+				int stat1 = Integer.parseInt(tokens[1]);
+				int stat2 = Integer.parseInt(tokens[2]);
+				int stat3 = Integer.parseInt(tokens[3]);
+				int stat4 = Integer.parseInt(tokens[4]);
+				int stat5 = Integer.parseInt(tokens[5]);
+
+				Card cardObject = new Card(description, stat1, stat2, stat3, stat4, stat5);
+				cardList.add(cardObject);
+			}
+
+			scanner.close();
+
+		} catch (FileNotFoundException exception) {
+			exception.printStackTrace();
+		} finally {
+			if (reader != null) {
+				try {
+					reader.close();
+				} catch (IOException exception) {
+					exception.printStackTrace();
+				}
+			}
+		}
+		return cardList;
+
+	}
+	
+	public ArrayList<Card> collectCurrentHands() {
+		
+		currentHands = new ArrayList<Card>();
+		
+		for (int i = 0; i < playersList.size(); i++) {
+			// retrieve hand of each player
+			currentHandCard = playersList.get(i).getDeck().pollFirst();
+			currentHands.add(currentHandCard);
+		}
+		
+		return currentHands;
+	}
+	
+	
 	@GET
-	@Path("/statisticsonline")
-	
-	public String insertStatsOnline() throws IOException {
+	@Path("/displayCards")
+	public String displayCards() throws IOException	{
 		
-		SQL connect = new SQL();
-	
-		int[]statistics = connect.insertGameStatsOnline();
+		cardList = addCardsToList(deckFile);
+		mainDeck = shuffleCards(cardList);
+		dealCards(numPlayers, cardList);
+		currentHands = collectCurrentHands();
 		
+		Card[] cardListCurrentHands = new Card[numPlayers];
 		
-		String JSONStatisticsString = oWriter.writeValueAsString(statistics);
-		return JSONStatisticsString;
-	
+		for (int i = 0; i < numPlayers; i++) {
+				switch (playersList.get(i).getName()) {
+				case ("Human"):
+					cardListCurrentHands[0] = currentHands.get(i);
+					continue;
+				case ("Opponent 1"):
+					cardListCurrentHands[1] = currentHands.get(i);
+					continue;
+				case ("Opponent 2"):
+					cardListCurrentHands[2] = currentHands.get(i);
+					continue;
+				case ("Opponent 3"):
+					cardListCurrentHands[3] = currentHands.get(i);
+					continue;
+				case ("Opponent 4"):
+					cardListCurrentHands[4] = currentHands.get(i);
+					continue;
+				default:
+					System.err.println("There is no player");
+				}
+		}
+		
+		String currentHandsJSON = oWriter.writeValueAsString(cardListCurrentHands);
+		return currentHandsJSON;
 	}
 	
 }
