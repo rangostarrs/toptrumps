@@ -19,48 +19,76 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 		<link href="https://unpkg.com/nes.css/css/nes.min.css" rel="stylesheet" />
 		<link href='http://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
+		
+		<style>
+		
+			body {
+				background-image: url(https://i.stack.imgur.com/V3plu.gif);
+			}
+			
+			h1 {
+			font-weight: 400;
+			font-size: 30px;
+			color: white;
+			}
+			
+			.nes-btn {
+			font-size: 13px;
+			padding: 10px 10px;
+			}
+			
+			table {
+				font-weight: 200;
+				font-size: 15px;
+				color: white;
+			}
+		
+		</style>
 
 	</head>
 
-	<body style="background: url(https://i.stack.imgur.com/V3plu.gif)" onload="initalize()">
-        		<div class="header">
-					<button type="button" onclick="window.location.href ='http://localhost:7777/toptrumps';"class="btn btn-primary btn-lg">Back</button>
-        			<font size="5"></font>
-        			<h1 align="center">Game Statistics</h1>
-        				<div class="row">
-        					<table style="margin-top:100px; margin-left:400px;">
-        					
-							  <tr>
-					    <th width="500">Statistic</th>
-					    <th width="100">Value</th>
-					  </tr>
-					  <tr>
-					  
-					    <td height="50">>Number of Games Played</td>
+	<body onload="initalize()">
+		<div class="header">
+        		<font size="5"></font>
+        		<h1 align="center" style="padding: 15px">Game Statistics</h1>
+        	<div class="row">
+        		<table style="margin-top:100px; margin-left:400px;">
+        			<tr>
+        				<th width="500">Statistic:</th>
+        				<th width="100">Value</th>
+					 </tr>
+					 <tr>
+					 	<td height="50">Number of Games Played</td>
 					    <td id="num1"></td>
-					  </tr>
-					  <tr>
+					 </tr>
+					 <tr>
 					    <td height="50">Number of Player Wins</td>
 					    <td id="num2"></td>
-					  </tr>
-					  <tr>
+					 </tr>
+					 <tr>
 					    <td height="50">Number of CPU Wins</td>
 					    <td id="num3"></td>
-					  </tr>
-					  <tr>
+					 </tr>
+					 <tr>
 					    <td height="50">Average Number of Draws</td>
 					    <td id="num4"></td>
-					  </tr>
-					  <tr>
+					 </tr>
+					 <tr>
 					    <td height="50">Highest Number of Rounds</td>
 					    <td id="num5"></td>
-					  </tr>
-					  
-							</table>
-        				
-        				
-        				</div>
-        			</div>
+					 </tr>
+				</table>
+        	</div>
+        	
+        	
+        	<div class="row">
+  				<div class="col-sm"></div>
+  				<div class="col-sm-8">
+  					<button type="button" class="nes-btn" onclick="window.location.href ='http://localhost:7777/toptrumps/game';">Play again</button>
+  					<button type="button" class="nes-btn" onclick="window.location.href ='http://localhost:7777/toptrumps';">Back</button>
+  				</div>
+			</div>
+    	</div>
 		
 		<script type="text/javascript">
 		
@@ -119,8 +147,6 @@
 			}
 			xhr.send();
 		}
-
 		</script>
-		
-		</body>
+	</body>
 </html>

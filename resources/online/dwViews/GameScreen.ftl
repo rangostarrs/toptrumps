@@ -10,7 +10,6 @@
 	<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/flick/jquery-ui.css">
 
 	<!-- Optional Styling of the web page, for the demo I used Bootstrap (see https://getbootstrap.com/docs/4.0/getting-started/introduction/) -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -19,26 +18,44 @@
 	
 		<style> 
 		
-			#gameView {
+			#gameInfo {
 				text-align: center;
 				visibility: hidden;
 			}
 			
-			.btn .btn2 .btn3 .btn4 .btn5 {
-				cursor: pointer;
-				font-size: 10px;
-				padding: 10px 10px;
+			.nes-btn {
+				font-size: 8px;
+				padding: 8px 8px;
 			}
 			
-			.card-img-top {
+			h1 {
+				font-weight: 400;
+				font-size: 30px;
+				color: white;
+			}
+			
+			h2	{
+				font-weight: 400;
+				font-size: 30px;
+				color: white;
+			}
+			
+			h3 {
+				font-weight: 400;
+				font-size: 30px;
+				color: white;
+			}
+			
+			.card-picture {
 				width: 100%;
 				height: 5vw;
 				object-fit: cover;	
+				border: 2px solid white;
+  				border-radius: 3px;
 			}
 			
 			#cardSection button {
-				cursor: pointer;
-				font-size: 10px;
+				font-size: 6px;
 				font-weight: 0;
 			}
 			
@@ -48,14 +65,22 @@
 			}
 
 			.card-header {
-				font-weight: 400;
-				font-size: 10px;
+				font-weight: 200;
+				font-size: 12px;
+				color: white;
 			}
 
-			.card-subtitle{
-				font-size: 10px;
-				padding: 10px;
+			.card-subtitle {
+				font-size: 8px;
+				padding: 8px;
+				color: white;
 			}
+			
+			.nes-container.is-rounded {
+				width: 170px;
+				padding: 20px;
+			}
+			
 		</style>
 	</head>
 
@@ -70,146 +95,106 @@
     					<div class="col-lg-8">
     						<div id="setNumberOfOpponents">
     							<h1>Top Trumps</h1>    					
-    							<p>Set number of opponents</p>
+    							<h2>Number of opponents:</h2>
 								<select id="numberOfOpponents">
 									<option value="1">1</option>
 									<option value="2">2</option>
 									<option value="3">3</option>
 									<option value="4">4</option>
-									</select>
- 									<button type="button" class="nes-btn" onclick="setNumberOfOpponents();">Play</button>
+								</select>
+ 								<button type="button" class="nes-btn" onclick="setNumberOfOpponents();">Play</button>
 				    		</div>
 				    				
-				    		<div id="gameView">
+				    		<div id="gameInfo">
 				    			<h1>Round: <label id="setRoundCounter"></label></h1>
 	    						<h2>Active Player:</h2>
 	    						<h3>Previous Round Winner:</h3>
-	    						<button class="btn btn-default" onclick="displayCards();">Draw Cards</button>
+	    						<button type="button" class="nes-btn" onclick="displayCards();">Draw Cards</button>
 	    					</div>
     							
     						<div class="row text-center" id='cardSection'>
     							<div class="col-lg-1"></div>
     							<div class="col-lg-2">
-    								<div class="nes-container is-rounded is-dark" id="card1">
+    								<div class="nes-container is-rounded" id="card1">
 									<div class="card-header">Human</div>
 										<h5 class="card-subtitle text-muted" id="card-title"></h5>
-										<img class="card-img-top" src="" alt="No_Image_Found">
+										<img class="card-picture" src="" alt="No_Image_Found">
 										<div class="card-body">
-											<button onclick="selectCategory(1)" class="btn btn-default btn-block" id="humanCat1">
-												<span class="badge"></span>
+											<button type="button" class="nes-btn" onclick="selectCategory(1)" id="stat1">
+												<p class="stat"></p>
 											</button>
-											<button onclick="selectCategory(2)" class="btn2 btn-default btn-block" id="humanCat2">
-												<span class="badge"></span>
+											<button type="button" class="nes-btn" onclick="selectCategory(2)" id="stat2">
+												<p class="stat"></p>
 											</button>
-											<button onclick="selectCategory(3)" class="btn3 btn-default btn-block" id="humanCat3">
-												<span class="badge"></span>
+											<button type="button" class="nes-btn" onclick="selectCategory(3)" id="stat3">
+												<p class="stat"></p>
 											</button>
-											<button onclick="selectCategory(4)" class="btn4 btn-default btn-block" id="humanCat4">
-												<span class="badge"></span>
+											<button type="button" class="nes-btn" onclick="selectCategory(4)" id="stat4">
+												<p class="stat"></p>
 											</button>
-											<button onclick="selectCategory(5)" class="btn5 btn-default btn-block" id="humanCat5">
-												<span class="badge"></span>
+											<button type="button" class="nes-btn" onclick="selectCategory(5)" id="stat5">
+												<p class="stat"></p>
 											</button>
 										</div>
 									</div>
 								</div>
 
 								<div class="col-lg-2">
-									<div class="card" id="card2">
+									<div class="nes-container is-rounded" id="card2">
 										<div class="card-header">Opponent 1</div>
 											<h5 class="card-subtitle text-muted" id="card-title"></h5>
-											<img class="card-img-top" src="" alt="No_Image_Found">
+											<img class="card-picture" src="" alt="No_Image_Found">
 										<div class="card-body">
-											<button class="btn btn-default btn-block" disabled>
-												<span class="badge"></span>
-											</button>
-											<button class="btn2 btn-default btn-block" disabled>
-												<span class="badge"></span>
-											</button>
-											<button class="btn3 btn-default btn-block" disabled>
-												<span class="badge"></span>
-											</button>
-											<button class="btn4 btn-default btn-block" disabled>
-												<span class="badge"></span>
-											</button>
-											<button class="btn5 btn-default btn-block" disabled>
-												<span class="badge"></span>
-											</button>
+											<p class="stat" style="font-size:8px;color:white;" id="stat1"></p>
+											<p class="stat" style="font-size:8px;color:white;" id="stat2"></p>
+											<p class="stat" style="font-size:8px;color:white;" id="stat3"></p>
+											<p class="stat" style="font-size:8px;color:white;" id="stat4"></p>
+											<p class="stat" style="font-size:8px;color:white;" id="stat5"></p>
 										</div>
 									</div>
 								</div>
 
 								<div class="col-lg-2">
-									<div class="card" id="card3">
+									<div class="nes-container is-rounded" id="card3">
 											<div class="card-header">Opponent 2</div>
 											<h5 class="card-subtitle text-muted" id="card-title"></h5>
-											<img class="card-img-top" src="" alt="No_Image_Found">
+											<img class="card-picture" src="" alt="No_Image_Found">
 										<div class="card-body">
-											<button class="btn btn-default btn-block" disabled>
-												<span class="badge"></span>
-											</button>
-											<button class="btn2 btn-default btn-block" disabled>
-												<span class="badge"></span>
-											</button>
-											<button class="btn3 btn-default btn-block" disabled>
-												<span class="badge"></span>
-											</button>
-											<button class="btn4 btn-default btn-block" disabled>
-												<span class="badge"></span>
-											</button>
-											<button class="btn5 btn-default btn-block" disabled>
-												<span class="badge"></span>
-											</button>
+											<p class="stat" style="font-size:8px;color:white;" id="stat1"></p>
+											<p class="stat" style="font-size:8px;color:white;" id="stat2"></p>
+											<p class="stat" style="font-size:8px;color:white;" id="stat3"></p>
+											<p class="stat" style="font-size:8px;color:white;" id="stat4"></p>
+											<p class="stat" style="font-size:8px;color:white;" id="stat5"></p>
 										</div>
 									</div>
 								</div>
 
 								<div class="col-lg-2">
-									<div class="card" id="card4">
+									<div class="nes-container is-rounded" id="card4">
 											<div class="card-header">Opponent 3</div>
 											<h5 class="card-subtitle text-muted" id="card-title"></h5>
-											<img class="card-img-top" src="" alt="No_Image_Found">
+											<img class="card-picture" src="" alt="No_Image_Found">
 										<div class="card-body">
-											<button class="btn btn-default btn-block" disabled>
-												<span class="badge"></span>
-											</button>
-											<button class="btn2 btn-default btn-block" disabled>
-												<span class="badge"></span>
-											</button>
-											<button class="btn3 btn-default btn-block" disabled>
-												<span class="badge"></span>
-											</button>
-											<button class="btn4 btn-default btn-block" disabled>
-												<span class="badge"></span>
-											</button>
-											<button class="btn5 btn-default btn-block" disabled>
-												<span class="badge"></span>
-											</button>
+											<p class="stat" style="font-size:8px;color:white;" id="stat1"></p>
+											<p class="stat" style="font-size:8px;color:white;" id="stat2"></p>
+											<p class="stat" style="font-size:8px;color:white;" id="stat3"></p>
+											<p class="stat" style="font-size:8px;color:white;" id="stat4"></p>
+											<p class="stat" style="font-size:8px;color:white;" id="stat5"></p>
 										</div>
 									</div>
 								</div>
 
 								<div class="col-lg-2">
-									<div class="card" id="card5">
+									<div class="nes-container is-rounded" id="card5">
 										<div class="card-header">Opponent 4</div>
 											<h5 class="card-subtitle text-muted" id="card-title"></h5>
-											<img class="card-img-top" src="" alt="No_Image_Found">
+											<img class="card-picture" src="" alt="No_Image_Found">
 										<div class="card-body">
-											<button class="btn btn-default btn-block" disabled>
-												<span class="badge"></span>
-											</button>
-											<button class="btn2 btn-default btn-block" disabled>
-												<span class="badge"></span>
-											</button>
-											<button class="btn3 btn-default btn-block" disabled>
-												<span class="badge"></span>
-											</button>
-											<button class="btn4 btn-default btn-block" disabled>
-												<span class="badge"></span>
-											</button>
-											<button class="btn5 btn-default btn-block" disabled>
-												<span class="badge"></span>
-											</button>
+											<p class="stat" style="font-size:8px;color:white;" id="stat1"></p>
+											<p class="stat" style="font-size:8px;color:white;" id="stat2"></p>
+											<p class="stat" style="font-size:8px;color:white;" id="stat3"></p>
+											<p class="stat" style="font-size:8px;color:white;" id="stat4"></p>
+											<p class="stat" style="font-size:8px;color:white;" id="stat5"></p>
 										</div>
 									</div>
 								</div>
@@ -230,7 +215,7 @@
 		}
 		
 		function gameViewVisible(){
-			document.getElementById("gameView").style.visibility = "visible";
+			document.getElementById("gameInfo").style.visibility = "visible";
 		}
 		
 	  	function cardSectionVisible() {
@@ -240,18 +225,18 @@
 	  	
 		function displayAppropriateAmountOfCards() {
 			
-			var playerNum = $('#numberOfOpponents').val();
+			var selectedNumberOfPlayers = $('#numberOfOpponents').val();
 
-	    	if (playerNum == 1) {
+	    	if (selectedNumberOfPlayers == 1) {
 	      		$("#card3").remove();
 	      		$("#card4").remove();
 	      		$("#card5").remove();
 	    	} 
-	    	else if (playerNum == 2) {
+	    	else if (selectedNumberOfPlayers == 2) {
 	     		$("#card4").remove();
 	      		$("#card5").remove();
 	    	} 
-	    	else if (playerNum == 3) {
+	    	else if (selectedNumberOfPlayers == 3) {
 	      		$("#card5").remove();
 	    	}
 	  	}
@@ -323,25 +308,24 @@
 				
 		        for (i = 0; i < 5; i++) {
 		        	var cardTitle = "#card" + (i + 1);
-		        	$(cardTitle).find(".card-img-top").attr("src", "http://dcs.gla.ac.uk/~richardm/TopTrumps/" + list[i].description + ".jpg");
+		        	$(cardTitle).find(".card-picture").attr("src", "http://dcs.gla.ac.uk/~richardm/TopTrumps/" + list[i].description + ".jpg");
 		          	$(cardTitle).find("#card-title").text(list[i].description);
-			        $(cardTitle).find(".btn").each(function(j) { 
-			        	$(this).html("<span class=\"badge\">" + "Size: " + list[i].stat1 + "</span>");
+			        $(cardTitle).find("#stat1").each(function(j) { 
+			        	$(this).html("<p class=\"stat\">" + "Size: " + list[i].stat1 + "</p>");
 				          });
-			        $(cardTitle).find(".btn2").each(function(k) { 
-			        	$(this).html("<span class=\"badge\">" + "Speed: " + list[i].stat2 + "</span>");
+			        $(cardTitle).find("#stat2").each(function(k) { 
+			        	$(this).html("<p class=\"stat\">" + "Speed: " + list[i].stat2 + "</p>");
 				          });
-			        $(cardTitle).find(".btn3").each(function(l) { 
-			        	$(this).html("<span class=\"badge\">" + "Range: " + list[i].stat3 + "</span>");
+			        $(cardTitle).find("#stat3").each(function(l) { 
+			        	$(this).html("<p class=\"stat\">" + "Range: " + list[i].stat3 + "</p>");
 				          });
-			        $(cardTitle).find(".btn4").each(function(m) { 
-			        	$(this).html("<span class=\"badge\">" + "Firepower: " + list[i].stat4 + "</span>");
+			        $(cardTitle).find("#stat4").each(function(m) { 
+			        	$(this).html("<p class=\"stat\">" + "Firepower: " + list[i].stat4 + "</p>");
 				          });
-			        $(cardTitle).find(".btn5").each(function(n) { 
-			        	$(this).html("<span class=\"badge\">" + "Cargo: " + list[i].stat5 + "</span>");
+			        $(cardTitle).find("#stat5").each(function(n) { 
+			        	$(this).html("<p class=\"stat\">" + "Cargo: " + list[i].stat5 + "</p>");
 				          });
 		        }
-		        
 		      }
 			displayAppropriateAmountOfCards();
 			cardSectionVisible();
