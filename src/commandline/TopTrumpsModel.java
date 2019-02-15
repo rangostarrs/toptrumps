@@ -53,7 +53,7 @@ public class TopTrumpsModel {
 	private int roundNumber;
 	private String winner;
 	private SQL db;
-	private PrintStream o = new PrintStream(new File("Long.txt"));
+	private PrintStream o = new PrintStream(new File("TopTrumps.log"));
 	private PrintStream c = System.out;
 
 	TopTrumpsModel() throws FileNotFoundException {
@@ -140,7 +140,7 @@ public class TopTrumpsModel {
 			// compare stat between the players
 			highestStatPlayer = compareStat(statSelection, currentHands);
 			System.setOut(o);
-			System.out.println("The selected stat is number "+ statSelection);
+			System.out.println("The selected stat was stat number"+ statSelection );
 			for (Card c:currentHands) {
 				System.out.println(c.returnStat(statSelection));
 			}
@@ -153,12 +153,14 @@ public class TopTrumpsModel {
 					commonPile.add(currentHands.get(i));
 				}
 				System.setOut(o);
-				System.out.println("-------------------------------");
+				System.out.println("-------------------------------\n-----------------------------");
 				System.out.println("Common Pile Contents");
 				for (Card c : commonPile) {
 					System.out.println(c.toString());
 				}
+				System.out.println("--------------------\n--------------------");
 				System.setOut(c);
+				
 				// clear hands
 				currentHands.clear();
 
@@ -220,7 +222,7 @@ public class TopTrumpsModel {
 		winner = playersList.get(0).toString();
 		
 		System.setOut(o);
-		System.out.println(winner);
+		System.out.println("\n----------------\n The winner of the game is" + winner);
 		System.setOut(c);
 		System.out.println("\n" + "GameID is " + gameID);
 
@@ -329,12 +331,12 @@ public class TopTrumpsModel {
 
 		}
 		System.setOut(o);
-		System.out.println("-------------");
+		System.out.println("\n----------------------");
 		System.out.println("Current Hands");
 		for (Card c : currentHands) {
 			System.out.println(c.toString());
 		}
-
+		System.out.println("\n----------------------");
 		System.setOut(c);
 		return currentHands;
 	}
@@ -462,27 +464,27 @@ public class TopTrumpsModel {
 		playerDeques.add(cpu3Deck);
 		playerDeques.add(cpu4Deck);
 		System.setOut(o);
-		System.out.println("Player Deck------------------------------------------");
+		System.out.println(" Player Deck------------------------------------------");
 		for (Card c : playerDeck) {
 
 			System.out.println(c.toString());
 		}
-		System.out.println("cpu1Deck------------------------------------------");
+		System.out.println("\n cpu1Deck------------------------------------------");
 		for (Card c : cpu1Deck) {
 
 			System.out.println(c.toString());
 		}
-		System.out.println("cpu2Deck------------------------------------------");
+		System.out.println("\n cpu2Deck------------------------------------------");
 		for (Card c : cpu2Deck) {
 
 			System.out.println(c.toString());
 		}
-		System.out.println("cpu3Deck------------------------------------------");
+		System.out.println("\n cpu3Deck------------------------------------------");
 		for (Card c : cpu3Deck) {
 
 			System.out.println(c.toString());
 		}
-		System.out.println("cpu4Deck------------------------------------------");
+		System.out.println("\n cpu4Deck------------------------------------------");
 		for (Card c : cpu4Deck) {
 
 			System.out.println(c.toString());
@@ -555,14 +557,14 @@ public class TopTrumpsModel {
 			}
 		}
 		System.setOut(o);
-		System.out.println("Unshuffled Cards list:");
+		System.out.println("Unshuffled Cards list: \n");
 
 		for (Card c : cardList) {
 
 			System.out.println(c.toString());
 		}
 
-		System.out.println("--------------------");
+		System.out.println("\n --------------------");
 
 		System.setOut(c);
 

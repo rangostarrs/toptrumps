@@ -4,20 +4,21 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Deque;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 /**
- * @author Nick's Account
+ * This test class is 
  *
  */
 class TopTrumpsModelTest {
 
-	TopTrumpsModel m;
-	ArrayList <Player> p;
-	ArrayList<Card> c;
+	TopTrumpsModel model;
+	ArrayList <Player> player;
+	ArrayList<Card> cardy;
 	Deque<Card> shuffled;
 	Deque<Card> playerDeck;
 	Deque<Card> cpu1Deck;
@@ -29,10 +30,9 @@ class TopTrumpsModelTest {
 
 	@BeforeEach
 	void setUp() throws Exception {
-		m = new TopTrumpsModel();
-		p= new ArrayList<Player>();
-		c= new ArrayList<Card>();
-		shuffled = new ArrayDeque<Card>();
+		model = new TopTrumpsModel();
+		player= new ArrayList<Player>();
+		cardy= new ArrayList<Card>();
 		playerDeck = new ArrayDeque<Card>();
 		cpu1Deck = new ArrayDeque<Card>();
 		cpu2Deck = new ArrayDeque<Card>();
@@ -45,54 +45,86 @@ class TopTrumpsModelTest {
 	@Test
 	void createPlayersTest() {
 
-		assertEquals(5,m.createPlayersArray(5).size());
-		c = new ArrayList<Card>();
+		assertEquals(5,model.createPlayersArray(5).size());
+		cardy = new ArrayList<Card>();
 
 	}
 
-//	@Test
-//	void shuffleCardsTest() {
-//
-//		// i think a completely new object with different cards is being created by this 
-//		assertEquals(c,);
-//
-//
-//	}
+	
+	/* this test is intended to fail. It shows that the order of the list of cards in 
+	 * the shuffled array is different to that of the list of the unshuffled array of cards generated
+	 * when the game is initiated.*/
+	
+	@Test
+	void shuffleCardsTest() {
+		
+		cardy = model.addCardsToList();
+		
+		String [] one = new String [40];
+		for (int i =0; i<one.length;i++) {
+			
+			one[i] = cardy.get(i).toString();
+		}
+		
+		shuffled = model.shuffleCards(cardy);
+		
+		String [] two = new String[40];
+		
+		for (int i = 0; i<two.length;i++) {
+			
+			two [i] = shuffled.poll().toString();
+		}
+		
+		
+		for (int i = 0; i<one.length;i++) {
+			
+			assertTrue(one[i]==two[i]);
+			
+		}
+
+	}
 
 
 	@Test
 	void checkPlayerEliminatedTest() {
 
-		ArrayList<Player> p= m.createPlayersArray(5);
+		ArrayList<Player> p= model.createPlayersArray(5);
 
-		//  this test works by demonstrating that players with no cards are immediately eliminated/
-		// players are created without the decks being filled with any cards
-		// therefore causing all the players to be eliminated immediately when the method is run
-		// ***see console output***
+		/* this test works by demonstrating that players with no cards are immediately eliminated/
+		 players are created without the decks being filled with any cards
+		 therefore causing all the players to be eliminated immediately when the method is run
+		 ***see console output*** */
 
-		assertEquals(0,m.checkPlayerEliminated(p));
+		assertEquals(0,model.checkPlayerEliminated(p));
 
 	}
+	
+	
+	/* This test covers two separate methods in the model class. 
+	 * Firstly, it makes sure that the deck of cards is generated properly
+	 * then secondly it ensures that the cards are dealt properly by
+	 * testing the problematic case of three player games where one player must
+	 * receive one card more than the other players */
 
 	@Test
 	void dealCardsTest() {
 
-		//THIS FIRST SECTION TESTS THE addCardsToList METHOD 
+		//THIS SECTION TESTS THE addCardsToList METHOD 
 
 		//The size of the previously Empty Arraylist of Cards (i.e the game deck) is now equal to 40
-		c =(m.addCardsToList());
-		assertEquals(40,c.size());
+		cardy =(model.addCardsToList());
+		assertEquals(40,cardy.size());
 
 		
 		
-		//	THE SECTION TESTS THE METHOD dealCards by checking if the same ArrayList from above (which has now been 
-		//  changed to a deque) still has any cards in it (which it shouldn't if the method has been successful)
-		//
+		/*	THE SECTION TESTS THE METHOD dealCards by checking if the same ArrayList from above (which has now been 
+		  changed to a deque) still has any cards in it (which it shouldn't if the method has been successful)*/
+		
 
 
 		//showing that the array contains decks and therefore something has been returned
 
-		ArrayList <Deque<Card>> playerDeques = m.dealCards(2, c);
+		ArrayList <Deque<Card>> playerDeques = model.dealCards(2, cardy);
 		assertFalse(playerDeques.isEmpty());
 
 
@@ -107,17 +139,22 @@ class TopTrumpsModelTest {
 
 
 	}
+	/*checking that method for determining a draw works
+	 * and by extension the stat comparison by creating 4 cards with
+	 *  the same stats and  comparing them*/
 
 	@Test
 	void compareStatTest() {
-		//checking that method for determining a draw works
+		
 		for (int i = 0; i<4;i++){
 			Card x = new Card ("Fun guy", 9, 8, 7, 6, 3);
 			currentHands.add(x);
 		}
-		//the int in this case is three but it doesn't matter what value is used
-		//between 1 and 5 as all the cards are the same
-		assertEquals(6,m.compareStat(3, currentHands));
+		/*the integer 3 in this case represents the stat Range
+		the result is six because the stat is the same on each card
+		and 6 is the integer return value that tells the program there 
+		there has been a draw*/
+		assertEquals(6,model.compareStat(3, currentHands));
 
 
 	}
@@ -125,92 +162,36 @@ class TopTrumpsModelTest {
 	@Test
 	void createPlayersArrayTest () {
 
-		//Showing that creating the players are is being created 
-		//and the player array  filled 
-		p=m.createPlayersArray(3);
+		/*Showing that creating the players are is being created 
+		and the player array  filled */
+		player=model.createPlayersArray(3);
 
-		//this is equal to four because the number of players is always the method argument's
-		//input value plus one for the human player
-		assertEquals(4,p.size());
-
-
-	}
-
-	@Test
-
-	void giveHandsToWinnerTest() {
-
-		// this test 
-		//variables to represent card stats
-		int a=0,b=0,c=0,d =0,e=0;
-		Card x;
-		Card y;
-		//In this case we have created 4 cards that are identical to simulate a draw situation
-		//in a hypothetical 4 player game
-		for (int i = 0; i<4;i++){
-			x = new Card ("Fun guy", a, b, c, d, e);
-			currentHands.add(x);
-			//DRAW!!
-		}
-		assertEquals(4, currentHands.size());
-
-		System.out.println("CurrHand size "+ currentHands.size());
-
-		//The cards are added to the commonPile
-		for (int j= 0; j<8;j++) {
-
-			if (!currentHands.isEmpty()) {
-				y = currentHands.remove(0); 
-				commonPile.add(y);
-			}}
-
-
-		// check to make sure that this has happened correctly
-
-
-		assertEquals(0, currentHands.size());
-		assertEquals(4, commonPile.size());
-
-
-		// now adding a case in which the content current hands
-		//and 
-		for (int i = 0; i<4;i++){
-			Card z = new Card ("Fun guy", a, b, c, d, e);
-			currentHands.add(z);
-			a++;
-			b+=2;
-			c+=2;
-			d++;
-			e+=2;
-			// This case has been setup such that computer player 4 wins this round
-
-		}
-
-		for (int i=0;i<10;i++) {
-
-			if (!currentHands.isEmpty()) {
-				y = currentHands.remove(0); 
-				commonPile.add(y);
-			}
-
-		}
-
-
+		/*this is equal to four because the number of players is always the method argument's
+		input value plus one for the human player*/
+		assertEquals(4,player.size());
 
 
 	}
+
+	
+
+
+
+	
 	//    @Test
-	//	
 	//	void collectCurrrentHandsTest() {
-	//	
-	//	
+	
+		
+	
+	
 	//	}
+	
 	@Test
 	void cpuPlayCardTest() {
 
-		p=m.createPlayersArray(2);
-		m.dealCards(2, m.addCardsToList());
-		int a =m.cpuPlayCard(p,2);
+		player=model.createPlayersArray(2);
+		model.dealCards(2, model.addCardsToList());
+		int a =model.cpuPlayCard(player,2);
 		Card curr;
 		assertTrue(a>0);
 	}
