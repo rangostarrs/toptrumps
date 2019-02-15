@@ -17,26 +17,12 @@
     	<link rel="stylesheet" href="http://dcs.gla.ac.uk/~richardm/assets/stylesheets/vex-theme-os.css"/>
     	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-		<style type="text/css"> <#include "styles.css"> </style> 
+		<link href="https://unpkg.com/nes.css/css/nes.min.css" rel="stylesheet" />
+		<link href='http://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
 
 	</head>
 
-    <body onload="initalize()"> <!-- Call the initalize method when the page loads -->
-    
-    	<header>
-    		<div class="view" style="background-image: url('https://i.imgur.com/J46cBUQ.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;"></div>
-    	</header>
-    	
-    	<div class="container"></div>
-
-			
-
-	</head>
-
-<!-- Call the initalize method when the page loads -->
-<!-- 	<body onload="initalize()"> -->
-
-	<body style=" opacity:0.5; color:white; background: url(https://www.elegantthemes.com/blog/wp-content/uploads/2013/09/bg-5-full.jpg)">
+	<body style="background: url(https://i.stack.imgur.com/V3plu.gif)" onload="initalize()">
         		<div class="header">
 					<button type="button" onclick="window.location.href ='http://localhost:7777/toptrumps';"class="btn btn-primary btn-lg">Back</button>
         			<font size="5"></font>
@@ -75,39 +61,16 @@
         				
         				</div>
         			</div>
-        	
-        	</body>
-        	
-
-	</div>
-	
-			
-
-	<body />
-
-
-
-
-
-		
-		
 		
 		<script type="text/javascript">
 		
 			
 		function initalize() { 
 			
-				// --------------------------------------------------------------------------
-				// You can call other methods you want to run when the page first loads here
-				// --------------------------------------------------------------------------
 				insertStatsOnline();
 				
 				
 		} 
-			
-			// -----------------------------------------
-			// Add your other Javascript methods Here
-			// -----------------------------------------
 		
 			// This is a reusable method for creating a CORS request. Do not edit this.
 			function createCORSRequest(method, url) {
@@ -156,55 +119,6 @@
 			}
 			xhr.send();
 		}
-		
-		
-		
-		
-		
-		
-			// This calls the helloJSONList REST method from TopTrumpsRESTAPI
-/* 			function helloJSONList() {
- */			
-				// First create a CORS request, this is the message we are going to send (a get request in this case)
-/* 				var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/helloJSONList"); // Request type and URL
-				
-				// Message is not sent yet, but we can check that the browser supports CORS
-				if (!xhr) {
-  					alert("CORS not supported");
-				}
-
-				// CORS requests are Asynchronous, i.e. we do not wait for a response, instead we define an action
-				// to do when the response arrives 
-				xhr.onload = function(e) {
- 					var responseText = xhr.response; // the text of the response
-					alert(responseText); // lets produce an alert
-				}; */
-				
-				// We have done everything we need to prepare the CORS request, so send it
-/* 				xhr.send();		
-			} */
-			
-			// This calls the helloJSONList REST method from TopTrumpsRESTAPI
-/* 			function helloWord(word) {
-			
-				// First create a CORS request, this is the message we are going to send (a get request in this case)
-				var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/helloWord?Word="+word); // Request type and URL+parameters
-				
-				// Message is not sent yet, but we can check that the browser supports CORS
-				if (!xhr) {
-  					alert("CORS not supported");
-				}
-
-				// CORS requests are Asynchronous, i.e. we do not wait for a response, instead we define an action
-				// to do when the response arrives 
-				xhr.onload = function(e) {
- 					var responseText = xhr.response; // the text of the response
-					alert(responseText); // lets produce an alert
-				};
-				
-				// We have done everything we need to prepare the CORS request, so send it
-				xhr.send();		
-			} */
 
 		</script>
 		

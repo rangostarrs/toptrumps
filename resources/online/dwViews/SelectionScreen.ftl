@@ -17,14 +17,12 @@
     	<link rel="stylesheet" href="http://dcs.gla.ac.uk/~richardm/assets/stylesheets/vex-theme-os.css"/>
     	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-		<style type="text/css"> <#include "styles.css"> </style> 
+		<link href="https://unpkg.com/nes.css/css/nes.min.css" rel="stylesheet" />
+		<link href='http://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
 
 	</head>
 
-    <body onload="initalize()"> <!-- Call the initalize method when the page loads -->
-    	
-    	<div class="view" style="background-image: url('https://i.imgur.com/J46cBUQ.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
-<!--     		<div class="overlay2"></div> -->
+    <body style="background: url(https://i.stack.imgur.com/V3plu.gif)">
     			<div class="container">
       				<div class="row">
        					<div class="col-lg-8 col-md-10 mx-auto">
@@ -38,7 +36,6 @@
         				</div>
       				</div>
     			</div>
-    	</div>
 		
 		<script type="text/javascript">
 		

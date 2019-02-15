@@ -14,6 +14,8 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link href="https://unpkg.com/nes.css/css/nes.min.css" rel="stylesheet" />
+	<link href='http://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
 	
 		<style> 
 		
@@ -57,7 +59,7 @@
 		</style>
 	</head>
 
-    <body style="background: url(https://www.elegantthemes.com/blog/wp-content/uploads/2013/09/bg-11-full.jpg?fbclid=IwAR2NCFjf2oswomit651mKMp7LQjN-O84vfUzPQ6HhKl_f97FTpFoueTZoPY)">
+    <body style="background: url(https://i.stack.imgur.com/V3plu.gif)">
     
     	<div class="row">
     	<div class="col-md-12"></div>
