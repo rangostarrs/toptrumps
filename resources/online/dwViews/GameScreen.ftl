@@ -66,25 +66,23 @@
     					<div class="container">
     						<div class="row"> 
     							<div class="col-lg-8">
-    								<div id="setupGame">
+    								<div id="setNumberOfOpponents">
     									<h1>Top Trumps</h1>    					
-    									<div id="setNumberOfPlayers">
     											<p>Set number of opponents</p>
-												<select id="playerSelection">
+												<select id="numberOfOpponents">
 													<option value="1">1</option>
 													<option value="2">2</option>
 													<option value="3">3</option>
 													<option value="4">4</option>
 												</select>
-												<button type="button" class="btn btn-primary" onclick="setNumberOfPlayers()">Play</button>
-										</div>
+												<button type="button" class="btn btn-primary" onclick="setNumberOfOpponents();">Play</button>
 				    				</div>
 				    				
 				    				<div id="gameView">
-    									<h1>Round:</h1>
+    									<h1>Round: <label id="setRoundCounter"></label></h1>
 	    								<h2>Active Player:</h2>
 	    								<h3>Previous Round Winner:</h3>
-	    								<button class="btn btn-default" onclick="drawCardFunction()" id='drawCard'>Draw Cards</button>
+	    								<button class="btn btn-default" onclick="displayCards();">Draw Cards</button>
 	    							</div>
     							
     								<div class="row text-center" id='cardSection'>
@@ -230,7 +228,7 @@
 		<script type="text/javascript">
 		
 		function hideSelection(){
-			var selection = document.getElementById("setNumberOfPlayers");
+			var selection = document.getElementById("setNumberOfOpponents");
 			if (selection.style.display === "none") {} 
 			else {selection.style.display = "none";}
 		}
@@ -241,7 +239,26 @@
 		
 	  	function cardSectionVisible() {
 	  		document.getElementById("cardSection").style.visibility = "visible";
-	    }
+	  		
+	  	}
+	  	
+		function displayAppropriateAmountOfCards() {
+			
+			var playerNum = $('#numberOfOpponents').val();
+
+	    	if (playerNum == 1) {
+	      		$("#card3").remove();
+	      		$("#card4").remove();
+	      		$("#card5").remove();
+	    	} 
+	    	else if (playerNum == 2) {
+	     		$("#card4").remove();
+	      		$("#card5").remove();
+	    	} 
+	    	else if (playerNum == 3) {
+	      		$("#card5").remove();
+	    	}
+	  	}
 		
 		</script>
 		
@@ -270,10 +287,10 @@
 				 return xhr;
 		}
 			
-		function setNumberOfPlayers(){
+		function setNumberOfOpponents() {
 		
-			var number = document.getElementById('playerSelection').value;
-			var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/setNumberOfPlayer?number="); // Request type and URL
+			var number = document.getElementById('numberOfOpponents').value;
+		    var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/setNumberOfOpponents?Number=" + number);
 			
 			if (!xhr) {
 					alert("CORS not supported");
@@ -293,7 +310,7 @@
 			
 		}
 		
- 		function drawCardFunction()	{
+ 		function displayCards() {
 			
 			var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/displayCards");
 			
@@ -330,10 +347,24 @@
 		        }
 		        
 		      }
-			
+			displayAppropriateAmountOfCards();
+			cardSectionVisible();
 		 	xhr.send();
-		 	cardSectionVisible();
 		} 
+ 		
+ 	   function setRoundCounter() {
+ 	   		var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/roundNumber");
+ 	   		
+ 			if (!xhr) {
+ 				alert("error!");
+ 			}
+ 			
+ 			xhr.onload = function(e) {
+ 			var responseText = xhr.response; // the text of the response
+ 				document.getElementById("setRoundCounter").innerHTML = responseText;
+ 			}
+ 		xhr.send();
+ 	   }
 
 		</script>
 	</body>

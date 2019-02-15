@@ -3,6 +3,7 @@ online/dwResources/GameWebPagesResource.class
 commandline/TopTrumpsView.class
 commandline/Player.class
 commandline/GameStats.class
+commandline/SQL.class
 online/configuration/TopTrumpsJSONConfiguration.class
 commandline/TopTrumpsCLIApplication.class
 commandline/Card.class
