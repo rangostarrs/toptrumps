@@ -77,7 +77,7 @@
 									<option value="3">3</option>
 									<option value="4">4</option>
 									</select>
-								<button type="button" class="btn btn-primary" onclick="setNumberOfOpponents();">Play</button>
+ 									<button type="button" class="nes-btn" onclick="setNumberOfOpponents();">Play</button>
 				    		</div>
 				    				
 				    		<div id="gameView">
@@ -90,7 +90,7 @@
     						<div class="row text-center" id='cardSection'>
     							<div class="col-lg-1"></div>
     							<div class="col-lg-2">
-    								<div class="card" id="card1">
+    								<div class="nes-container is-rounded is-dark" id="card1">
 									<div class="card-header">Human</div>
 										<h5 class="card-subtitle text-muted" id="card-title"></h5>
 										<img class="card-img-top" src="" alt="No_Image_Found">
