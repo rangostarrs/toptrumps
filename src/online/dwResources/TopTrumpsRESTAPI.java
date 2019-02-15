@@ -18,6 +18,7 @@ import javax.ws.rs.core.MediaType;
 
 import online.configuration.TopTrumpsJSONConfiguration;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 
@@ -42,13 +43,14 @@ public class TopTrumpsRESTAPI {
 	ObjectWriter oWriter = new ObjectMapper().writerWithDefaultPrettyPrinter();
 	private String deckFile;
 	private int numPlayers;
-	private Deque<Card> mainDeck;
+	private int roundNumber;
+	private Deque<Card> mainDeck = new ArrayDeque<Card>();
 	private Deque<Card> playerDeck = new ArrayDeque<Card>();
-	private Deque<Card> cpu1Deck = new ArrayDeque<Card>(); 
+	private Deque<Card> cpu1Deck = new ArrayDeque<Card>();
 	private Deque<Card> cpu2Deck = new ArrayDeque<Card>(); 
 	private Deque<Card> cpu3Deck = new ArrayDeque<Card>();
 	private Deque<Card> cpu4Deck = new ArrayDeque<Card>();
-	private ArrayList<Card> cardList;
+	private ArrayList<Card> cardList = new ArrayList<Card>();
 	private Player playerAI1, playerAI2, playerAI3, playerAI4;
 	private ArrayList<Player> playersList;
 	private Player playerHuman = new Player("Human", playerDeck);
@@ -69,22 +71,21 @@ public class TopTrumpsRESTAPI {
 		deckFile = conf.getDeckFile(); // card deck is loaded when the app is run
 		numPlayers = conf.getNumAIPlayers() + 1; // number of ai players plus human player
 	}
-
-	@GET
-	@Path("/setNumberOfPlayers")
-	@Consumes(MediaType.APPLICATION_JSON)
-	public void setNumberOfPlayers(@QueryParam("number") int number) throws IOException {
-		numPlayers = number + 1;
-		
-		startGame();
-	}
 	
-	public void startGame() {
-
+	@GET
+	@Path("/setNumberOfOpponents")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void setNumberOfOpponents(@QueryParam("Number") int Number) throws IOException {
+		numPlayers = Number + 1;
+		
+		cardList = addCardsToList(deckFile);
+		mainDeck = shuffleCards(cardList);
+		dealCards(numPlayers, cardList);
 	}
 	
 	public ArrayList<Player> createPlayersArray(int cpuNumber) {
-		playersList = new ArrayList<Player>();		
+		
+		playersList = new ArrayList<Player>();
 		
 		playersList.add(playerHuman);
 		playerAI1 = new Player("Opponent 1", cpu1Deck);
@@ -209,14 +210,9 @@ public class TopTrumpsRESTAPI {
 		return currentHands;
 	}
 	
-	
 	@GET
 	@Path("/displayCards")
 	public String displayCards() throws IOException	{
-		
-		cardList = addCardsToList(deckFile);
-		mainDeck = shuffleCards(cardList);
-		dealCards(numPlayers, cardList);
 		
 		Card[] cardListCurrentHands = new Card[numPlayers];
 		
@@ -244,6 +240,14 @@ public class TopTrumpsRESTAPI {
 		
 		String currentHandsJSON = oWriter.writeValueAsString(cardListCurrentHands);
 		return currentHandsJSON;
+	}
+	
+	@GET
+	@Path("/roundNumber")
+	public String roundNumber() throws JsonProcessingException {
+		String roundNumberJSON = oWriter.writeValueAsString(roundNumber);
+		return roundNumberJSON;
+
 	}
 	
 }
