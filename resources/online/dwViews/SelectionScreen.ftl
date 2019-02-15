@@ -19,41 +19,44 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 		<link href="https://unpkg.com/nes.css/css/nes.min.css" rel="stylesheet" />
 		<link href='http://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
+		
+		<style>
+			
+			body{
+				background-image: url(https://i.stack.imgur.com/V3plu.gif);
+			}
+			
+			h1 {
+			font-weight: 400;
+			font-size: 30px;
+			color: white;
+			}
+			
+			.nes-btn {
+			font-size: 15px;
+			padding: 10px 10px;
+			}
+		
+		</style>
 
 	</head>
 
-    <body style="background: url(https://i.stack.imgur.com/V3plu.gif)">
-    			<div class="container">
-      				<div class="row">
-       					<div class="col-lg-8 col-md-10 mx-auto">
-          					<div class="site-heading">
-            					<h1>Top Trumps</h1>
-            					<form>
-            					<button type="button" onclick="window.location.href ='http://localhost:7777/toptrumps/game';"class="btn btn-primary btn-lg">Play</button>
-            					<button type="button" onclick="window.location.href= 'http://localhost:7777/toptrumps/stats';" class="btn btn-primary btn-lg">Statistics</button>
-            					</form>
-         					 </div>
-        				</div>
-      				</div>
-    			</div>
+    <body>
+    	<div class="container">
+      		<div class="row">
+      			<div class="col-lg">
+      				<h1 align="center">Space Top Trumps</h1>
+      			</div>
+        	</div>
+        	<div class="row">
+      			<div class="col-lg">
+      				<button type="button" onclick="window.location.href ='http://localhost:7777/toptrumps/game';"class="nes-btn">Play</button>
+        			<button type="button" onclick="window.location.href= 'http://localhost:7777/toptrumps/stats';" class="nes-btn">Statistics</button>
+      			</div>
+        	</div>
+    	</div>
 		
 		<script type="text/javascript">
-		
- 			// Method that is called on page load
- 			function initalize() { 
-			
-				// --------------------------------------------------------------------------
-				// You can call other methods you want to run when the page first loads here
-				// --------------------------------------------------------------------------
-				
-				// For example, lets call our sample methods
-/*  				helloJSONList();
-				helloWord("Student"); */ 
-				} 
-			
-			// -----------------------------------------
-			// Add your other Javascript methods Here
-			// -----------------------------------------
 		
 			// This is a reusable method for creating a CORS request. Do not edit this.
 			function createCORSRequest(method, url) {
@@ -82,54 +85,5 @@
 		
 		</script>
 		
-		<!-- Here are examples of how to call REST API Methods -->
-		<script type="text/javascript">
-		
-			// This calls the helloJSONList REST method from TopTrumpsRESTAPI
-/* 			function helloJSONList() {
- */			
-				// First create a CORS request, this is the message we are going to send (a get request in this case)
-				var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/helloJSONList"); // Request type and URL
-				
-				// Message is not sent yet, but we can check that the browser supports CORS
-				if (!xhr) {
-  					alert("CORS not supported");
-				}
-
-				// CORS requests are Asynchronous, i.e. we do not wait for a response, instead we define an action
-				// to do when the response arrives 
-				xhr.onload = function(e) {
- 					var responseText = xhr.response; // the text of the response
-					alert(responseText); // lets produce an alert
-				};
-				
-				// We have done everything we need to prepare the CORS request, so send it
-				xhr.send();		
-			}
-			
-			// This calls the helloJSONList REST method from TopTrumpsRESTAPI
-/* 			function helloWord(word) {
- */			
-/* 				// First create a CORS request, this is the message we are going to send (a get request in this case)
-				var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/helloWord?Word="+word); // Request type and URL+parameters
-				
-				// Message is not sent yet, but we can check that the browser supports CORS
-				if (!xhr) {
-  					alert("CORS not supported");
-				}
-
-				// CORS requests are Asynchronous, i.e. we do not wait for a response, instead we define an action
-				// to do when the response arrives 
-				xhr.onload = function(e) {
- 					var responseText = xhr.response; // the text of the response
-					alert(responseText); // lets produce an alert
-				};
-				
-				// We have done everything we need to prepare the CORS request, so send it
-				xhr.send();		
-			} */
-
-		</script>
-		
-		</body>
+	</body>
 </html>
