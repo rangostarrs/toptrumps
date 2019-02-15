@@ -44,16 +44,16 @@ public class TopTrumpsRESTAPI {
 	private String deckFile;
 	private int numPlayers;
 	private int roundNumber;
-	private Deque<Card> mainDeck = new ArrayDeque<Card>();
+	private Deque<Card> mainDeck;
 	private Deque<Card> playerDeck = new ArrayDeque<Card>();
 	private Deque<Card> cpu1Deck = new ArrayDeque<Card>();
 	private Deque<Card> cpu2Deck = new ArrayDeque<Card>(); 
 	private Deque<Card> cpu3Deck = new ArrayDeque<Card>();
 	private Deque<Card> cpu4Deck = new ArrayDeque<Card>();
-	private ArrayList<Card> cardList = new ArrayList<Card>();
+	private ArrayList<Card> cardList;
 	private Player playerAI1, playerAI2, playerAI3, playerAI4;
 	private ArrayList<Player> playersList;
-	private Player playerHuman = new Player("Human", playerDeck);
+	private Player playerHuman;
 	private ArrayList<Card> currentHands;
 	private Card currentHandCard;
 	private static String headerArray[] = new String[6];
@@ -78,34 +78,16 @@ public class TopTrumpsRESTAPI {
 	public void setNumberOfOpponents(@QueryParam("Number") int Number) throws IOException {
 		numPlayers = Number + 1;
 		
-		cardList = addCardsToList(deckFile);
-		mainDeck = shuffleCards(cardList);
-		dealCards(numPlayers, cardList);
-	}
-	
-	public ArrayList<Player> createPlayersArray(int cpuNumber) {
-		
 		playersList = new ArrayList<Player>();
+		playerHuman = new Player("Human", playerDeck);
+		cardList = new ArrayList<Card>();
 		
-		playersList.add(playerHuman);
-		playerAI1 = new Player("Opponent 1", cpu1Deck);
-		playersList.add(playerAI1);
-		if (cpuNumber > 1) {
-			playerAI2 = new Player("Opponent 2", cpu2Deck);
-			playersList.add(playerAI2);
-			if (cpuNumber > 2) {
-				playerAI3 = new Player("Opponent 3", cpu3Deck);
-				playersList.add(playerAI3);
-				if (cpuNumber > 3) {
-					playerAI4 = new Player("Opponent 4", cpu4Deck);
-					playersList.add(playerAI4);
-				}
-			}
-		}
+		addCardsToList(deckFile);
+		Collections.shuffle(cardList);
+		mainDeck = new ArrayDeque<Card>(cardList);
+		dealCards(numPlayers, cardList);
 		
-		// randomise order in which the players start
-		Collections.shuffle(playersList);
-		return playersList;
+		roundNumber = 1;
 	}
 
 	public void dealCards(int cpuNumber, ArrayList<Card> cardList) {
@@ -141,16 +123,30 @@ public class TopTrumpsRESTAPI {
 		createPlayersArray(cpuNumber);
 	}
 	
-	public Deque<Card> shuffleCards(ArrayList<Card> cardList) {
-
-		Collections.shuffle(cardList);
-		mainDeck = new ArrayDeque<Card>(cardList);
+	public ArrayList<Player> createPlayersArray(int cpuNumber) {
 		
-		return mainDeck;
+		playersList.add(playerHuman);
+		playerAI1 = new Player("Opponent 1", cpu1Deck);
+		playersList.add(playerAI1);
+		if (cpuNumber > 1) {
+			playerAI2 = new Player("Opponent 2", cpu2Deck);
+			playersList.add(playerAI2);
+			if (cpuNumber > 2) {
+				playerAI3 = new Player("Opponent 3", cpu3Deck);
+				playersList.add(playerAI3);
+				if (cpuNumber > 3) {
+					playerAI4 = new Player("Opponent 4", cpu4Deck);
+					playersList.add(playerAI4);
+				}
+			}
+		}
+		
+		// randomise order in which the players start
+		Collections.shuffle(playersList);
+		return playersList;
 	}
 	
-	public ArrayList<Card> addCardsToList(String fileName) {
-		cardList = new ArrayList<Card>();
+	public void addCardsToList(String fileName) {
 		FileReader reader = null;
 
 		try {
@@ -193,8 +189,6 @@ public class TopTrumpsRESTAPI {
 				}
 			}
 		}
-		return cardList;
-
 	}
 	
 	public ArrayList<Card> collectCurrentHands() {
@@ -214,24 +208,24 @@ public class TopTrumpsRESTAPI {
 	@Path("/displayCards")
 	public String displayCards() throws IOException	{
 		
-		Card[] cardListCurrentHands = new Card[numPlayers];
+		ArrayList<Card> cardListCurrentHands = new ArrayList<Card>();
 		
 		for (int i = 0; i < numPlayers; i++) {
 				switch (playersList.get(i).getName()) {
 				case ("Human"):
-					cardListCurrentHands[0] = playersList.get(i).getDeck().pollFirst();
+					cardListCurrentHands.add(playersList.get(i).getDeck().pollFirst());
 					continue;
 				case ("Opponent 1"):
-					cardListCurrentHands[1] = playersList.get(i).getDeck().pollFirst();
+					cardListCurrentHands.add(playersList.get(i).getDeck().pollFirst());
 					continue;
 				case ("Opponent 2"):
-					cardListCurrentHands[2] = playersList.get(i).getDeck().pollFirst();
+					cardListCurrentHands.add(playersList.get(i).getDeck().pollFirst());
 					continue;
 				case ("Opponent 3"):
-					cardListCurrentHands[3] = playersList.get(i).getDeck().pollFirst();
+					cardListCurrentHands.add(playersList.get(i).getDeck().pollFirst());
 					continue;
 				case ("Opponent 4"):
-					cardListCurrentHands[4] = playersList.get(i).getDeck().pollFirst();
+					cardListCurrentHands.add(playersList.get(i).getDeck().pollFirst());
 					continue;
 				default:
 					System.err.println("There is no player");
