@@ -60,169 +60,163 @@
     <body style="background: url(https://www.elegantthemes.com/blog/wp-content/uploads/2013/09/bg-11-full.jpg?fbclid=IwAR2NCFjf2oswomit651mKMp7LQjN-O84vfUzPQ6HhKl_f97FTpFoueTZoPY)">
     
     	<div class="row">
+    	<div class="col-md-12"></div>
+    		<div class="row">
     		<div class="col-md-12"></div>
-    			<div class="row">
-    				<div class="col-md-12"></div>
-    					<div class="container">
-    						<div class="row"> 
-    							<div class="col-lg-8">
-    								<div id="setNumberOfOpponents">
-    									<h1>Top Trumps</h1>    					
-    											<p>Set number of opponents</p>
-												<select id="numberOfOpponents">
-													<option value="1">1</option>
-													<option value="2">2</option>
-													<option value="3">3</option>
-													<option value="4">4</option>
-												</select>
-												<button type="button" class="btn btn-primary" onclick="setNumberOfOpponents();">Play</button>
-				    				</div>
+    			<div class="container">
+    				<div class="row"> 
+    					<div class="col-lg-8">
+    						<div id="setNumberOfOpponents">
+    							<h1>Top Trumps</h1>    					
+    							<p>Set number of opponents</p>
+								<select id="numberOfOpponents">
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									</select>
+								<button type="button" class="btn btn-primary" onclick="setNumberOfOpponents();">Play</button>
+				    		</div>
 				    				
-				    				<div id="gameView">
-    									<h1>Round: <label id="setRoundCounter"></label></h1>
-	    								<h2>Active Player:</h2>
-	    								<h3>Previous Round Winner:</h3>
-	    								<button class="btn btn-default" onclick="displayCards();">Draw Cards</button>
-	    							</div>
+				    		<div id="gameView">
+				    			<h1>Round: <label id="setRoundCounter"></label></h1>
+	    						<h2>Active Player:</h2>
+	    						<h3>Previous Round Winner:</h3>
+	    						<button class="btn btn-default" onclick="displayCards();">Draw Cards</button>
+	    					</div>
     							
-    								<div class="row text-center" id='cardSection'>
-    									<div class="col-lg-1"></div>
-    										<div class="col-lg-2">
-    											<div class="card" id="card1">
-													<div class="card-header">Human</div>
-														<h5 class="card-subtitle text-muted" id="card-title"></h5>
-														<img class="card-img-top" src="" alt="No_Image_Found">
-															<div class="card-body">
-																<button onclick="selectCategory(1)" class="btn btn-default btn-block" id="humanCat1">
-																	<span class="badge"></span>
-																</button>
-																<button onclick="selectCategory(2)" class="btn2 btn-default btn-block" id="humanCat2">
-																	<span class="badge"></span>
-																</button>
-																<button onclick="selectCategory(3)" class="btn3 btn-default btn-block" id="humanCat3">
-																	<span class="badge"></span>
-																</button>
-																<button onclick="selectCategory(4)" class="btn4 btn-default btn-block" id="humanCat4">
-																	<span class="badge"></span>
-																</button>
-																<button onclick="selectCategory(5)" class="btn5 btn-default btn-block" id="humanCat5">
-																	<span class="badge"></span>
-																</button>
-															</div>
-												</div>
-											</div>
+    						<div class="row text-center" id='cardSection'>
+    							<div class="col-lg-1"></div>
+    							<div class="col-lg-2">
+    								<div class="card" id="card1">
+									<div class="card-header">Human</div>
+										<h5 class="card-subtitle text-muted" id="card-title"></h5>
+										<img class="card-img-top" src="" alt="No_Image_Found">
+										<div class="card-body">
+											<button onclick="selectCategory(1)" class="btn btn-default btn-block" id="humanCat1">
+												<span class="badge"></span>
+											</button>
+											<button onclick="selectCategory(2)" class="btn2 btn-default btn-block" id="humanCat2">
+												<span class="badge"></span>
+											</button>
+											<button onclick="selectCategory(3)" class="btn3 btn-default btn-block" id="humanCat3">
+												<span class="badge"></span>
+											</button>
+											<button onclick="selectCategory(4)" class="btn4 btn-default btn-block" id="humanCat4">
+												<span class="badge"></span>
+											</button>
+											<button onclick="selectCategory(5)" class="btn5 btn-default btn-block" id="humanCat5">
+												<span class="badge"></span>
+											</button>
+										</div>
+									</div>
+								</div>
 
-											<div class="col-lg-2">
-												<div class="card" id="card2">
-														<div class="card-header">Opponent 1</div>
-														<h5 class="card-subtitle text-muted" id="card-title"></h5>
-														<img class="card-img-top" src="" alt="No_Image_Found">
-														<div class="card-body">
-														
-							
-															<button class="btn btn-default btn-block" disabled>
-																<span class="badge"></span>
-															</button>
-															<button class="btn2 btn-default btn-block" disabled>
-																<span class="badge"></span>
-															</button>
-															<button class="btn3 btn-default btn-block" disabled>
-																<span class="badge"></span>
-															</button>
-															<button class="btn4 btn-default btn-block" disabled>
-																<span class="badge"></span>
-															</button>
-															<button class="btn5 btn-default btn-block" disabled>
-																<span class="badge"></span>
-															</button>
-														</div>
-													</div>
-											</div>
+								<div class="col-lg-2">
+									<div class="card" id="card2">
+										<div class="card-header">Opponent 1</div>
+											<h5 class="card-subtitle text-muted" id="card-title"></h5>
+											<img class="card-img-top" src="" alt="No_Image_Found">
+										<div class="card-body">
+											<button class="btn btn-default btn-block" disabled>
+												<span class="badge"></span>
+											</button>
+											<button class="btn2 btn-default btn-block" disabled>
+												<span class="badge"></span>
+											</button>
+											<button class="btn3 btn-default btn-block" disabled>
+												<span class="badge"></span>
+											</button>
+											<button class="btn4 btn-default btn-block" disabled>
+												<span class="badge"></span>
+											</button>
+											<button class="btn5 btn-default btn-block" disabled>
+												<span class="badge"></span>
+											</button>
+										</div>
+									</div>
+								</div>
 
-											<div class="col-lg-2">
-												<div class="card" id="card3">
-													<div class="card-header">Opponent 2</div>
-													<h5 class="card-subtitle text-muted" id="card-title"></h5>
-													<img class="card-img-top" src="" alt="No_Image_Found">
-													<div class="card-body">
-													
-						
-														<button class="btn btn-default btn-block" disabled>
-															<span class="badge"></span>
-														</button>
-														<button class="btn2 btn-default btn-block" disabled>
-															<span class="badge"></span>
-														</button>
-														<button class="btn3 btn-default btn-block" disabled>
-															<span class="badge"></span>
-														</button>
-														<button class="btn4 btn-default btn-block" disabled>
-															<span class="badge"></span>
-														</button>
-														<button class="btn5 btn-default btn-block" disabled>
-															<span class="badge"></span>
-														</button>
-													</div>
-												</div>
-											</div>
+								<div class="col-lg-2">
+									<div class="card" id="card3">
+											<div class="card-header">Opponent 2</div>
+											<h5 class="card-subtitle text-muted" id="card-title"></h5>
+											<img class="card-img-top" src="" alt="No_Image_Found">
+										<div class="card-body">
+											<button class="btn btn-default btn-block" disabled>
+												<span class="badge"></span>
+											</button>
+											<button class="btn2 btn-default btn-block" disabled>
+												<span class="badge"></span>
+											</button>
+											<button class="btn3 btn-default btn-block" disabled>
+												<span class="badge"></span>
+											</button>
+											<button class="btn4 btn-default btn-block" disabled>
+												<span class="badge"></span>
+											</button>
+											<button class="btn5 btn-default btn-block" disabled>
+												<span class="badge"></span>
+											</button>
+										</div>
+									</div>
+								</div>
 
-											<div class="col-lg-2">
-												<div class="card" id="card4">
-													<div class="card-header">Opponent 3</div>
-													<h5 class="card-subtitle text-muted" id="card-title"></h5>
-													<img class="card-img-top" src="" alt="No_Image_Found">
-													<div class="card-body">
-						
-														<button class="btn btn-default btn-block" disabled>
-															<span class="badge"></span>
-														</button>
-														<button class="btn2 btn-default btn-block" disabled>
-															<span class="badge"></span>
-														</button>
-														<button class="btn3 btn-default btn-block" disabled>
-															<span class="badge"></span>
-														</button>
-														<button class="btn4 btn-default btn-block" disabled>
-															<span class="badge"></span>
-														</button>
-														<button class="btn5 btn-default btn-block" disabled>
-															<span class="badge"></span>
-														</button>
-													</div>
-												</div>
-											</div>
+								<div class="col-lg-2">
+									<div class="card" id="card4">
+											<div class="card-header">Opponent 3</div>
+											<h5 class="card-subtitle text-muted" id="card-title"></h5>
+											<img class="card-img-top" src="" alt="No_Image_Found">
+										<div class="card-body">
+											<button class="btn btn-default btn-block" disabled>
+												<span class="badge"></span>
+											</button>
+											<button class="btn2 btn-default btn-block" disabled>
+												<span class="badge"></span>
+											</button>
+											<button class="btn3 btn-default btn-block" disabled>
+												<span class="badge"></span>
+											</button>
+											<button class="btn4 btn-default btn-block" disabled>
+												<span class="badge"></span>
+											</button>
+											<button class="btn5 btn-default btn-block" disabled>
+												<span class="badge"></span>
+											</button>
+										</div>
+									</div>
+								</div>
 
-											<div class="col-lg-2">
-												<div class="card" id="card5">
-													<div class="card-header">Opponent 4</div>
-													<h5 class="card-subtitle text-muted" id="card-title"></h5>
-													<img class="card-img-top" src="" alt="No_Image_Found">
-													<div class="card-body">
-						
-														<button class="btn btn-default btn-block" disabled>
-															<span class="badge"></span>
-														</button>
-														<button class="btn2 btn-default btn-block" disabled>
-															<span class="badge"></span>
-														</button>
-														<button class="btn3 btn-default btn-block" disabled>
-															<span class="badge"></span>
-														</button>
-														<button class="btn4 btn-default btn-block" disabled>
-															<span class="badge"></span>
-														</button>
-														<button class="btn5 btn-default btn-block" disabled>
-															<span class="badge"></span>
-														</button>
-													</div>
-												</div>
-											</div>
+								<div class="col-lg-2">
+									<div class="card" id="card5">
+										<div class="card-header">Opponent 4</div>
+											<h5 class="card-subtitle text-muted" id="card-title"></h5>
+											<img class="card-img-top" src="" alt="No_Image_Found">
+										<div class="card-body">
+											<button class="btn btn-default btn-block" disabled>
+												<span class="badge"></span>
+											</button>
+											<button class="btn2 btn-default btn-block" disabled>
+												<span class="badge"></span>
+											</button>
+											<button class="btn3 btn-default btn-block" disabled>
+												<span class="badge"></span>
+											</button>
+											<button class="btn4 btn-default btn-block" disabled>
+												<span class="badge"></span>
+											</button>
+											<button class="btn5 btn-default btn-block" disabled>
+												<span class="badge"></span>
+											</button>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
+				</div>
+			</div>
+		</div>
 					  
 		
 		<script type="text/javascript">
