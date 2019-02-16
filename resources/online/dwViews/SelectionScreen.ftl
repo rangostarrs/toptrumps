@@ -23,7 +23,7 @@
 		<style>
 			
 			body{
-				background-image: url(https://i.stack.imgur.com/V3plu.gif);
+				background-image: url(http://localhost:7777/assets/background.gif);
 			}
 			
 			h1 {

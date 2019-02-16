@@ -241,7 +241,6 @@ public class TopTrumpsRESTAPI {
 	public String roundNumber() throws JsonProcessingException {
 		String roundNumberJSON = oWriter.writeValueAsString(roundNumber);
 		return roundNumberJSON;
-
 	}
 	
 }
