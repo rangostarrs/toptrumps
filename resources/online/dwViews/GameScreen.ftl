@@ -128,16 +128,16 @@
 										<img class="card-picture" src="" alt="No_Image_Found">
 										<div class="card-body">
 											<button type="button" class="nes-btn" style="font-size:8px;" onclick="selectCategory(1)" id="stat1">
-												<p class="stat" style="font-size:8px;color:black;"></p>
+												<p class="stat"></p>
 											</button>
 											<button type="button" class="nes-btn" style="font-size:8px;" onclick="selectCategory(2)" id="stat2">
-												<p class="stat" style="font-size:8px;color:black;"></p>
+												<p class="stat"></p>
 											</button>
 											<button type="button" class="nes-btn" style="font-size:8px;" onclick="selectCategory(3)" id="stat3">
-												<p class="stat" style="font-size:8px;color:black;"></p>
+												<p class="stat"></p>
 											</button>
 											<button type="button" class="nes-btn" style="font-size:8px;" onclick="selectCategory(4)" id="stat4">
-												<p class="stat" style="font-size:8px;color:black;"></p>
+												<p class="stat"></p>
 											</button>
 											<button type="button" class="nes-btn" style="font-size:8px;" onclick="selectCategory(5)" id="stat5">
 												<p class="stat"></p>
@@ -190,8 +190,8 @@
 										</div>
 									</div>
 								</div>
- 								<div class="col-lg-1"></div>
- 								<div class="col-lg-2">
+								<div class="col-lg-1"></div>
+								<div class="col-lg-2">
 									<div class="nes-container is-rounded" id="card5">
 										<div class="card-header">Opponent 4</div>
 											<h5 class="card-subtitle text-muted" id="card-title"></h5>
@@ -315,7 +315,7 @@
 				
 		        for (i = 0; i < 5; i++) {
 		        	var cardTitle = "#card" + (i + 1);
-		        	$(cardTitle).find(".card-picture").attr("src", "http://dcs.gla.ac.uk/~richardm/TopTrumps/" + list[i].description + ".jpg");
+		        	$(cardTitle).find(".card-picture").attr("src", "http://localhost:7777/assets/" + list[i].description + ".jpg");
 		          	$(cardTitle).find("#card-title").text(list[i].description);
 			        $(cardTitle).find("#stat1").each(function(j) { 
 			        	$(this).html("<p class=\"stat\">" + "Size: " + list[i].stat1 + "</p>");
