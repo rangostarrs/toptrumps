@@ -18,6 +18,10 @@
 	
 		<style> 
 		
+			body{
+				background-image: url(http://localhost:7777/assets/background.gif);
+			}
+		
 			#gameInfo {
 				text-align: center;
 				visibility: hidden;
@@ -26,9 +30,15 @@
 			.nes-btn {
 				font-size: 10px;
 				padding: 8px 8px;
+				width: 120px;
+				height: 30px;
+			}
+			
+			.nes-btn.is-primary {
+				font-size: 10px;
+				padding: 8px 8px;
 				width: 90px;
 				height: 10px;
-				vertical-align: middle;
 			}
 			
 			h1 {
@@ -91,7 +101,7 @@
 		</style>
 	</head>
 
-    <body style="background: url(https://i.stack.imgur.com/V3plu.gif)">
+    <body>
     
     	<div class="row">
     	<div class="col-md-12"></div>
