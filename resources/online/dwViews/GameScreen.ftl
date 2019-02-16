@@ -34,13 +34,6 @@
 				height: 30px;
 			}
 			
-			.nes-btn.is-primary {
-				font-size: 10px;
-				padding: 8px 8px;
-				width: 90px;
-				height: 10px;
-			}
-			
 			h1 {
 				font-weight: 400;
 				font-size: 30px;
@@ -123,11 +116,12 @@
 				    		</div>
 				    				
 				    		<div id="gameInfo">
-				    			<h1>Round: <label id="setRoundCounter"></label></h1>
+				    			<h1>Round: <label id='setRoundCounter'></label></h1>
 	    						<h2>Active Player:</h2>
-	    						<h3>Previous Round Winner:</h3>
+	    						<h3>Round Winner:<label id='roundWinnerRevealed'></label></h3>
 	    						<button type="button" class="nes-btn" onclick="displayCards();">Draw Cards</button>
 	    					</div>
+	    					
     							
     						<div class="row text-center" id='cardSection'>
     							<div class="col-lg-1"></div>
@@ -137,19 +131,19 @@
 										<h5 class="card-subtitle text-muted" id="card-title"></h5>
 										<img class="card-picture" src="" alt="No_Image_Found">
 										<div class="card-body">
-											<button type="button" class="nes-btn" style="font-size:8px;" onclick="selectCategory(1)" id="stat1">
+											<button type="button" class="nes-btn" style="font-size:8px;" onclick="humanSelectsCategory(1)" id="stat1">
 												<p class="stat"></p>
 											</button>
-											<button type="button" class="nes-btn" style="font-size:8px;" onclick="selectCategory(2)" id="stat2">
+											<button type="button" class="nes-btn" style="font-size:8px;" onclick="humanSelectsCategory(2)" id="stat2">
 												<p class="stat"></p>
 											</button>
-											<button type="button" class="nes-btn" style="font-size:8px;" onclick="selectCategory(3)" id="stat3">
+											<button type="button" class="nes-btn" style="font-size:8px;" onclick="humanSelectsCategory(3)" id="stat3">
 												<p class="stat"></p>
 											</button>
-											<button type="button" class="nes-btn" style="font-size:8px;" onclick="selectCategory(4)" id="stat4">
+											<button type="button" class="nes-btn" style="font-size:8px;" onclick="humanSelectsCategory(4)" id="stat4">
 												<p class="stat"></p>
 											</button>
-											<button type="button" class="nes-btn" style="font-size:8px;" onclick="selectCategory(5)" id="stat5">
+											<button type="button" class="nes-btn" style="font-size:8px;" onclick="humanSelectsCategory(5)" id="stat5">
 												<p class="stat"></p>
 											</button>
 										</div>
@@ -344,12 +338,36 @@
 				          });
 		        }
 		      }
+			setRoundCounter();
 			displayAppropriateAmountOfCards();
 			cardSectionVisible();
 		 	xhr.send();
-		} 
+		}
  		
- 	   function setRoundCounter() {
+ 		
+ 		function humanSelectsCategory(x) {
+ 			
+ 			var number = x
+ 			var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/humanCompareStats?Number=" + number);
+ 			
+ 			if(!xhr){
+ 				alert("CORS NOT AVAILABLE");
+ 			} 
+ 			
+ 		    xhr.onload = function(e) {
+ 		         
+ 		    	var responseText = xhr.response; 
+/*  		        responseText = responseText.replace(/^"(.*)"$/, '$1');
+ */ 		        document.getElementById('roundWinnerRevealed').innerHTML = responseText;
+ 		    	  
+ 		    	  
+ 		      }
+ 			
+ 			xhr.send();
+ 		}
+ 		
+ 		
+ 		function setRoundCounter() {
  	   		var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/roundNumber");
  	   		
  			if (!xhr) {
@@ -358,7 +376,20 @@
  			
  			xhr.onload = function(e) {
  			var responseText = xhr.response; // the text of the response
- 				document.getElementById("setRoundCounter").innerHTML = responseText;
+ 				document.getElementById('setRoundCounter').innerHTML = responseText;
+ 			}
+ 		xhr.send();
+ 	   }
+ 		
+ 	   function roundNumber() {
+ 	   		var xhr = createCORSRequest('GET',
+ 					"http://localhost:7777/toptrumps/roundNumber");
+ 			if (!xhr) {
+ 				alert("No Round Number");
+ 				}
+ 			xhr.onload = function(e) {
+ 			var responseText = xhr.response; // the text of the response
+ 				document.getElementById('roundNumber').innerHTML = responseText;
  			}
  		xhr.send();
  	   }
