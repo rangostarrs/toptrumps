@@ -7,7 +7,6 @@ import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Deque;
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import javax.ws.rs.Consumes;
@@ -121,35 +120,6 @@ public class TopTrumpsRESTAPI {
 		} catch (IndexOutOfBoundsException e) {}
 	}
 	
-	public void increaseRoundWin(int highestStatPlayer) {
-
-		if (highestStatPlayer == 6) {
-			// do nothing in case of a draw
-		} else if (playersList.get(highestStatPlayer).toString() == "Human") {
-			// gameResults[0] = gameResults[0] + 1;
-			playerRoundWin++;
-
-		} else if (playersList.get(highestStatPlayer).toString() == "Opponent 1") {
-			// gameResults[1] = gameResults[1] + 1;
-			cpu1RoundWin++;
-		}
-
-		else if (playersList.get(highestStatPlayer).toString() == "Opponent 2") {
-			// gameResults[2] = gameResults[2] + 1;
-			cpu2RoundWin++;
-		}
-
-		else if (playersList.get(highestStatPlayer).toString() == "Opponent 3") {
-			// gameResults[3] = gameResults[3] + 1;
-			cpu3RoundWin++;
-		}
-
-		else if (playersList.get(highestStatPlayer).toString() == "Opponent 4") {
-			// gameResults[4] = gameResults[4] + 1;
-			cpu4RoundWin++;
-		}
-	}
-	
 	public void dealCards(int cpuNumber, ArrayList<Card> cardList) {
 		
 		while (!mainDeck.isEmpty()) {
@@ -201,7 +171,6 @@ public class TopTrumpsRESTAPI {
 			}
 		}
 		
-		// randomise order in which the players start
 //		Collections.shuffle(playersList);
 		return playersList;
 	}
@@ -251,19 +220,6 @@ public class TopTrumpsRESTAPI {
 		}
 	}
 	
-//	public ArrayList<Card> collectCurrentHands() {
-//		
-//		currentHands = new ArrayList<Card>();
-//		
-//		for (int i = 0; i < playersList.size(); i++) {
-//			// retrieve hand of each player
-//			currentHandCard = playersList.get(i).getDeck().pollFirst();
-//			currentHands.add(currentHandCard);
-//		}
-//		
-//		return currentHands;
-//	}
-	
 	@GET
 	@Path("/displayCards")
 	public String displayCards() throws IOException	{
@@ -303,16 +259,8 @@ public class TopTrumpsRESTAPI {
 			playersList.get(highestStatPlayer).getDeck().addLast(cardListCurrentHands.get(i));
 
 		}
-//		if (!commonPile.isEmpty()) {
-//			for (int i = 0; i < commonPile.size(); i++) {
-//				playersList.get(highestStatPlayer).getDeck().addLast(commonPile.get(i));
-//			}
-//		}
-
-		// Added this ArrayList of ArrayLists to test in JUnit
 
 		cardListCurrentHands.clear();
-//		commonPile.clear();
 	}
 	
 	@GET
