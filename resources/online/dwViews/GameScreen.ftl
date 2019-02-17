@@ -116,13 +116,12 @@
 				    		</div>
 				    				
 				    		<div id="gameInfo">
-				    			<h1>Round: <label id='setRoundCounter'></label></h1>
+				    			<h1>Round: <label id="setRoundCounter"></label></h1>
 	    						<h2>Active Player:</h2>
 	    						<h3>Round Winner:<label id='roundWinnerRevealed'></label></h3>
 	    						<button type="button" class="nes-btn" onclick="displayCards();">Draw Cards</button>
 	    					</div>
-	    					
-    							
+	    						
     						<div class="row text-center" id='cardSection'>
     							<div class="col-lg-1"></div>
     							<div class="col-lg-2">
@@ -263,20 +262,16 @@
 		function createCORSRequest(method, url) {
 				var xhr = new XMLHttpRequest();
 				if ("withCredentials" in xhr) {
-
 				xhr.open(method, url, true);
-
-				} else if (typeof XDomainRequest != "undefined") {
-
-				xhr = new XDomainRequest();
-				xhr.open(method, url);
-
-				 } else {
-
-				xhr = null;
-
-				 }
-				 return xhr;
+				} 
+				else if (typeof XDomainRequest != "undefined") {
+					xhr = new XDomainRequest();
+					xhr.open(method, url);
+				} 
+				else {
+					xhr = null;
+				}
+			return xhr;
 		}
 			
 		function setNumberOfOpponents() {
@@ -290,7 +285,7 @@
 
 			xhr.onload = function(e) {
 				if (number < 1 || number > 4){
-					alert("Max 4 players"); 
+					alert("ONLY 4 PLAYERS ALLOWED"); 
 				}
 				else {
 					hideSelection();
@@ -336,8 +331,9 @@
 			        $(cardTitle).find("#stat5").each(function(n) { 
 			        	$(this).html("<p class=\"stat\">" + "Cargo: " + list[i].stat5 + "</p>");
 				          });
-		        }
-		      }
+			        }
+		     }
+			
 			setRoundCounter();
 			displayAppropriateAmountOfCards();
 			cardSectionVisible();
@@ -355,12 +351,8 @@
  			} 
  			
  		    xhr.onload = function(e) {
- 		         
  		    	var responseText = xhr.response; 
-/*  		        responseText = responseText.replace(/^"(.*)"$/, '$1');
- */ 		        document.getElementById('roundWinnerRevealed').innerHTML = responseText;
- 		    	  
- 		    	  
+  		        document.getElementById('roundWinnerRevealed').innerHTML = responseText; 
  		      }
  			
  			xhr.send();
@@ -377,19 +369,6 @@
  			xhr.onload = function(e) {
  			var responseText = xhr.response; // the text of the response
  				document.getElementById('setRoundCounter').innerHTML = responseText;
- 			}
- 		xhr.send();
- 	   }
- 		
- 	   function roundNumber() {
- 	   		var xhr = createCORSRequest('GET',
- 					"http://localhost:7777/toptrumps/roundNumber");
- 			if (!xhr) {
- 				alert("No Round Number");
- 				}
- 			xhr.onload = function(e) {
- 			var responseText = xhr.response; // the text of the response
- 				document.getElementById('roundNumber').innerHTML = responseText;
  			}
  		xhr.send();
  	   }
