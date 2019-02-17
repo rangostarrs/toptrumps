@@ -26,6 +26,7 @@ public class SQL {
 		}
 		
 		
+		//Method for connecting to the database
 		
 		public void connectToDB() {
 			
@@ -52,6 +53,7 @@ public class SQL {
 			
 		}
 		
+		//Method for closing the connection to the database
 		public void closeConnectionToDB() {
 			
 			try {
@@ -63,7 +65,7 @@ public class SQL {
 			
 		}
 		
-		
+		//Method, which is used in the Model class to set values to the variables after the game, which are then used to insert data to the database.
 		public void setgameInfotoSQL(int gameid, String winner, int totalRounds, int numberOfDraws, int playerRoundWins, int CPU1RoundWins,
 				int CPU2RoundWins, int CPU3RoundWins, int CPU4RoundWins) {
 			
@@ -85,6 +87,8 @@ public class SQL {
 			
 		}
 		
+		//Method to get game statistics from the database. 
+	
 		public void getGameStats() {
 			
 			try {
@@ -177,7 +181,7 @@ public class SQL {
 //				}
 //			
 //		}
-		
+		//MEthod for getting gameId from the database and adding 1 to it. This method is used before the game will start in order to have the correct gameID number.
 		public int getGameIDfromDB() {
 			int gameid = 0;
 			try {
@@ -208,7 +212,8 @@ public class SQL {
 			return gameid;
 		}
 
-
+		
+		//Method, which creates an integer array with the statistics and returns it. This is used to display the statistics in the online version of the game. 
 		public int[]insertGameStatsOnline(){
 			getGameStats();
 			
