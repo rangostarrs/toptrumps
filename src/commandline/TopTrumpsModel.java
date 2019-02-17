@@ -193,7 +193,7 @@ public class TopTrumpsModel {
 					increaseRoundWin(highestStatPlayer);
 
 				} catch (IndexOutOfBoundsException e) {
-					e.printStackTrace();
+				
 				}
 			}
 
@@ -237,47 +237,31 @@ public class TopTrumpsModel {
 
 	public void increaseRoundWin(int highestStatPlayer) {
 
-			boolean var = true;
-			
-			while(var) {
-			if (highestStatPlayer == 6) {
-				
-				
-			} else if (playersList.get(highestStatPlayer).toString() == "Human") {
-				// gameResults[0] = gameResults[0] + 1;
-				playerRoundWin++;
-				var = false;
-				
+		if (highestStatPlayer == 6) {
+			// do nothing in case of a draw
+		} else if (playersList.get(highestStatPlayer).toString() == "Human") {
+			// gameResults[0] = gameResults[0] + 1;
+			playerRoundWin++;
 
-			} else if (playersList.get(highestStatPlayer).toString() == "Opponent 1") {
-				// gameResults[1] = gameResults[1] + 1;
-				cpu1RoundWin++;
-				var = false;
-			}
+		} else if (playersList.get(highestStatPlayer).toString() == "Opponent 1") {
+			// gameResults[1] = gameResults[1] + 1;
+			cpu1RoundWin++;
+		}
 
-			else if (playersList.get(highestStatPlayer).toString() == "Opponent 2") {
-				// gameResults[2] = gameResults[2] + 1;
-				cpu2RoundWin++;
-				var = false;
-			}
+		else if (playersList.get(highestStatPlayer).toString() == "Opponent 2") {
+			// gameResults[2] = gameResults[2] + 1;
+			cpu2RoundWin++;
+		}
 
-			else if (playersList.get(highestStatPlayer).toString() == "Opponent 3") {
-				// gameResults[3] = gameResults[3] + 1;
-				cpu3RoundWin++;
-				var = false;
-			}
+		else if (playersList.get(highestStatPlayer).toString() == "Opponent 3") {
+			// gameResults[3] = gameResults[3] + 1;
+			cpu3RoundWin++;
+		}
 
-			else if (playersList.get(highestStatPlayer).toString() == "Opponent 4") {
-				// gameResults[4] = gameResults[4] + 1;
-				cpu4RoundWin++;
-				var = false;
-			}
-			
-			}
-			
-		
-		
-		
+		else if (playersList.get(highestStatPlayer).toString() == "Opponent 4") {
+			// gameResults[4] = gameResults[4] + 1;
+			cpu4RoundWin++;
+		}
 	}
 
 	public void reorderPlayersList(ArrayList<Player> playersList, int highestStatPlayer) {

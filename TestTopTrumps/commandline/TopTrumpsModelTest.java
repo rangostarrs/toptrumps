@@ -41,6 +41,10 @@ class TopTrumpsModelTest {
 		currentHands = new ArrayList<Card>();
 	    commonPile = new ArrayList<Card>();
 	}
+	
+	/*This shows that every time the player array is created we have set up a four player
+	 * game. However, the game will immediately eliminate players depending upon how many
+	 * opponents the human player has selected */
 
 	@Test
 	void createPlayersTest() {

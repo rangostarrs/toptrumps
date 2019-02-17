@@ -326,14 +326,6 @@ Description: Avenger
 
 Shuffled Cards list
 
-Description: Vanguard
- > Size: 3
- > Speed: 4
- > Range: 5
- > Firepower: 5
- > Cargo: 2
-
-
 Description: Idris
  > Size: 8
  > Speed: 2
@@ -342,20 +334,52 @@ Description: Idris
  > Cargo: 6
 
 
-Description: Merchantman
- > Size: 7
+Description: Hawk
+ > Size: 1
  > Speed: 3
- > Range: 5
- > Firepower: 6
- > Cargo: 8
+ > Range: 2
+ > Firepower: 4
+ > Cargo: 0
 
 
-Description: Hornet
+Description: Orion
+ > Size: 10
+ > Speed: 1
+ > Range: 6
+ > Firepower: 2
+ > Cargo: 9
+
+
+Description: m50
+ > Size: 1
+ > Speed: 10
+ > Range: 2
+ > Firepower: 2
+ > Cargo: 0
+
+
+Description: Constellation
+ > Size: 4
+ > Speed: 5
+ > Range: 7
+ > Firepower: 3
+ > Cargo: 4
+
+
+Description: Avenger
  > Size: 2
  > Speed: 5
- > Range: 3
- > Firepower: 4
- > Cargo: 1
+ > Range: 4
+ > Firepower: 3
+ > Cargo: 2
+
+
+Description: Orion
+ > Size: 10
+ > Speed: 1
+ > Range: 6
+ > Firepower: 2
+ > Cargo: 9
 
 
 Description: Orion
@@ -382,20 +406,44 @@ Description: Idris
  > Cargo: 6
 
 
-Description: Avenger
+Description: Hornet
  > Size: 2
  > Speed: 5
- > Range: 4
- > Firepower: 3
+ > Range: 3
+ > Firepower: 4
+ > Cargo: 1
+
+
+Description: m50
+ > Size: 1
+ > Speed: 10
+ > Range: 2
+ > Firepower: 2
+ > Cargo: 0
+
+
+Description: Vanguard
+ > Size: 3
+ > Speed: 4
+ > Range: 5
+ > Firepower: 5
  > Cargo: 2
 
 
-Description: Orion
- > Size: 10
- > Speed: 1
- > Range: 6
- > Firepower: 2
- > Cargo: 9
+Description: 350r
+ > Size: 1
+ > Speed: 9
+ > Range: 2
+ > Firepower: 3
+ > Cargo: 0
+
+
+Description: Merchantman
+ > Size: 7
+ > Speed: 3
+ > Range: 5
+ > Firepower: 6
+ > Cargo: 8
 
 
 Description: Hurricane
@@ -406,10 +454,10 @@ Description: Hurricane
  > Cargo: 0
 
 
-Description: Hurricane
+Description: Sabre
  > Size: 2
- > Speed: 5
- > Range: 3
+ > Speed: 7
+ > Range: 2
  > Firepower: 5
  > Cargo: 0
 
@@ -422,28 +470,28 @@ Description: Vanguard
  > Cargo: 2
 
 
-Description: Hawk
- > Size: 1
- > Speed: 3
- > Range: 2
+Description: Constellation
+ > Size: 4
+ > Speed: 5
+ > Range: 7
+ > Firepower: 3
+ > Cargo: 4
+
+
+Description: Hornet
+ > Size: 2
+ > Speed: 5
+ > Range: 3
  > Firepower: 4
- > Cargo: 0
+ > Cargo: 1
 
 
-Description: Hawk
- > Size: 1
+Description: Merchantman
+ > Size: 7
  > Speed: 3
- > Range: 2
- > Firepower: 4
- > Cargo: 0
-
-
-Description: Orion
- > Size: 10
- > Speed: 1
- > Range: 6
- > Firepower: 2
- > Cargo: 9
+ > Range: 5
+ > Firepower: 6
+ > Cargo: 8
 
 
 Description: Avenger
@@ -452,70 +500,6 @@ Description: Avenger
  > Range: 4
  > Firepower: 3
  > Cargo: 2
-
-
-Description: 350r
- > Size: 1
- > Speed: 9
- > Range: 2
- > Firepower: 3
- > Cargo: 0
-
-
-Description: Sabre
- > Size: 2
- > Speed: 7
- > Range: 2
- > Firepower: 5
- > Cargo: 0
-
-
-Description: Constellation
- > Size: 4
- > Speed: 5
- > Range: 7
- > Firepower: 3
- > Cargo: 4
-
-
-Description: m50
- > Size: 1
- > Speed: 10
- > Range: 2
- > Firepower: 2
- > Cargo: 0
-
-
-Description: m50
- > Size: 1
- > Speed: 10
- > Range: 2
- > Firepower: 2
- > Cargo: 0
-
-
-Description: 350r
- > Size: 1
- > Speed: 9
- > Range: 2
- > Firepower: 3
- > Cargo: 0
-
-
-Description: 350r
- > Size: 1
- > Speed: 9
- > Range: 2
- > Firepower: 3
- > Cargo: 0
-
-
-Description: Constellation
- > Size: 4
- > Speed: 5
- > Range: 7
- > Firepower: 3
- > Cargo: 4
 
 
 Description: Hornet
@@ -534,44 +518,12 @@ Description: Sabre
  > Cargo: 0
 
 
-Description: Merchantman
- > Size: 7
- > Speed: 3
- > Range: 5
- > Firepower: 6
- > Cargo: 8
-
-
-Description: Merchantman
- > Size: 7
- > Speed: 3
- > Range: 5
- > Firepower: 6
- > Cargo: 8
-
-
-Description: Hornet
- > Size: 2
- > Speed: 5
- > Range: 3
- > Firepower: 4
- > Cargo: 1
-
-
-Description: Carrack
- > Size: 6
- > Speed: 2
- > Range: 10
- > Firepower: 4
- > Cargo: 6
-
-
-Description: Avenger
- > Size: 2
- > Speed: 5
- > Range: 4
- > Firepower: 3
- > Cargo: 2
+Description: m50
+ > Size: 1
+ > Speed: 10
+ > Range: 2
+ > Firepower: 2
+ > Cargo: 0
 
 
 Description: Hawk
@@ -582,12 +534,60 @@ Description: Hawk
  > Cargo: 0
 
 
-Description: Sabre
+Description: Constellation
+ > Size: 4
+ > Speed: 5
+ > Range: 7
+ > Firepower: 3
+ > Cargo: 4
+
+
+Description: Hurricane
  > Size: 2
- > Speed: 7
- > Range: 2
+ > Speed: 5
+ > Range: 3
  > Firepower: 5
  > Cargo: 0
+
+
+Description: 350r
+ > Size: 1
+ > Speed: 9
+ > Range: 2
+ > Firepower: 3
+ > Cargo: 0
+
+
+Description: Avenger
+ > Size: 2
+ > Speed: 5
+ > Range: 4
+ > Firepower: 3
+ > Cargo: 2
+
+
+Description: Vanguard
+ > Size: 3
+ > Speed: 4
+ > Range: 5
+ > Firepower: 5
+ > Cargo: 2
+
+
+Description: Merchantman
+ > Size: 7
+ > Speed: 3
+ > Range: 5
+ > Firepower: 6
+ > Cargo: 8
+
+
+Description: Avenger
+ > Size: 2
+ > Speed: 5
+ > Range: 4
+ > Firepower: 3
+ > Cargo: 2
 
 
 Description: Carrack
@@ -606,11 +606,27 @@ Description: Hurricane
  > Cargo: 0
 
 
-Description: m50
- > Size: 1
- > Speed: 10
+Description: Carrack
+ > Size: 6
+ > Speed: 2
+ > Range: 10
+ > Firepower: 4
+ > Cargo: 6
+
+
+Description: Sabre
+ > Size: 2
+ > Speed: 7
  > Range: 2
- > Firepower: 2
+ > Firepower: 5
+ > Cargo: 0
+
+
+Description: 350r
+ > Size: 1
+ > Speed: 9
+ > Range: 2
+ > Firepower: 3
  > Cargo: 0
 
 
@@ -622,45 +638,29 @@ Description: Idris
  > Cargo: 6
 
 
-Description: Avenger
- > Size: 2
- > Speed: 5
- > Range: 4
- > Firepower: 3
- > Cargo: 2
-
-
-Description: Constellation
- > Size: 4
- > Speed: 5
- > Range: 7
- > Firepower: 3
- > Cargo: 4
-
-
-Description: Vanguard
- > Size: 3
- > Speed: 4
- > Range: 5
- > Firepower: 5
- > Cargo: 2
+Description: Hawk
+ > Size: 1
+ > Speed: 3
+ > Range: 2
+ > Firepower: 4
+ > Cargo: 0
 
  Player Deck------------------------------------------
 
-Description: Vanguard
- > Size: 3
- > Speed: 4
- > Range: 5
+Description: Hawk
+ > Size: 1
+ > Speed: 3
+ > Range: 2
+ > Firepower: 4
+ > Cargo: 0
+
+
+Description: Sabre
+ > Size: 2
+ > Speed: 7
+ > Range: 2
  > Firepower: 5
- > Cargo: 2
-
-
-Description: Idris
- > Size: 8
- > Speed: 2
- > Range: 7
- > Firepower: 10
- > Cargo: 6
+ > Cargo: 0
 
 
 Description: Carrack
@@ -671,60 +671,12 @@ Description: Carrack
  > Cargo: 6
 
 
-Description: Avenger
- > Size: 2
- > Speed: 5
- > Range: 4
- > Firepower: 3
- > Cargo: 2
-
-
-Description: Merchantman
- > Size: 7
- > Speed: 3
+Description: Vanguard
+ > Size: 3
+ > Speed: 4
  > Range: 5
- > Firepower: 6
- > Cargo: 8
-
-
-Description: Hornet
- > Size: 2
- > Speed: 5
- > Range: 3
- > Firepower: 4
- > Cargo: 1
-
-
-Description: 350r
- > Size: 1
- > Speed: 9
- > Range: 2
- > Firepower: 3
- > Cargo: 0
-
-
-Description: Constellation
- > Size: 4
- > Speed: 5
- > Range: 7
- > Firepower: 3
- > Cargo: 4
-
-
-Description: Avenger
- > Size: 2
- > Speed: 5
- > Range: 4
- > Firepower: 3
+ > Firepower: 5
  > Cargo: 2
-
-
-Description: Hawk
- > Size: 1
- > Speed: 3
- > Range: 2
- > Firepower: 4
- > Cargo: 0
 
 
 Description: Hurricane
@@ -735,20 +687,36 @@ Description: Hurricane
  > Cargo: 0
 
 
-Description: Idris
- > Size: 8
- > Speed: 2
+Description: m50
+ > Size: 1
+ > Speed: 10
+ > Range: 2
+ > Firepower: 2
+ > Cargo: 0
+
+
+Description: Avenger
+ > Size: 2
+ > Speed: 5
+ > Range: 4
+ > Firepower: 3
+ > Cargo: 2
+
+
+Description: Constellation
+ > Size: 4
+ > Speed: 5
  > Range: 7
- > Firepower: 10
- > Cargo: 6
+ > Firepower: 3
+ > Cargo: 4
 
 
-Description: Hornet
+Description: Hurricane
  > Size: 2
  > Speed: 5
  > Range: 3
- > Firepower: 4
- > Cargo: 1
+ > Firepower: 5
+ > Cargo: 0
 
 
 Description: Vanguard
@@ -757,16 +725,48 @@ Description: Vanguard
  > Range: 5
  > Firepower: 5
  > Cargo: 2
+
+
+Description: Idris
+ > Size: 8
+ > Speed: 2
+ > Range: 7
+ > Firepower: 10
+ > Cargo: 6
+
+
+Description: Orion
+ > Size: 10
+ > Speed: 1
+ > Range: 6
+ > Firepower: 2
+ > Cargo: 9
+
+
+Description: m50
+ > Size: 1
+ > Speed: 10
+ > Range: 2
+ > Firepower: 2
+ > Cargo: 0
+
+
+Description: Idris
+ > Size: 8
+ > Speed: 2
+ > Range: 7
+ > Firepower: 10
+ > Cargo: 6
 
 
  cpu1Deck------------------------------------------
 
-Description: Avenger
- > Size: 2
- > Speed: 5
- > Range: 4
+Description: 350r
+ > Size: 1
+ > Speed: 9
+ > Range: 2
  > Firepower: 3
- > Cargo: 2
+ > Cargo: 0
 
 
 Description: Hurricane
@@ -777,12 +777,36 @@ Description: Hurricane
  > Cargo: 0
 
 
+Description: Merchantman
+ > Size: 7
+ > Speed: 3
+ > Range: 5
+ > Firepower: 6
+ > Cargo: 8
+
+
+Description: 350r
+ > Size: 1
+ > Speed: 9
+ > Range: 2
+ > Firepower: 3
+ > Cargo: 0
+
+
 Description: Hawk
  > Size: 1
  > Speed: 3
  > Range: 2
  > Firepower: 4
  > Cargo: 0
+
+
+Description: Hornet
+ > Size: 2
+ > Speed: 5
+ > Range: 3
+ > Firepower: 4
+ > Cargo: 1
 
 
 Description: Hornet
@@ -809,20 +833,28 @@ Description: 350r
  > Cargo: 0
 
 
-Description: m50
- > Size: 1
- > Speed: 10
- > Range: 2
+Description: Hornet
+ > Size: 2
+ > Speed: 5
+ > Range: 3
+ > Firepower: 4
+ > Cargo: 1
+
+
+Description: Orion
+ > Size: 10
+ > Speed: 1
+ > Range: 6
  > Firepower: 2
- > Cargo: 0
+ > Cargo: 9
 
 
-Description: 350r
- > Size: 1
- > Speed: 9
- > Range: 2
+Description: Constellation
+ > Size: 4
+ > Speed: 5
+ > Range: 7
  > Firepower: 3
- > Cargo: 0
+ > Cargo: 4
 
 
 Description: Hawk
@@ -833,12 +865,94 @@ Description: Hawk
  > Cargo: 0
 
 
-Description: Hurricane
+ cpu2Deck------------------------------------------
+
+Description: Idris
+ > Size: 8
+ > Speed: 2
+ > Range: 7
+ > Firepower: 10
+ > Cargo: 6
+
+
+Description: Carrack
+ > Size: 6
+ > Speed: 2
+ > Range: 10
+ > Firepower: 4
+ > Cargo: 6
+
+
+Description: Avenger
  > Size: 2
  > Speed: 5
- > Range: 3
+ > Range: 4
+ > Firepower: 3
+ > Cargo: 2
+
+
+Description: Avenger
+ > Size: 2
+ > Speed: 5
+ > Range: 4
+ > Firepower: 3
+ > Cargo: 2
+
+
+Description: Constellation
+ > Size: 4
+ > Speed: 5
+ > Range: 7
+ > Firepower: 3
+ > Cargo: 4
+
+
+Description: Sabre
+ > Size: 2
+ > Speed: 7
+ > Range: 2
  > Firepower: 5
  > Cargo: 0
+
+
+Description: Merchantman
+ > Size: 7
+ > Speed: 3
+ > Range: 5
+ > Firepower: 6
+ > Cargo: 8
+
+
+Description: Vanguard
+ > Size: 3
+ > Speed: 4
+ > Range: 5
+ > Firepower: 5
+ > Cargo: 2
+
+
+Description: Merchantman
+ > Size: 7
+ > Speed: 3
+ > Range: 5
+ > Firepower: 6
+ > Cargo: 8
+
+
+Description: m50
+ > Size: 1
+ > Speed: 10
+ > Range: 2
+ > Firepower: 2
+ > Cargo: 0
+
+
+Description: Carrack
+ > Size: 6
+ > Speed: 2
+ > Range: 10
+ > Firepower: 4
+ > Cargo: 6
 
 
 Description: Avenger
@@ -855,159 +969,9 @@ Description: Orion
  > Range: 6
  > Firepower: 2
  > Cargo: 9
-
-
-Description: Idris
- > Size: 8
- > Speed: 2
- > Range: 7
- > Firepower: 10
- > Cargo: 6
-
-
- cpu2Deck------------------------------------------
-
-Description: Constellation
- > Size: 4
- > Speed: 5
- > Range: 7
- > Firepower: 3
- > Cargo: 4
-
-
-Description: m50
- > Size: 1
- > Speed: 10
- > Range: 2
- > Firepower: 2
- > Cargo: 0
-
-
-Description: Sabre
- > Size: 2
- > Speed: 7
- > Range: 2
- > Firepower: 5
- > Cargo: 0
-
-
-Description: Carrack
- > Size: 6
- > Speed: 2
- > Range: 10
- > Firepower: 4
- > Cargo: 6
-
-
-Description: Merchantman
- > Size: 7
- > Speed: 3
- > Range: 5
- > Firepower: 6
- > Cargo: 8
-
-
-Description: Constellation
- > Size: 4
- > Speed: 5
- > Range: 7
- > Firepower: 3
- > Cargo: 4
-
-
-Description: m50
- > Size: 1
- > Speed: 10
- > Range: 2
- > Firepower: 2
- > Cargo: 0
-
-
-Description: Sabre
- > Size: 2
- > Speed: 7
- > Range: 2
- > Firepower: 5
- > Cargo: 0
-
-
-Description: Orion
- > Size: 10
- > Speed: 1
- > Range: 6
- > Firepower: 2
- > Cargo: 9
-
-
-Description: Vanguard
- > Size: 3
- > Speed: 4
- > Range: 5
- > Firepower: 5
- > Cargo: 2
-
-
-Description: Orion
- > Size: 10
- > Speed: 1
- > Range: 6
- > Firepower: 2
- > Cargo: 9
-
-
-Description: Carrack
- > Size: 6
- > Speed: 2
- > Range: 10
- > Firepower: 4
- > Cargo: 6
-
-
-Description: Merchantman
- > Size: 7
- > Speed: 3
- > Range: 5
- > Firepower: 6
- > Cargo: 8
 
 
  cpu3Deck------------------------------------------
 
  cpu4Deck------------------------------------------
 
-
-----------------------
-Current Hands
-
-Description: Vanguard
- > Size: 3
- > Speed: 4
- > Range: 5
- > Firepower: 5
- > Cargo: 2
-
-
-Description: Constellation
- > Size: 4
- > Speed: 5
- > Range: 7
- > Firepower: 3
- > Cargo: 4
-
-
-Description: Avenger
- > Size: 2
- > Speed: 5
- > Range: 4
- > Firepower: 3
- > Cargo: 2
-
-
-----------------------
-
-the stat selection value of the active player  = 7
--------------------------
-The selected stat was stat number3
-5
-7
-4
