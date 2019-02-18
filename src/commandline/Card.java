@@ -76,15 +76,15 @@ public class Card {
 		int stat = 0;
 		
 		switch (statChoice) {
-        case 1:  stat = getstat1();
+        case 0:  stat = getstat1();
         break;
-        case 2:  stat = getstat2();
+        case 1:  stat = getstat2();
         break;
-        case 3:  stat = getstat3();
+        case 2:  stat = getstat3();
         break;
-        case 4:  stat = getstat4();
+        case 3:  stat = getstat4();
         break;
-        case 5:  stat = getstat5();
+        case 4:  stat = getstat5();
         break;
 
 		}

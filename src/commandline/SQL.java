@@ -13,7 +13,7 @@ import java.text.NumberFormat;
 public class SQL {
 
 		private Connection c = null;
-		private GameStats gamestats;
+		
 		private TopTrumpsModel model;
 		private int gameid;
 		private int h_wins;

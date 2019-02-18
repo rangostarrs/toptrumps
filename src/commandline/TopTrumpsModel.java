@@ -193,7 +193,7 @@ public class TopTrumpsModel {
 					increaseRoundWin(highestStatPlayer);
 
 				} catch (IndexOutOfBoundsException e) {
-				
+					
 				}
 			}
 
