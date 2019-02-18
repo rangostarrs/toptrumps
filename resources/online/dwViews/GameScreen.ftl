@@ -25,32 +25,46 @@
 			#gameInfo {
 				text-align: center;
 				visibility: hidden;
+				padding-top: 30px;
 			}
 			
 			.nes-btn {
-				font-size: 10px;
-				padding: 8px 8px;
-				width: 120px;
-				height: 30px;
 			}
 			
 			h1 {
-				font-weight: 400;
-				font-size: 30px;
+				text-align: center;
+				font-weight: 200;
+				font-size: 50px;
 				color: white;
 			}
 			
 			h2	{
-				font-weight: 400;
+				text-align: left;
+				font-weight: 200;
 				font-size: 30px;
 				color: white;
 			}
 			
 			h3 {
-				font-weight: 400;
+				text-align: left;
+				font-weight: 200;
+				font-size: 30px;
+				color: white;
+			} 
+			
+ 			h4 {
+				text-align: left;
+				font-weight: 200;
 				font-size: 30px;
 				color: white;
 			}
+			
+			h5 {
+				text-align: left;
+				font-weight: 200;
+				font-size: 30px;
+				color: white;
+			} 
 			
 			.card-picture {
 				width: 100%;
@@ -67,8 +81,9 @@
 			
 			#cardSection {
 				visibility: hidden;
-				font-size: 5px;	
-			}
+				font-size: 5px;
+	
+ 			}
 
 			.card-header {
 				font-weight: 200;
@@ -82,129 +97,131 @@
 				color: white;
 			}
 			
-			.nes-container.is-rounded {
-				width: 170px;
-				padding: 20px;
+			.nes-container.is-rounded.is-dark {
+				width: 200px;
+				height: 360px;
+				background-color: #00000000;
 			}
 			
 			.card-body {
-				padding: 10px;
+ 				padding: 10px;
+			}
+			
+			#numberOfOpponents {
+ 			position: relative;
+			left: 450px;
+			width: 60px;
+			text-indent: 10px;
 			}
 			
 		</style>
 	</head>
 
     <body>
-    
+    <div class="container">
     	<div class="row">
-    	<div class="col-md-12"></div>
+    	<div class="col-lg-12"></div>
     		<div class="row">
-    		<div class="col-md-12"></div>
+    		<div class="col-lg-12"></div>
     			<div class="container">
     				<div class="row"> 
-    					<div class="col-lg-8">
-    						<div id="setNumberOfOpponents">
-    							<h1>Top Trumps</h1>    					
-    							<h2>Number of opponents:</h2>
+    					<div class="col-lg-12">
+    						<div id="setNumberOfOpponents">				
+    							<h1> Choose number of opponents</h1>
 								<select id="numberOfOpponents">
 									<option value="1">1</option>
 									<option value="2">2</option>
 									<option value="3">3</option>
 									<option value="4">4</option>
 								</select>
- 								<button type="button" class="nes-btn" onclick="setNumberOfOpponents();">Play</button>
+ 								<button class="nes-btn" style="position:relative;left:470px;" onclick="setNumberOfOpponents();">Play</button>
 				    		</div>
 				    				
 				    		<div id="gameInfo">
-				    			<h1>Round: <label id="setRoundCounter"></label></h1>
-	    						<h2>Active Player:</h2>
-	    						<h3>Round Winner:<label id='roundWinnerRevealed'></label></h3>
-	    						<button type="button" class="nes-btn" onclick="displayCards();">Draw Cards</button>
+				    			<h3>Round: <label id='setRoundCounter'></label></h3>
+	    						<h4>Active Player: <label id='activePlayer'></label></h4>
+	    						<h5>Round Winner: <label id='roundWinnerRevealed'></label></h5>
+	    						<button class="nes-btn" style="position:relative;right:479px;" onclick="displayCards();">Draw Cards</button>
 	    					</div>
-	    						
+							
     						<div class="row text-center" id='cardSection'>
-    							<div class="col-lg-1"></div>
     							<div class="col-lg-2">
-    								<div class="nes-container is-rounded" id="card1">
+    								<div class="nes-container is-rounded is-dark" id="card1">
 									<div class="card-header">Human</div>
-										<h5 class="card-subtitle text-muted" id="card-title"></h5>
+										<h6 class="card-subtitle" id="card-title"></h6>
 										<img class="card-picture" src="" alt="No_Image_Found">
 										<div class="card-body">
-											<button type="button" class="nes-btn" style="font-size:8px;" onclick="humanSelectsCategory(1)" id="stat1">
+											<button class="nes-btn" style="font-size:8px;width:130px;height:30px;" onclick="humanSelectsCategory(1)" id="stat1">
 												<p class="stat"></p>
 											</button>
-											<button type="button" class="nes-btn" style="font-size:8px;" onclick="humanSelectsCategory(2)" id="stat2">
+											<button class="nes-btn" style="font-size:8px;width:130px;height:30px;" onclick="humanSelectsCategory(2)" id="stat2">
 												<p class="stat"></p>
 											</button>
-											<button type="button" class="nes-btn" style="font-size:8px;" onclick="humanSelectsCategory(3)" id="stat3">
+											<button class="nes-btn" style="font-size:8px;width:130px;height:30px;" onclick="humanSelectsCategory(3)" id="stat3">
 												<p class="stat"></p>
 											</button>
-											<button type="button" class="nes-btn" style="font-size:8px;" onclick="humanSelectsCategory(4)" id="stat4">
+											<button class="nes-btn" style="font-size:8px;width:130px;height:30px;" onclick="humanSelectsCategory(4)" id="stat4">
 												<p class="stat"></p>
 											</button>
-											<button type="button" class="nes-btn" style="font-size:8px;" onclick="humanSelectsCategory(5)" id="stat5">
+											<button class="nes-btn" style="font-size:8px;width:130px;height:30px;" onclick="humanSelectsCategory(5)" id="stat5">
 												<p class="stat"></p>
 											</button>
 										</div>
 									</div>
 								</div>
-								<div class="col-lg-1"></div>
 								<div class="col-lg-2">
-									<div class="nes-container is-rounded" id="card2">
+									<div class="nes-container is-rounded is-dark" id="card2">
 										<div class="card-header">Opponent 1</div>
-											<h5 class="card-subtitle text-muted" id="card-title"></h5>
+											<h6 class="card-subtitle" id="card-title"></h6>
 											<img class="card-picture" src="" alt="No_Image_Found">
 										<div class="card-body">
-											<p class="stat" style="font-size:8px;color:white;" id="stat1"></p>
-											<p class="stat" style="font-size:8px;color:white;" id="stat2"></p>
-											<p class="stat" style="font-size:8px;color:white;" id="stat3"></p>
-											<p class="stat" style="font-size:8px;color:white;" id="stat4"></p>
-											<p class="stat" style="font-size:8px;color:white;" id="stat5"></p>
+											<p class="stat" style="font-size:8px;color:white;padding-top:14px;" id="stat1"></p>
+											<p class="stat" style="font-size:8px;color:white;padding-top:14px;" id="stat2"></p>
+											<p class="stat" style="font-size:8px;color:white;padding-top:14px;" id="stat3"></p>
+											<p class="stat" style="font-size:8px;color:white;padding-top:14px;" id="stat4"></p>
+											<p class="stat" style="font-size:8px;color:white;padding-top:14px;" id="stat5"></p>
 										</div>
 									</div>
 								</div>
-								<div class="col-lg-1"></div>
 								<div class="col-lg-2">
-									<div class="nes-container is-rounded" id="card3">
+									<div class="nes-container is-rounded is-dark" id="card3">
 											<div class="card-header">Opponent 2</div>
-											<h5 class="card-subtitle text-muted" id="card-title"></h5>
+											<h6 class="card-subtitle" id="card-title"></h6>
 											<img class="card-picture" src="" alt="No_Image_Found">
 										<div class="card-body">
-											<p class="stat" style="font-size:8px;color:white;" id="stat1"></p>
-											<p class="stat" style="font-size:8px;color:white;" id="stat2"></p>
-											<p class="stat" style="font-size:8px;color:white;" id="stat3"></p>
-											<p class="stat" style="font-size:8px;color:white;" id="stat4"></p>
-											<p class="stat" style="font-size:8px;color:white;" id="stat5"></p>
+											<p class="stat" style="font-size:8px;color:white;padding-top:14px;" id="stat1"></p>
+											<p class="stat" style="font-size:8px;color:white;padding-top:14px;" id="stat2"></p>
+											<p class="stat" style="font-size:8px;color:white;padding-top:14px;" id="stat3"></p>
+											<p class="stat" style="font-size:8px;color:white;padding-top:14px;" id="stat4"></p>
+											<p class="stat" style="font-size:8px;color:white;padding-top:14px;" id="stat5"></p>
 										</div>
 									</div>
 								</div>
-								<div class="col-lg-1"></div>
 								<div class="col-lg-2">
-									<div class="nes-container is-rounded" id="card4">
+									<div class="nes-container is-rounded is-dark" id="card4">
 											<div class="card-header">Opponent 3</div>
-											<h5 class="card-subtitle text-muted" id="card-title"></h5>
+											<h6 class="card-subtitle" id="card-title"></h6>
 											<img class="card-picture" src="" alt="No_Image_Found">
 										<div class="card-body">
-											<p class="stat" style="font-size:8px;color:white;" id="stat1"></p>
-											<p class="stat" style="font-size:8px;color:white;" id="stat2"></p>
-											<p class="stat" style="font-size:8px;color:white;" id="stat3"></p>
-											<p class="stat" style="font-size:8px;color:white;" id="stat4"></p>
-											<p class="stat" style="font-size:8px;color:white;" id="stat5"></p>
+											<p class="stat" style="font-size:8px;color:white;padding-top:14px;" id="stat1"></p>
+											<p class="stat" style="font-size:8px;color:white;padding-top:14px;" id="stat2"></p>
+											<p class="stat" style="font-size:8px;color:white;padding-top:14px;" id="stat3"></p>
+											<p class="stat" style="font-size:8px;color:white;padding-top:14px;" id="stat4"></p>
+											<p class="stat" style="font-size:8px;color:white;padding-top:14px;" id="stat5"></p>
 										</div>
 									</div>
 								</div>
-								<div class="col-lg-1"></div>
 								<div class="col-lg-2">
-									<div class="nes-container is-rounded" id="card5">
+									<div class="nes-container is-rounded is-dark" id="card5">
 										<div class="card-header">Opponent 4</div>
-											<h5 class="card-subtitle text-muted" id="card-title"></h5>
+											<h6 class="card-subtitle" id="card-title"></h6>
 											<img class="card-picture" src="" alt="No_Image_Found">
 										<div class="card-body">
-											<p class="stat" style="font-size:8px;color:white;" id="stat1"></p>
-											<p class="stat" style="font-size:8px;color:white;" id="stat2"></p>
-											<p class="stat" style="font-size:8px;color:white;" id="stat3"></p>
-											<p class="stat" style="font-size:8px;color:white;" id="stat4"></p>
-											<p class="stat" style="font-size:8px;color:white;" id="stat5"></p>
+											<p class="stat" style="font-size:8px;color:white;padding-top:14px;" id="stat1"></p>
+											<p class="stat" style="font-size:8px;color:white;padding-top:14px;" id="stat2"></p>
+											<p class="stat" style="font-size:8px;color:white;padding-top:14px;" id="stat3"></p>
+											<p class="stat" style="font-size:8px;color:white;padding-top:14px;" id="stat4"></p>
+											<p class="stat" style="font-size:8px;color:white;padding-top:14px;" id="stat5"></p>
 										</div>
 									</div>
 								</div>
@@ -214,7 +231,7 @@
 				</div>
 			</div>
 		</div>
-					  
+	</div>				  
 		
 		<script type="text/javascript">
 		
@@ -262,16 +279,20 @@
 		function createCORSRequest(method, url) {
 				var xhr = new XMLHttpRequest();
 				if ("withCredentials" in xhr) {
+
 				xhr.open(method, url, true);
-				} 
-				else if (typeof XDomainRequest != "undefined") {
-					xhr = new XDomainRequest();
-					xhr.open(method, url);
-				} 
-				else {
-					xhr = null;
-				}
-			return xhr;
+
+				} else if (typeof XDomainRequest != "undefined") {
+
+				xhr = new XDomainRequest();
+				xhr.open(method, url);
+
+				 } else {
+
+				xhr = null;
+
+				 }
+				 return xhr;
 		}
 			
 		function setNumberOfOpponents() {
@@ -285,7 +306,7 @@
 
 			xhr.onload = function(e) {
 				if (number < 1 || number > 4){
-					alert("ONLY 4 PLAYERS ALLOWED"); 
+					alert("Max 4 players"); 
 				}
 				else {
 					hideSelection();
@@ -311,7 +332,7 @@
 		        
  				cardList = list[0];
  				cardListCurrentHands = list; 
-				
+				activePlayer();
 		        for (i = 0; i < 5; i++) {
 		        	var cardTitle = "#card" + (i + 1);
 		        	$(cardTitle).find(".card-picture").attr("src", "http://localhost:7777/assets/" + list[i].description + ".jpg");
@@ -331,12 +352,12 @@
 			        $(cardTitle).find("#stat5").each(function(n) { 
 			        	$(this).html("<p class=\"stat\">" + "Cargo: " + list[i].stat5 + "</p>");
 				          });
-			        }
-		     }
-			
+		        }
+		      }
 			setRoundCounter();
 			displayAppropriateAmountOfCards();
 			cardSectionVisible();
+			
 		 	xhr.send();
 		}
  		
@@ -351,13 +372,64 @@
  			} 
  			
  		    xhr.onload = function(e) {
+ 		         
  		    	var responseText = xhr.response; 
-  		        document.getElementById('roundWinnerRevealed').innerHTML = responseText; 
+/*  		        responseText = responseText.replace(/^"(.*)"$/, '$1');
+ */ 		        document.getElementById('roundWinnerRevealed').innerHTML = responseText;
+ 		    	  
+ 		    	  
  		      }
  			
  			xhr.send();
  		}
  		
+ 		function AiSelectsCategory(){
+ 			var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/AICompareStat");
+ 			
+ 			if(!xhr){
+ 				
+ 				alert("CORS NOT AVAILABLE");
+ 				
+ 			}
+ 			
+ 			xhr.onload = function(e){
+ 				
+ 				var responseText = xhr.response;
+ 				document.getElementById('roundWinnerRevealed').innerHTML = responseText;
+ 				
+ 				
+ 			}
+ 			
+ 			xhr.send();
+ 		}
+ 		
+ 		function activePlayer(){
+ 			var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/processRound")
+ 			if(!xhr){
+ 				alert("Cors NOT Available")
+ 			}
+ 			xhr.onload = function(e){
+ 			
+ 				var responseText = xhr.response;
+ 				document.getElementById('activePlayer').innerHTML = responseText;
+ 				processRound();
+ 				}
+ 			xhr.send();
+ 		}
+ 		
+ 		function processRound(){
+ 			var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/processRound")
+ 			
+ 			if(!xhr){
+ 				alert("Cors NOT Available")
+ 			}
+ 			xhr.onload = function(e){
+ 			
+ 				var responseText = xhr.response;
+ 				document.getElementById('roundWinnerRevealed').innerHTML = responseText;
+ 			}
+ 			xhr.send();
+ 		}
  		
  		function setRoundCounter() {
  	   		var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/roundNumber");
@@ -369,6 +441,19 @@
  			xhr.onload = function(e) {
  			var responseText = xhr.response; // the text of the response
  				document.getElementById('setRoundCounter').innerHTML = responseText;
+ 			}
+ 		xhr.send();
+ 	   }
+ 		
+ 	   function roundNumber() {
+ 	   		var xhr = createCORSRequest('GET',
+ 					"http://localhost:7777/toptrumps/roundNumber");
+ 			if (!xhr) {
+ 				alert("No Round Number");
+ 				}
+ 			xhr.onload = function(e) {
+ 			var responseText = xhr.response; // the text of the response
+ 				document.getElementById('roundNumber').innerHTML = responseText;
  			}
  		xhr.send();
  	   }

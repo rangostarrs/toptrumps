@@ -28,11 +28,14 @@
 			
 			h1 {
 			font-weight: 400;
-			font-size: 30px;
+			font-size: 50px;
 			color: white;
+ 			padding-top: 25%; 
 			}
 			
 			.nes-btn {
+			position: absolute;
+			left: 45%;
 			font-size: 15px;
 			padding: 10px 10px;
 			}
@@ -50,8 +53,8 @@
         	</div>
         	<div class="row">
       			<div class="col-lg">
-      				<button type="button" onclick="window.location.href ='http://localhost:7777/toptrumps/game';"class="nes-btn">Play</button>
-        			<button type="button" onclick="window.location.href= 'http://localhost:7777/toptrumps/stats';" class="nes-btn">Statistics</button>
+      				<button class="nes-btn" style="left: 35%;" onclick="window.location.href ='http://localhost:7777/toptrumps/game';">Play</button>
+        			<button class="nes-btn" onclick="window.location.href= 'http://localhost:7777/toptrumps/stats';">Statistics</button>
       			</div>
         	</div>
     	</div>
