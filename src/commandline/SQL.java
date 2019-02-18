@@ -42,7 +42,7 @@ public class SQL {
 			
 			
 			try {
-				c = DriverManager.getConnection("jdbc:postgresql://localhost:5434/","postgres", "Postimees55");
+				c = DriverManager.getConnection("jdbc:postgresql://yacata.dcs.gla.ac.uk:5432/","m_18_2417046l", "2417046l");
 			} catch (SQLException e) {
 				e.printStackTrace();
 				System.out.print("Connection Failed!");
@@ -107,7 +107,7 @@ public class SQL {
 	         rs.close();
 	         stmt.close();
 	         Statement stm2 = c.createStatement();
-	         ResultSet rs2 = stm2.executeQuery("Select Count (winner) \r \n" + "From Game \r \n" + "Where winner LIKE 'cpu%';");
+	         ResultSet rs2 = stm2.executeQuery("Select Count (winner) \r \n" + "From Game \r \n" + "Where winner LIKE 'O%';");
 	         while(rs2.next()) {
 	        	 c_wins = rs2.getInt(1);
 	        	 System.out.println("CPU has won " + c_wins + " times.");
@@ -115,7 +115,7 @@ public class SQL {
 	         rs2.close();
 	         stm2.close();
 	         Statement stm3 = c.createStatement();
-	         ResultSet rs3 = stm3.executeQuery("Select Count (winner) \r \n" + "From Game \r \n" + "Where winner LIKE 'p%';");
+	         ResultSet rs3 = stm3.executeQuery("Select Count (winner) \r \n" + "From Game \r \n" + "Where winner LIKE 'H%';");
 	         
 	         while(rs3.next()) {
 	        	 h_wins = rs3.getInt(1);
@@ -162,25 +162,7 @@ public class SQL {
 			
 		}
 		
-//		public void insertGameStats() {
-//			TopTrumpsModel.gameID;
-//			try {
-//				
-//				Statement stmt = c.createStatement();         
-//		        
-//				//Inserting game statistics after played game into the database
-//				stmt.executeUpdate("INSERT INTO Game " + "VALUES (" + TopTrumpsModel. + ", " + "'" + model.getWinner() + "', " + model.getRoundNumber() + ", " + model.getDrawNumber() + ", " + model.getPlayerRoundWin() + ", " + model.getCpu1RoundWin() + ", " + model.getCpu2RoundWin() + ", " + model.getCpu3RoundWin() + ", " + model.getCpu4RoundWin() + ")");
-//		         
-//		        stmt.close();
-//		         
-//		         c.close();
-//		         c = null;
-//			}catch(SQLException e) {
-//				System.out.println("Connection Failed!");
-//				e.printStackTrace();
-//				}
-//			
-//		}
+
 		//MEthod for getting gameId from the database and adding 1 to it. This method is used before the game will start in order to have the correct gameID number.
 		public int getGameIDfromDB() {
 			int gameid = 0;

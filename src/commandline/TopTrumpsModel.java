@@ -48,7 +48,6 @@ public class TopTrumpsModel {
 	private int cpu4RoundWin = 0;
 	// player with the highest stat, initially 0
 	private int highestStatPlayer = 0;
-	private int[] gameResults = { 0, 0, 0, 0, 0 };
 	private int gameID;
 	private int roundNumber;
 	private String winner;
@@ -609,10 +608,6 @@ public class TopTrumpsModel {
 		this.gameID = gameID;
 	}
 
-	public String getWinner() {
-		
-		return winner;
-	}
 
 	public int getDrawNumber() {
 		return drawNumber;
@@ -620,54 +615,6 @@ public class TopTrumpsModel {
 
 	public void setDrawNumber(int drawNumber) {
 		this.drawNumber = drawNumber;
-	}
-
-	public int getPlayerRoundWin() {
-		return playerRoundWin;
-	}
-
-	public void setPlayerRoundWin(int playerRoundWin) {
-		this.playerRoundWin = playerRoundWin;
-	}
-
-	public int getCpu1RoundWin() {
-		return cpu1RoundWin;
-	}
-
-	public void setCpu1RoundWin(int cpu1RoundWin) {
-		this.cpu1RoundWin = cpu1RoundWin;
-	}
-
-	public int getCpu2RoundWin() {
-		return cpu2RoundWin;
-	}
-
-	public void setCpu2RoundWin(int cpu2RoundWin) {
-		this.cpu2RoundWin = cpu2RoundWin;
-	}
-
-	public int getCpu3RoundWin() {
-		return cpu3RoundWin;
-	}
-
-	public void setCpu3RoundWin(int cpu3RoundWin) {
-		this.cpu3RoundWin = cpu3RoundWin;
-	}
-
-	public int getCpu4RoundWin() {
-		return cpu4RoundWin;
-	}
-
-	public void setCpu4RoundWin(int cpu4RoundWin) {
-		this.cpu4RoundWin = cpu4RoundWin;
-	}
-
-	public int getRoundNumber() {
-		return roundNumber;
-	}
-
-	public void setRoundNumber(int roundNumber) {
-		this.roundNumber = roundNumber;
 	}
 
 }

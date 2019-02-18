@@ -25,8 +25,7 @@ public class TopTrumpsCLIApplication {
 	public static void main(String[] args) throws FileNotFoundException {
 
 		TopTrumpsModel model = new TopTrumpsModel();
-		TopTrumpsView view = new TopTrumpsView(model);
-		TopTrumpsController controller = new TopTrumpsController(model, view);
+		
 
 		boolean writeGameLogsToFile = false; // Should we write game logs to file?
 		// if (args[0].equalsIgnoreCase("true")) writeGameLogsToFile=true; // Command
@@ -45,8 +44,8 @@ public class TopTrumpsCLIApplication {
 			userWantsToQuit = true; // use this when the user wants to exit the game
 			
 			
-			    //SQL connect = new SQL(); // Creating a new SQL object just for the sake of connecting to the database in order to get a new gameID 
-			    //int gameid = connect.getGameIDfromDB();
+			   // SQL connect = new SQL(); // Creating a new SQL object just for the sake of connecting to the database in order to get a new gameID 
+			   // int gameid = connect.getGameIDfromDB();
 			   // model.setGameID(gameid);
 			
 				int x = model.gameIntro();
@@ -54,8 +53,8 @@ public class TopTrumpsCLIApplication {
 				model.addCardsToList();
 				if(x==1) {
 					
-//					SQL db = new SQL();
-//					db.getGameStats();
+					SQL db = new SQL();
+					db.getGameStats();
 				
 				
 
