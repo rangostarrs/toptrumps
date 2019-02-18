@@ -11,7 +11,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 /**
- * This test class is 
+ * This test class is non exhaustive but aims to put some of the more important methods 
+ * and serves alongside the log file to demonstrate the functionality of the game.
  *
  */
 class TopTrumpsModelTest {
@@ -177,26 +178,4 @@ class TopTrumpsModelTest {
 
 	}
 
-	
-
-
-
-	
-	//    @Test
-	//	void collectCurrrentHandsTest() {
-	
-		
-	
-	
-	//	}
-	
-	@Test
-	void cpuPlayCardTest() {
-
-		player=model.createPlayersArray(2);
-		model.dealCards(2, model.addCardsToList());
-		int a =model.cpuPlayCard(player,2);
-		Card curr;
-		assertTrue(a>0);
-	}
 }

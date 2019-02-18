@@ -31,7 +31,7 @@ class CardTest {
 	void returnStatTest() {
 		
 		int statIndex = 4;
-		assertEquals(6,cardyCard.returnStat(statIndex));
+		assertEquals(7,cardyCard.returnStat(statIndex));
 		
 		
 		

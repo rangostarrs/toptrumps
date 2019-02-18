@@ -326,19 +326,35 @@ Description: DeathStar
 
 Shuffled Cards list
 
-Description: m99
- > Size: 4
- > Speed: 10
- > Range: 4
- > Firepower: 5
- > Cargo: 2
+Description: Carrack
+ > Size: 6
+ > Speed: 2
+ > Range: 10
+ > Firepower: 4
+ > Cargo: 6
 
 
-Description: 350r
+Description: Hornet
+ > Size: 2
+ > Speed: 5
+ > Range: 3
+ > Firepower: 4
+ > Cargo: 1
+
+
+Description: Hawk
  > Size: 1
- > Speed: 9
+ > Speed: 3
  > Range: 2
- > Firepower: 3
+ > Firepower: 4
+ > Cargo: 0
+
+
+Description: Sabre
+ > Size: 2
+ > Speed: 7
+ > Range: 2
+ > Firepower: 5
  > Cargo: 0
 
 
@@ -350,20 +366,44 @@ Description: Idris
  > Cargo: 6
 
 
-Description: IdrisKudo
- > Size: 8
+Description: OrionSpiron
+ > Size: 10
  > Speed: 4
- > Range: 8
- > Firepower: 10
- > Cargo: 7
+ > Range: 6
+ > Firepower: 3
+ > Cargo: 9
 
 
-Description: HornetNest
+Description: Merchantman
+ > Size: 7
+ > Speed: 3
+ > Range: 5
+ > Firepower: 6
+ > Cargo: 8
+
+
+Description: HurricaneFlame
  > Size: 4
  > Speed: 7
  > Range: 5
  > Firepower: 6
- > Cargo: 2
+ > Cargo: 3
+
+
+Description: IdrisMight
+ > Size: 10
+ > Speed: 4
+ > Range: 7
+ > Firepower: 10
+ > Cargo: 6
+
+
+Description: m50
+ > Size: 1
+ > Speed: 10
+ > Range: 2
+ > Firepower: 2
+ > Cargo: 0
 
 
 Description: Orion
@@ -374,10 +414,218 @@ Description: Orion
  > Cargo: 9
 
 
+Description: HurricaneTrail
+ > Size: 3
+ > Speed: 6
+ > Range: 4
+ > Firepower: 6
+ > Cargo: 2
+
+
+Description: HornetFury
+ > Size: 3
+ > Speed: 6
+ > Range: 4
+ > Firepower: 5
+ > Cargo: 2
+
+
+Description: IdrisKudo
+ > Size: 8
+ > Speed: 4
+ > Range: 8
+ > Firepower: 10
+ > Cargo: 7
+
+
+Description: VanguardSteel
+ > Size: 5
+ > Speed: 8
+ > Range: 7
+ > Firepower: 8
+ > Cargo: 5
+
+
+Description: 350r
+ > Size: 1
+ > Speed: 9
+ > Range: 2
+ > Firepower: 3
+ > Cargo: 0
+
+
+Description: AvengerStone
+ > Size: 3
+ > Speed: 6
+ > Range: 5
+ > Firepower: 4
+ > Cargo: 3
+
+
+Description: ConstellationRing
+ > Size: 5
+ > Speed: 6
+ > Range: 8
+ > Firepower: 3
+ > Cargo: 5
+
+
+Description: CarrackFire
+ > Size: 7
+ > Speed: 3
+ > Range: 10
+ > Firepower: 5
+ > Cargo: 6
+
+
+Description: 350t
+ > Size: 3
+ > Speed: 10
+ > Range: 4
+ > Firepower: 5
+ > Cargo: 3
+
+
+Description: SabreTooth
+ > Size: 4
+ > Speed: 9
+ > Range: 6
+ > Firepower: 7
+ > Cargo: 2
+
+
+Description: AvengerInfinity
+ > Size: 5
+ > Speed: 5
+ > Range: 3
+ > Firepower: 4
+ > Cargo: 4
+
+
+Description: OrionBlaze
+ > Size: 10
+ > Speed: 5
+ > Range: 8
+ > Firepower: 5
+ > Cargo: 9
+
+
+Description: 350s
+ > Size: 2
+ > Speed: 9
+ > Range: 3
+ > Firepower: 4
+ > Cargo: 1
+
+
+Description: VanguardLamp
+ > Size: 5
+ > Speed: 5
+ > Range: 5
+ > Firepower: 5
+ > Cargo: 5
+
+
+Description: m99
+ > Size: 4
+ > Speed: 10
+ > Range: 4
+ > Firepower: 5
+ > Cargo: 2
+
+
+Description: Constellation
+ > Size: 4
+ > Speed: 5
+ > Range: 7
+ > Firepower: 3
+ > Cargo: 4
+
+
+Description: m69
+ > Size: 4
+ > Speed: 10
+ > Range: 3
+ > Firepower: 5
+ > Cargo: 2
+
+
+Description: HawkClaw
+ > Size: 2
+ > Speed: 4
+ > Range: 3
+ > Firepower: 5
+ > Cargo: 1
+
+
+Description: HawkEye
+ > Size: 4
+ > Speed: 5
+ > Range: 4
+ > Firepower: 5
+ > Cargo: 2
+
+
+Description: MerchantmanWoman
+ > Size: 7
+ > Speed: 5
+ > Range: 5
+ > Firepower: 7
+ > Cargo: 10
+
+
+Description: Vanguard
+ > Size: 3
+ > Speed: 4
+ > Range: 5
+ > Firepower: 5
+ > Cargo: 2
+
+
+Description: Hurricane
+ > Size: 2
+ > Speed: 5
+ > Range: 3
+ > Firepower: 5
+ > Cargo: 0
+
+
+Description: SabreTazer
+ > Size: 4
+ > Speed: 7
+ > Range: 4
+ > Firepower: 5
+ > Cargo: 2
+
+
 Description: MerchantmanOman
  > Size: 8
  > Speed: 4
  > Range: 6
+ > Firepower: 7
+ > Cargo: 8
+
+
+Description: HornetNest
+ > Size: 4
+ > Speed: 7
+ > Range: 5
+ > Firepower: 6
+ > Cargo: 2
+
+
+Description: DeathStar
+ > Size: 10
+ > Speed: 10
+ > Range: 10
+ > Firepower: 10
+ > Cargo: 10
+
+
+Description: CarrackBall
+ > Size: 6
+ > Speed: 4
+ > Range: 10
  > Firepower: 7
  > Cargo: 8
 
@@ -390,266 +638,34 @@ Description: ConstellationWhirl
  > Cargo: 8
 
 
-Description: VanguardSteel
- > Size: 5
- > Speed: 8
- > Range: 7
- > Firepower: 8
- > Cargo: 5
-
-
-Description: 350t
- > Size: 3
- > Speed: 10
- > Range: 4
- > Firepower: 5
- > Cargo: 3
-
-
-Description: 350s
- > Size: 2
- > Speed: 9
- > Range: 3
- > Firepower: 4
- > Cargo: 1
-
-
 Description: Avenger
  > Size: 2
  > Speed: 5
  > Range: 4
  > Firepower: 3
- > Cargo: 2
-
-
-Description: HurricaneFlame
- > Size: 4
- > Speed: 7
- > Range: 5
- > Firepower: 6
- > Cargo: 3
-
-
-Description: Merchantman
- > Size: 7
- > Speed: 3
- > Range: 5
- > Firepower: 6
- > Cargo: 8
-
-
-Description: Carrack
- > Size: 6
- > Speed: 2
- > Range: 10
- > Firepower: 4
- > Cargo: 6
-
-
-Description: IdrisMight
- > Size: 10
- > Speed: 4
- > Range: 7
- > Firepower: 10
- > Cargo: 6
-
-
-Description: Vanguard
- > Size: 3
- > Speed: 4
- > Range: 5
- > Firepower: 5
- > Cargo: 2
-
-
-Description: CarrackBall
- > Size: 6
- > Speed: 4
- > Range: 10
- > Firepower: 7
- > Cargo: 8
-
-
-Description: Sabre
- > Size: 2
- > Speed: 7
- > Range: 2
- > Firepower: 5
- > Cargo: 0
-
-
-Description: OrionBlaze
- > Size: 10
- > Speed: 5
- > Range: 8
- > Firepower: 5
- > Cargo: 9
-
-
-Description: AvengerStone
- > Size: 3
- > Speed: 6
- > Range: 5
- > Firepower: 4
- > Cargo: 3
-
-
-Description: HawkClaw
- > Size: 2
- > Speed: 4
- > Range: 3
- > Firepower: 5
- > Cargo: 1
-
-
-Description: AvengerInfinity
- > Size: 5
- > Speed: 5
- > Range: 3
- > Firepower: 4
- > Cargo: 4
-
-
-Description: VanguardLamp
- > Size: 5
- > Speed: 5
- > Range: 5
- > Firepower: 5
- > Cargo: 5
-
-
-Description: Hurricane
- > Size: 2
- > Speed: 5
- > Range: 3
- > Firepower: 5
- > Cargo: 0
-
-
-Description: SabreTooth
- > Size: 4
- > Speed: 9
- > Range: 6
- > Firepower: 7
- > Cargo: 2
-
-
-Description: CarrackFire
- > Size: 7
- > Speed: 3
- > Range: 10
- > Firepower: 5
- > Cargo: 6
-
-
-Description: SabreTazer
- > Size: 4
- > Speed: 7
- > Range: 4
- > Firepower: 5
- > Cargo: 2
-
-
-Description: OrionSpiron
- > Size: 10
- > Speed: 4
- > Range: 6
- > Firepower: 3
- > Cargo: 9
-
-
-Description: ConstellationRing
- > Size: 5
- > Speed: 6
- > Range: 8
- > Firepower: 3
- > Cargo: 5
-
-
-Description: m69
- > Size: 4
- > Speed: 10
- > Range: 3
- > Firepower: 5
- > Cargo: 2
-
-
-Description: Hornet
- > Size: 2
- > Speed: 5
- > Range: 3
- > Firepower: 4
- > Cargo: 1
-
-
-Description: MerchantmanWoman
- > Size: 7
- > Speed: 5
- > Range: 5
- > Firepower: 7
- > Cargo: 10
-
-
-Description: Constellation
- > Size: 4
- > Speed: 5
- > Range: 7
- > Firepower: 3
- > Cargo: 4
-
-
-Description: Hawk
- > Size: 1
- > Speed: 3
- > Range: 2
- > Firepower: 4
- > Cargo: 0
-
-
-Description: m50
- > Size: 1
- > Speed: 10
- > Range: 2
- > Firepower: 2
- > Cargo: 0
-
-
-Description: HornetFury
- > Size: 3
- > Speed: 6
- > Range: 4
- > Firepower: 5
- > Cargo: 2
-
-
-Description: DeathStar
- > Size: 10
- > Speed: 10
- > Range: 10
- > Firepower: 10
- > Cargo: 10
-
-
-Description: HurricaneTrail
- > Size: 3
- > Speed: 6
- > Range: 4
- > Firepower: 6
- > Cargo: 2
-
-
-Description: HawkEye
- > Size: 4
- > Speed: 5
- > Range: 4
- > Firepower: 5
  > Cargo: 2
 
  Player Deck------------------------------------------
 
-Description: HornetFury
- > Size: 3
- > Speed: 6
+Description: Avenger
+ > Size: 2
+ > Speed: 5
+ > Range: 4
+ > Firepower: 3
+ > Cargo: 2
+
+
+Description: DeathStar
+ > Size: 10
+ > Speed: 10
+ > Range: 10
+ > Firepower: 10
+ > Cargo: 10
+
+
+Description: SabreTazer
+ > Size: 4
+ > Speed: 7
  > Range: 4
  > Firepower: 5
  > Cargo: 2
@@ -663,216 +679,94 @@ Description: MerchantmanWoman
  > Cargo: 10
 
 
-Description: OrionSpiron
- > Size: 10
- > Speed: 4
- > Range: 6
- > Firepower: 3
- > Cargo: 9
+Description: m69
+ > Size: 4
+ > Speed: 10
+ > Range: 3
+ > Firepower: 5
+ > Cargo: 2
 
 
-Description: Hurricane
- > Size: 2
+Description: VanguardLamp
+ > Size: 5
+ > Speed: 5
+ > Range: 5
+ > Firepower: 5
+ > Cargo: 5
+
+
+Description: AvengerInfinity
+ > Size: 5
  > Speed: 5
  > Range: 3
+ > Firepower: 4
+ > Cargo: 4
+
+
+Description: CarrackFire
+ > Size: 7
+ > Speed: 3
+ > Range: 10
+ > Firepower: 5
+ > Cargo: 6
+
+
+Description: 350r
+ > Size: 1
+ > Speed: 9
+ > Range: 2
+ > Firepower: 3
+ > Cargo: 0
+
+
+Description: HornetFury
+ > Size: 3
+ > Speed: 6
+ > Range: 4
+ > Firepower: 5
+ > Cargo: 2
+
+
+Description: m50
+ > Size: 1
+ > Speed: 10
+ > Range: 2
+ > Firepower: 2
+ > Cargo: 0
+
+
+Description: Merchantman
+ > Size: 7
+ > Speed: 3
+ > Range: 5
+ > Firepower: 6
+ > Cargo: 8
+
+
+Description: Sabre
+ > Size: 2
+ > Speed: 7
+ > Range: 2
  > Firepower: 5
  > Cargo: 0
 
 
-Description: AvengerStone
- > Size: 3
- > Speed: 6
- > Range: 5
+Description: Carrack
+ > Size: 6
+ > Speed: 2
+ > Range: 10
  > Firepower: 4
- > Cargo: 3
-
-
-Description: Vanguard
- > Size: 3
- > Speed: 4
- > Range: 5
- > Firepower: 5
- > Cargo: 2
-
-
-Description: HurricaneFlame
- > Size: 4
- > Speed: 7
- > Range: 5
- > Firepower: 6
- > Cargo: 3
-
-
-Description: VanguardSteel
- > Size: 5
- > Speed: 8
- > Range: 7
- > Firepower: 8
- > Cargo: 5
-
-
-Description: HornetNest
- > Size: 4
- > Speed: 7
- > Range: 5
- > Firepower: 6
- > Cargo: 2
-
-
-Description: m99
- > Size: 4
- > Speed: 10
- > Range: 4
- > Firepower: 5
- > Cargo: 2
+ > Cargo: 6
 
 
  cpu1Deck------------------------------------------
 
-Description: DeathStar
- > Size: 10
- > Speed: 10
- > Range: 10
- > Firepower: 10
- > Cargo: 10
-
-
-Description: Constellation
- > Size: 4
- > Speed: 5
- > Range: 7
- > Firepower: 3
- > Cargo: 4
-
-
-Description: ConstellationRing
- > Size: 5
- > Speed: 6
- > Range: 8
- > Firepower: 3
- > Cargo: 5
-
-
-Description: SabreTooth
- > Size: 4
- > Speed: 9
- > Range: 6
- > Firepower: 7
- > Cargo: 2
-
-
-Description: HawkClaw
- > Size: 2
- > Speed: 4
- > Range: 3
- > Firepower: 5
- > Cargo: 1
-
-
 Description: CarrackBall
  > Size: 6
  > Speed: 4
  > Range: 10
  > Firepower: 7
  > Cargo: 8
-
-
-Description: Merchantman
- > Size: 7
- > Speed: 3
- > Range: 5
- > Firepower: 6
- > Cargo: 8
-
-
-Description: 350t
- > Size: 3
- > Speed: 10
- > Range: 4
- > Firepower: 5
- > Cargo: 3
-
-
-Description: Orion
- > Size: 10
- > Speed: 1
- > Range: 6
- > Firepower: 2
- > Cargo: 9
-
-
-Description: 350r
- > Size: 1
- > Speed: 9
- > Range: 2
- > Firepower: 3
- > Cargo: 0
-
-
- cpu2Deck------------------------------------------
-
-Description: HurricaneTrail
- > Size: 3
- > Speed: 6
- > Range: 4
- > Firepower: 6
- > Cargo: 2
-
-
-Description: Hawk
- > Size: 1
- > Speed: 3
- > Range: 2
- > Firepower: 4
- > Cargo: 0
-
-
-Description: m69
- > Size: 4
- > Speed: 10
- > Range: 3
- > Firepower: 5
- > Cargo: 2
-
-
-Description: CarrackFire
- > Size: 7
- > Speed: 3
- > Range: 10
- > Firepower: 5
- > Cargo: 6
-
-
-Description: AvengerInfinity
- > Size: 5
- > Speed: 5
- > Range: 3
- > Firepower: 4
- > Cargo: 4
-
-
-Description: Sabre
- > Size: 2
- > Speed: 7
- > Range: 2
- > Firepower: 5
- > Cargo: 0
-
-
-Description: Carrack
- > Size: 6
- > Speed: 2
- > Range: 10
- > Firepower: 4
- > Cargo: 6
-
-
-Description: 350s
- > Size: 2
- > Speed: 9
- > Range: 3
- > Firepower: 4
- > Cargo: 1
 
 
 Description: MerchantmanOman
@@ -883,54 +777,28 @@ Description: MerchantmanOman
  > Cargo: 8
 
 
-Description: Idris
- > Size: 8
- > Speed: 2
- > Range: 7
- > Firepower: 10
- > Cargo: 6
-
-
- cpu3Deck------------------------------------------
-
-Description: HawkEye
- > Size: 4
- > Speed: 5
- > Range: 4
+Description: Vanguard
+ > Size: 3
+ > Speed: 4
+ > Range: 5
  > Firepower: 5
  > Cargo: 2
 
 
-Description: m50
- > Size: 1
- > Speed: 10
- > Range: 2
- > Firepower: 2
- > Cargo: 0
-
-
-Description: Hornet
+Description: HawkClaw
  > Size: 2
- > Speed: 5
+ > Speed: 4
  > Range: 3
- > Firepower: 4
+ > Firepower: 5
  > Cargo: 1
 
 
-Description: SabreTazer
+Description: m99
  > Size: 4
- > Speed: 7
+ > Speed: 10
  > Range: 4
  > Firepower: 5
  > Cargo: 2
-
-
-Description: VanguardLamp
- > Size: 5
- > Speed: 5
- > Range: 5
- > Firepower: 5
- > Cargo: 5
 
 
 Description: OrionBlaze
@@ -941,28 +809,20 @@ Description: OrionBlaze
  > Cargo: 9
 
 
-Description: IdrisMight
- > Size: 10
- > Speed: 4
- > Range: 7
- > Firepower: 10
- > Cargo: 6
-
-
-Description: Avenger
- > Size: 2
- > Speed: 5
+Description: 350t
+ > Size: 3
+ > Speed: 10
  > Range: 4
- > Firepower: 3
- > Cargo: 2
-
-
-Description: ConstellationWhirl
- > Size: 6
- > Speed: 6
- > Range: 7
  > Firepower: 5
- > Cargo: 8
+ > Cargo: 3
+
+
+Description: AvengerStone
+ > Size: 3
+ > Speed: 6
+ > Range: 5
+ > Firepower: 4
+ > Cargo: 3
 
 
 Description: IdrisKudo
@@ -973,325 +833,12 @@ Description: IdrisKudo
  > Cargo: 7
 
 
- cpu4Deck------------------------------------------
-
-
-----------------------
-Current Hands
-
-Description: HawkEye
- > Size: 4
- > Speed: 5
- > Range: 4
- > Firepower: 5
- > Cargo: 2
-
-
-Description: HornetFury
- > Size: 3
- > Speed: 6
- > Range: 4
- > Firepower: 5
- > Cargo: 2
-
-
-Description: DeathStar
+Description: Orion
  > Size: 10
- > Speed: 10
- > Range: 10
- > Firepower: 10
- > Cargo: 10
-
-
-Description: HurricaneTrail
- > Size: 3
- > Speed: 6
- > Range: 4
- > Firepower: 6
- > Cargo: 2
-
-
-----------------------
-
-the stat selection value of the active player  = 6
-
-the stat selection value of the active player  = 10
--------------------------
-The selected stat was stat number1
-5
-6
-10
-6
-
-----------------------
-Current Hands
-
-Description: Constellation
- > Size: 4
- > Speed: 5
- > Range: 7
- > Firepower: 3
- > Cargo: 4
-
-
-Description: m50
- > Size: 1
- > Speed: 10
- > Range: 2
+ > Speed: 1
+ > Range: 6
  > Firepower: 2
- > Cargo: 0
-
-
-Description: MerchantmanWoman
- > Size: 7
- > Speed: 5
- > Range: 5
- > Firepower: 7
- > Cargo: 10
-
-
-Description: Hawk
- > Size: 1
- > Speed: 3
- > Range: 2
- > Firepower: 4
- > Cargo: 0
-
-
-----------------------
--------------------------
-The selected stat was stat number2
-7
-2
-5
-2
-
-----------------------
-Current Hands
-
-Description: ConstellationRing
- > Size: 5
- > Speed: 6
- > Range: 8
- > Firepower: 3
- > Cargo: 5
-
-
-Description: Hornet
- > Size: 2
- > Speed: 5
- > Range: 3
- > Firepower: 4
- > Cargo: 1
-
-
-Description: OrionSpiron
- > Size: 10
- > Speed: 4
- > Range: 6
- > Firepower: 3
  > Cargo: 9
-
-
-Description: m69
- > Size: 4
- > Speed: 10
- > Range: 3
- > Firepower: 5
- > Cargo: 2
-
-
-----------------------
--------------------------
-The selected stat was stat number2
-8
-3
-6
-3
-
-----------------------
-Current Hands
-
-Description: SabreTooth
- > Size: 4
- > Speed: 9
- > Range: 6
- > Firepower: 7
- > Cargo: 2
-
-
-Description: SabreTazer
- > Size: 4
- > Speed: 7
- > Range: 4
- > Firepower: 5
- > Cargo: 2
-
-
-Description: Hurricane
- > Size: 2
- > Speed: 5
- > Range: 3
- > Firepower: 5
- > Cargo: 0
-
-
-Description: CarrackFire
- > Size: 7
- > Speed: 3
- > Range: 10
- > Firepower: 5
- > Cargo: 6
-
-
-----------------------
--------------------------
-The selected stat was stat number1
-9
-7
-5
-3
-
-----------------------
-Current Hands
-
-Description: HawkClaw
- > Size: 2
- > Speed: 4
- > Range: 3
- > Firepower: 5
- > Cargo: 1
-
-
-Description: VanguardLamp
- > Size: 5
- > Speed: 5
- > Range: 5
- > Firepower: 5
- > Cargo: 5
-
-
-Description: AvengerStone
- > Size: 3
- > Speed: 6
- > Range: 5
- > Firepower: 4
- > Cargo: 3
-
-
-Description: AvengerInfinity
- > Size: 5
- > Speed: 5
- > Range: 3
- > Firepower: 4
- > Cargo: 4
-
-
-----------------------
--------------------------
-The selected stat was stat number3
-5
-5
-4
-4
--------------------------------
------------------------------
-Common Pile Contents
-
-Description: HawkClaw
- > Size: 2
- > Speed: 4
- > Range: 3
- > Firepower: 5
- > Cargo: 1
-
-
-Description: VanguardLamp
- > Size: 5
- > Speed: 5
- > Range: 5
- > Firepower: 5
- > Cargo: 5
-
-
-Description: AvengerStone
- > Size: 3
- > Speed: 6
- > Range: 5
- > Firepower: 4
- > Cargo: 3
-
-
-Description: AvengerInfinity
- > Size: 5
- > Speed: 5
- > Range: 3
- > Firepower: 4
- > Cargo: 4
-
---------------------
---------------------
-
-----------------------
-Current Hands
-
-Description: CarrackBall
- > Size: 6
- > Speed: 4
- > Range: 10
- > Firepower: 7
- > Cargo: 8
-
-
-Description: OrionBlaze
- > Size: 10
- > Speed: 5
- > Range: 8
- > Firepower: 5
- > Cargo: 9
-
-
-Description: Vanguard
- > Size: 3
- > Speed: 4
- > Range: 5
- > Firepower: 5
- > Cargo: 2
-
-
-Description: Sabre
- > Size: 2
- > Speed: 7
- > Range: 2
- > Firepower: 5
- > Cargo: 0
-
-
-----------------------
--------------------------
-The selected stat was stat number2
-10
-8
-5
-2
-
-----------------------
-Current Hands
-
-Description: Merchantman
- > Size: 7
- > Speed: 3
- > Range: 5
- > Firepower: 6
- > Cargo: 8
-
-
-Description: IdrisMight
- > Size: 10
- > Speed: 4
- > Range: 7
- > Firepower: 10
- > Cargo: 6
 
 
 Description: HurricaneFlame
@@ -1302,75 +849,23 @@ Description: HurricaneFlame
  > Cargo: 3
 
 
-Description: Carrack
- > Size: 6
+Description: Idris
+ > Size: 8
  > Speed: 2
- > Range: 10
- > Firepower: 4
+ > Range: 7
+ > Firepower: 10
  > Cargo: 6
 
 
-----------------------
--------------------------
-The selected stat was stat number4
-8
-6
-3
-6
-
-----------------------
-Current Hands
-
-Description: 350t
- > Size: 3
- > Speed: 10
- > Range: 4
- > Firepower: 5
- > Cargo: 3
-
-
-Description: Avenger
+Description: Hornet
  > Size: 2
  > Speed: 5
- > Range: 4
- > Firepower: 3
- > Cargo: 2
-
-
-Description: VanguardSteel
- > Size: 5
- > Speed: 8
- > Range: 7
- > Firepower: 8
- > Cargo: 5
-
-
-Description: 350s
- > Size: 2
- > Speed: 9
  > Range: 3
  > Firepower: 4
  > Cargo: 1
 
 
-----------------------
--------------------------
-The selected stat was stat number1
-10
-5
-8
-9
-
-----------------------
-Current Hands
-
-Description: Orion
- > Size: 10
- > Speed: 1
- > Range: 6
- > Firepower: 2
- > Cargo: 9
-
+ cpu2Deck------------------------------------------
 
 Description: ConstellationWhirl
  > Size: 6
@@ -1388,69 +883,13 @@ Description: HornetNest
  > Cargo: 2
 
 
-Description: MerchantmanOman
- > Size: 8
- > Speed: 4
- > Range: 6
- > Firepower: 7
- > Cargo: 8
-
-
-----------------------
--------------------------
-The selected stat was stat number0
-10
-6
-4
-8
-
-----------------------
-Current Hands
-
-Description: 350r
- > Size: 1
- > Speed: 9
- > Range: 2
- > Firepower: 3
+Description: Hurricane
+ > Size: 2
+ > Speed: 5
+ > Range: 3
+ > Firepower: 5
  > Cargo: 0
 
-
-Description: IdrisKudo
- > Size: 8
- > Speed: 4
- > Range: 8
- > Firepower: 10
- > Cargo: 7
-
-
-Description: m99
- > Size: 4
- > Speed: 10
- > Range: 4
- > Firepower: 5
- > Cargo: 2
-
-
-Description: Idris
- > Size: 8
- > Speed: 2
- > Range: 7
- > Firepower: 10
- > Cargo: 6
-
-
-----------------------
-
-the stat selection value of the active player  = 10
--------------------------
-The selected stat was stat number1
-9
-4
-10
-2
-
-----------------------
-Current Hands
 
 Description: HawkEye
  > Size: 4
@@ -1460,43 +899,79 @@ Description: HawkEye
  > Cargo: 2
 
 
-Description: 350r
- > Size: 1
- > Speed: 9
- > Range: 2
+Description: Constellation
+ > Size: 4
+ > Speed: 5
+ > Range: 7
  > Firepower: 3
- > Cargo: 0
+ > Cargo: 4
 
 
-----------------------
-
-the stat selection value of the active player  = 9
--------------------------
-The selected stat was stat number1
-5
-9
-
-----------------------
-Current Hands
-
-Description: IdrisKudo
- > Size: 8
- > Speed: 4
- > Range: 8
- > Firepower: 10
- > Cargo: 7
+Description: 350s
+ > Size: 2
+ > Speed: 9
+ > Range: 3
+ > Firepower: 4
+ > Cargo: 1
 
 
-Description: HornetFury
- > Size: 3
- > Speed: 6
- > Range: 4
- > Firepower: 5
+Description: SabreTooth
+ > Size: 4
+ > Speed: 9
+ > Range: 6
+ > Firepower: 7
  > Cargo: 2
 
 
-----------------------
--------------------------
-The selected stat was stat number4
-7
-2
+Description: ConstellationRing
+ > Size: 5
+ > Speed: 6
+ > Range: 8
+ > Firepower: 3
+ > Cargo: 5
+
+
+Description: VanguardSteel
+ > Size: 5
+ > Speed: 8
+ > Range: 7
+ > Firepower: 8
+ > Cargo: 5
+
+
+Description: HurricaneTrail
+ > Size: 3
+ > Speed: 6
+ > Range: 4
+ > Firepower: 6
+ > Cargo: 2
+
+
+Description: IdrisMight
+ > Size: 10
+ > Speed: 4
+ > Range: 7
+ > Firepower: 10
+ > Cargo: 6
+
+
+Description: OrionSpiron
+ > Size: 10
+ > Speed: 4
+ > Range: 6
+ > Firepower: 3
+ > Cargo: 9
+
+
+Description: Hawk
+ > Size: 1
+ > Speed: 3
+ > Range: 2
+ > Firepower: 4
+ > Cargo: 0
+
+
+ cpu3Deck------------------------------------------
+
+ cpu4Deck------------------------------------------
+
