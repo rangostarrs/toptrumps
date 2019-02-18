@@ -351,6 +351,7 @@ public class TopTrumpsModel {
 			while (true) {
 				try {
 					statSelection = getInt("Enter the number for your attribute (1-5):", userInput);
+					statSelection--;
 					if (statSelection > 0 && statSelection < 6) {
 						break;
 					}

@@ -53,8 +53,8 @@ public class TopTrumpsCLIApplication {
 				model.addCardsToList();
 				if(x==1) {
 					
-					SQL db = new SQL();
-					db.getGameStats();
+//					SQL db = new SQL();
+//					db.getGameStats();
 				
 				
 
