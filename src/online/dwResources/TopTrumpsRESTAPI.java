@@ -7,6 +7,7 @@ import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Deque;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import javax.ws.rs.Consumes;
@@ -24,6 +25,7 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 
 import commandline.Card;
 import commandline.Player;
+import commandline.SQL;
 
 @Path("/toptrumps") // Resources specified here should be hosted at http://localhost:7777/toptrumps
 @Produces(MediaType.APPLICATION_JSON) // This resource returns JSON content
@@ -52,6 +54,7 @@ public class TopTrumpsRESTAPI {
 	private Deque<Card> cpu4Deck = new ArrayDeque<Card>();
 	private ArrayList<Card> cardList;
 	private Player playerAI1, playerAI2, playerAI3, playerAI4;
+	private Player activePlayer;
 	private ArrayList<Player> playersList;
 	private Player playerHuman;
 	private Card currentHandCard;
@@ -60,6 +63,8 @@ public class TopTrumpsRESTAPI {
 	private int playerRoundWin, cpu1RoundWin, cpu2RoundWin, cpu3RoundWin, cpu4RoundWin;
 	private ArrayList<Card> cardListCurrentHands;
 	private ArrayList<Card> commonPile;
+	private int catIndex;
+	private String winner;
 
 	/** A Jackson Object writer. It allows us to turn Java objects
 	 * into JSON strings easily. */	
@@ -89,16 +94,63 @@ public class TopTrumpsRESTAPI {
 		Collections.shuffle(cardList);
 		mainDeck = new ArrayDeque<Card>(cardList);
 		dealCards(numPlayers, cardList);
-		
+		randomiseOrder();
 		roundNumber = 1;
 	}
 
 	@GET
 	@Path("/humanCompareStats")
-	public String humanCompareStats(@QueryParam("Number") int Number) throws IOException {
+	public String  humanCompareStats(@QueryParam("Number") int Number) throws IOException {
 		
-		int catIndex = Number;
+		catIndex = Number;
+		String winner = compareStats();
 		// return index of the player with the highest score
+		//highestStatPlayer = 0;
+		//for (int i = 1; i < cardListCurrentHands.size(); i++) {
+		//	if (cardListCurrentHands.get(i).returnStat(catIndex) > cardListCurrentHands.get(highestStatPlayer).returnStat(catIndex)) {
+				//highestStatPlayer = i;
+			//}
+		//}
+
+		
+		//giveHandsToWinner(highestStatPlayer);
+		//String winner = playersList.get(highestStatPlayer).getName();
+		roundNumber++;
+//		reorderPlayersList(playersList, highestStatPlayer);
+		return winner;
+	}
+	
+	public void randomiseOrder() {
+		Collections.shuffle(playersList);
+		activePlayer = playersList.get(0);
+		
+	}
+	@GET
+	@Path("/processRound")
+	public String processRound() throws IOException{
+		
+		if(activePlayer.getName() == "Human") {
+			winner = humanCompareStats(catIndex);
+			
+			
+		}else if(activePlayer.getName() == "Opponent 1") {
+			winner = AICompareStat();
+		}else if(activePlayer.getName() == "Opponent 2") {
+			winner = AICompareStat();
+		}else if(activePlayer.getName() == "Opponent 3") {
+			winner = AICompareStat();
+		}else if(activePlayer.getName() == "Opponent 4") {
+			winner = AICompareStat();
+		}	
+		
+		
+		return winner;
+	}
+	
+	
+	public String compareStats(){
+		
+		
 		highestStatPlayer = 0;
 		for (int i = 1; i < cardListCurrentHands.size(); i++) {
 			if (cardListCurrentHands.get(i).returnStat(catIndex) > cardListCurrentHands.get(highestStatPlayer).returnStat(catIndex)) {
@@ -110,14 +162,92 @@ public class TopTrumpsRESTAPI {
 		giveHandsToWinner(highestStatPlayer);
 		String winner = playersList.get(highestStatPlayer).getName();
 		roundNumber++;
-//		reorderPlayersList(playersList, highestStatPlayer);
+		//Have to shuffle the playerslistarray, so that winner is in position 0.
+		reorderPlayersList(playersList,highestStatPlayer);
+		activePlayer = playersList.get(0);
+		
+		
+		
 		return winner;
 	}
+	
+	@GET
+	@Path("/activePlayer")
+	public String activePlayer() {
+		
+		String playerActive = activePlayer.getName();
+		
+		return playerActive;
+	}
+	
+	@GET
+	@Path("/AICompareStat")
+	public String AICompareStat() {
+		
+		Card currentCpuCard = playersList.get(0).getDeck().peekFirst();
+		int cpuStatChoice = currentCpuCard.returnHighestStat(currentCpuCard); 
+		
+		
+		highestStatPlayer = 0;
+		for (int i = 1; i < cardListCurrentHands.size(); i++) {
+			if (cardListCurrentHands.get(i).returnStat(cpuStatChoice) > cardListCurrentHands.get(highestStatPlayer).returnStat(cpuStatChoice)) {
+				highestStatPlayer = i;
+			}
+		}
+
+		
+		giveHandsToWinner(highestStatPlayer);
+		String winner = playersList.get(highestStatPlayer).getName();
+		roundNumber++;
+		reorderPlayersList(playersList,highestStatPlayer);
+		activePlayer = playersList.get(0);
+		//Have to shuffle the playerslistarray, so that winner is in position 0.
+//		reorderPlayersList(playe
+		
+		
+		
+		
+		
+		
+		return winner;
+	}
+	
+	
+		
 	
 	public void reorderPlayersList(ArrayList<Player> playersList, int highestStatPlayer) {
 		try {
 			playersList.add(0, playersList.remove(highestStatPlayer));
 		} catch (IndexOutOfBoundsException e) {}
+	}
+	
+	public void increaseRoundWin(int highestStatPlayer) {
+
+		if (highestStatPlayer == 6) {
+			// do nothing in case of a draw
+		} else if (playersList.get(highestStatPlayer).toString() == "Human") {
+			// gameResults[0] = gameResults[0] + 1;
+			playerRoundWin++;
+
+		} else if (playersList.get(highestStatPlayer).toString() == "Opponent 1") {
+			// gameResults[1] = gameResults[1] + 1;
+			cpu1RoundWin++;
+		}
+
+		else if (playersList.get(highestStatPlayer).toString() == "Opponent 2") {
+			// gameResults[2] = gameResults[2] + 1;
+			cpu2RoundWin++;
+		}
+
+		else if (playersList.get(highestStatPlayer).toString() == "Opponent 3") {
+			// gameResults[3] = gameResults[3] + 1;
+			cpu3RoundWin++;
+		}
+
+		else if (playersList.get(highestStatPlayer).toString() == "Opponent 4") {
+			// gameResults[4] = gameResults[4] + 1;
+			cpu4RoundWin++;
+		}
 	}
 	
 	public void dealCards(int cpuNumber, ArrayList<Card> cardList) {
@@ -171,6 +301,7 @@ public class TopTrumpsRESTAPI {
 			}
 		}
 		
+		// randomise order in which the players start
 //		Collections.shuffle(playersList);
 		return playersList;
 	}
@@ -220,6 +351,19 @@ public class TopTrumpsRESTAPI {
 		}
 	}
 	
+//	public ArrayList<Card> collectCurrentHands() {
+//		
+//		currentHands = new ArrayList<Card>();
+//		
+//		for (int i = 0; i < playersList.size(); i++) {
+//			// retrieve hand of each player
+//			currentHandCard = playersList.get(i).getDeck().pollFirst();
+//			currentHands.add(currentHandCard);
+//		}
+//		
+//		return currentHands;
+//	}
+	
 	@GET
 	@Path("/displayCards")
 	public String displayCards() throws IOException	{
@@ -259,8 +403,16 @@ public class TopTrumpsRESTAPI {
 			playersList.get(highestStatPlayer).getDeck().addLast(cardListCurrentHands.get(i));
 
 		}
+//		if (!commonPile.isEmpty()) {
+//			for (int i = 0; i < commonPile.size(); i++) {
+//				playersList.get(highestStatPlayer).getDeck().addLast(commonPile.get(i));
+//			}
+//		}
+
+		// Added this ArrayList of ArrayLists to test in JUnit
 
 		cardListCurrentHands.clear();
+//		commonPile.clear();
 	}
 	
 	@GET
@@ -269,5 +421,22 @@ public class TopTrumpsRESTAPI {
 		String roundNumberJSON = oWriter.writeValueAsString(roundNumber);
 		return roundNumberJSON;
 	}
+	
+	@GET
+	@Path("/statisticsonline")
+	
+	public String insertStatsOnline() throws IOException {
+		
+		SQL connect = new SQL();
+	
+		int[]statistics = connect.insertGameStatsOnline();
+		
+		
+		String JSONStatisticsString = oWriter.writeValueAsString(statistics);
+		return JSONStatisticsString;
+	
+	}
+
+	
 	
 }
