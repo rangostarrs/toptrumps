@@ -139,7 +139,7 @@ public class TopTrumpsModel {
 			// compare stat between the players
 			highestStatPlayer = compareStat(statSelection, currentHands);
 			System.setOut(o);
-			System.out.println("The selected stat was stat number"+ statSelection );
+			//System.out.println("The selected stat was stat number "+ statSelection );
 			for (Card c:currentHands) {
 				System.out.println(c.returnStat(statSelection));
 			}
@@ -175,7 +175,7 @@ public class TopTrumpsModel {
 						"\nRound " + roundNumber + " won by: " + playersList.get(highestStatPlayer).toString());
 				// ADD AN ARROW INDICATING WINNING STAT:
 				System.out.println("\nThe winning card was: " + currentHands.get(highestStatPlayer).toString());
-				System.out.println("The winning stat was: " + headerArray[statSelection] + ": "
+				System.out.println("The winning stat was: " + headerArray[statSelection+1] + ": "
 						+ currentHands.get(highestStatPlayer).returnStat(statSelection));
 
 				// give hands to the winner
@@ -301,11 +301,13 @@ public class TopTrumpsModel {
 			if (currentHands.get(i).returnStat(statSelection) > currentHands.get(highestStatPlayer)
 					.returnStat(statSelection)) {
 				System.out.println("");
-				System.out.println("the stat selection value of the active player  = "
-						+ currentHands.get(i).returnStat(statSelection));
+				
 				highestStatPlayer = i;
 			}
+			System.out.println("the stat selection value of the active player  = "
+					+ currentHands.get(i).returnStat(statSelection));
 		}
+		
 		for (int i = 1; i < currentHands.size(); i++) {
 			if (i == highestStatPlayer) {
 				// skip this index
@@ -352,7 +354,7 @@ public class TopTrumpsModel {
 				try {
 					statSelection = getInt("Enter the number for your attribute (1-5):", userInput);
 					statSelection--;
-					if (statSelection > 0 && statSelection < 6) {
+					if (statSelection > -1 && statSelection < 6) {
 						break;
 					}
 				} catch (NoSuchElementException e) {
