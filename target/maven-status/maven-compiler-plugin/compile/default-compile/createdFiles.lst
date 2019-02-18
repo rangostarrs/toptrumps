@@ -1,0 +1,16 @@
+commandline/GameStats.class
+commandline/TopTrumpsView.class
+commandline/Player.class
+online/configuration/TopTrumpsJSONConfiguration.class
+commandline/Card.class
+online/dwViews/StatisticsView.class
+commandline/TopTrumpsModel.class
+online/dwViews/SelectionScreenView.class
+online/dwResources/TopTrumpsRESTAPI.class
+online/dwViews/GameScreenView.class
+TopTrumps.class
+online/dwResources/GameWebPagesResource.class
+commandline/SQL.class
+commandline/TopTrumpsCLIApplication.class
+commandline/TopTrumpsController.class
+online/TopTrumpsOnlineApplication.class
