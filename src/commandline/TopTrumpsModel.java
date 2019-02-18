@@ -82,8 +82,7 @@ public class TopTrumpsModel {
 						break;
 					}
 				}
-				// db = new SQL();
-				// gameID = db.getGameIDfromDB();
+				
 				addCardsToList();
 				gameLoop(cpuNumber, cardList);
 
@@ -139,7 +138,7 @@ public class TopTrumpsModel {
 			// compare stat between the players
 			highestStatPlayer = compareStat(statSelection, currentHands);
 			System.setOut(o);
-			//System.out.println("The selected stat was stat number "+ statSelection );
+			System.out.println("The selected stat was stat number "+ statSelection );
 			for (Card c:currentHands) {
 				System.out.println(c.returnStat(statSelection));
 			}
@@ -239,26 +238,26 @@ public class TopTrumpsModel {
 		if (highestStatPlayer == 6) {
 			// do nothing in case of a draw
 		} else if (playersList.get(highestStatPlayer).toString() == "Human") {
-			// gameResults[0] = gameResults[0] + 1;
+			
 			playerRoundWin++;
 
 		} else if (playersList.get(highestStatPlayer).toString() == "Opponent 1") {
-			// gameResults[1] = gameResults[1] + 1;
+			
 			cpu1RoundWin++;
 		}
 
 		else if (playersList.get(highestStatPlayer).toString() == "Opponent 2") {
-			// gameResults[2] = gameResults[2] + 1;
+			
 			cpu2RoundWin++;
 		}
 
 		else if (playersList.get(highestStatPlayer).toString() == "Opponent 3") {
-			// gameResults[3] = gameResults[3] + 1;
+			
 			cpu3RoundWin++;
 		}
 
 		else if (playersList.get(highestStatPlayer).toString() == "Opponent 4") {
-			// gameResults[4] = gameResults[4] + 1;
+			
 			cpu4RoundWin++;
 		}
 	}
@@ -354,7 +353,7 @@ public class TopTrumpsModel {
 				try {
 					statSelection = getInt("Enter the number for your attribute (1-5):", userInput);
 					statSelection--;
-					if (statSelection > -1 && statSelection < 6) {
+					if (statSelection > -1 && statSelection < 5) {
 						break;
 					}
 				} catch (NoSuchElementException e) {

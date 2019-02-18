@@ -43,7 +43,7 @@ public class TopTrumpsCLIApplication {
 
 			userWantsToQuit = true; // use this when the user wants to exit the game
 			
-			
+//			
 			   SQL connect = new SQL(); // Creating a new SQL object just for the sake of connecting to the database in order to get a new gameID 
 			   int gameid = connect.getGameIDfromDB();
 			   model.setGameID(gameid);
