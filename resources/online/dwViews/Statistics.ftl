@@ -30,15 +30,18 @@
 			font-weight: 400;
 			font-size: 30px;
 			color: white;
+			padding-top: 15px;
 			}
 			
 			.nes-btn {
 			font-size: 13px;
 			padding: 10px 10px;
+			position: relative;
+			left: 500px;
 			}
 			
 			table {
-				font-weight: 200;
+				font-weight: 200px;
 				font-size: 15px;
 				color: white;
 			}
@@ -50,12 +53,12 @@
 	<body onload="initalize()">
 		<div class="header">
         		<font size="5"></font>
-        		<h1 align="center" style="padding: 15px">Game Statistics</h1>
+        		<h1 align="center">Game Statistics</h1>
         	<div class="row">
         		<table style="margin-top:100px; margin-left:400px;">
         			<tr>
-        				<th width="500">Statistic:</th>
-        				<th width="100">Value</th>
+        				<th width="500" height="50">Statistic:</th>
+        				<th width="80" height="50">Value</th>
 					 </tr>
 					 <tr>
 					 	<td height="50">Number of Games Played</td>
@@ -82,8 +85,8 @@
         	
         	
         	<div class="row">
-  				<div class="col-sm"></div>
-  				<div class="col-sm-8">
+  				<div class="col-lg"></div>
+  				<div class="col-lg-12">
   					<button type="button" class="nes-btn" onclick="window.location.href ='http://localhost:7777/toptrumps/game';">Play again</button>
   					<button type="button" class="nes-btn" onclick="window.location.href ='http://localhost:7777/toptrumps';">Back</button>
   				</div>
